@@ -1,0 +1,40 @@
+.breadcrumb-bar{
+    height: 50px;
+    background-color: #4a4a4a;
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    padding: 0 2.8%;
+}
+.breadcrumb-bar ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: inline-block;
+    width: 75%;
+  }
+  
+.breadcrumb-bar li {
+    float: left;
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 16px 0;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.6px;
+    text-align: left;
+}
+.breadcrumb-bar .breadcrumb-timer{
+    display: inline-block;
+    width: 25%;
+    text-align: right;
+    opacity: 0.6;
+    font-size: 12px;
+    font-weight: 600;
+    vertical-align: top;
+    padding-top: 15px;
+}
+  
