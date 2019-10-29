@@ -1,5 +1,5 @@
 import React from 'react';
-import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
+import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import './dataTableComponent.css';
 import './dataTableComponent-dep.css';
 import alert from './alert.svg'
@@ -8,7 +8,7 @@ export class DataTableComponent extends React.Component {
   constructor(props) {
     super(props);
     this.options = {
-        responsive: true
+      responsive: true
     };
     this.state = {
         isSearchEnabled: true,
@@ -18,19 +18,18 @@ export class DataTableComponent extends React.Component {
         filteredZoneData:props.filteredZoneData
     };
   }
-  
-  setStatusStyle(cell, row){
-     let styleClassName = '';
-      if(row.status.toLowerCase() === 'critical'){
-        styleClassName = 'text-danger';
-      } else if(row.status.toLowerCase() === 'non-critical'){
-        styleClassName = 'text-primary';
-      } else if(row.status.toLowerCase() ==='warning'){
-        styleClassName = 'text-warning';
-      }
-      return `<i class='fas fa-circle statusMarker ${ styleClassName }' ></i> ${cell}`; 
+
+  setStatusStyle(cell, row) {
+    let styleClassName = '';
+    if (row.status.toLowerCase() === 'critical') {
+      styleClassName = 'text-danger';
+    } else if (row.status.toLowerCase() === 'non-critical') {
+      styleClassName = 'text-primary';
+    } else if (row.status.toLowerCase() === 'warning') {
+      styleClassName = 'text-warning';
+    }
+    return `<i class='fas fa-circle statusMarker ${styleClassName}' ></i> ${cell}`;
   }
- 
 
  render() {
     
@@ -73,9 +72,11 @@ export class DataTableComponent extends React.Component {
                           
                 </div>
           </div>
+        </div>
+      </div>
     );
   }
- 
+
 }
 
 export default DataTableComponent;
