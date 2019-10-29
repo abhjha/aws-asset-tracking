@@ -60,8 +60,8 @@ export class ZoneDatatable extends React.Component {
 
                             <BootstrapTable 
                             ref='alertsTable' containerClass="alertsTable" data={this.state.filteredZoneData.SelectedZone}  striped hover bordered={ false } search={isSearchEnabled} multiColumnSearch options={ this.options }> 
-                               <TableHeaderColumn width='30' dataField='statusBox' dataFormat={ this.setStatusStyle} border='0'></TableHeaderColumn>
-                                <TableHeaderColumn width='90' headerAlign='center' dataAlign='center' isKey  dataField='materialName' dataFormat={ this.alertDetails}>Asset</TableHeaderColumn>
+                               <TableHeaderColumn width='80' dataField='statusBox' dataFormat={ this.setStatusStyle} border='0'></TableHeaderColumn>
+                                <TableHeaderColumn width='90' headerAlign='left' dataAlign='center' isKey  dataField='materialName' dataFormat={ this.alertDetails}>Asset</TableHeaderColumn>
                                 <TableHeaderColumn headerAlign='center' dataAlign='center'dataSort >Asset location</TableHeaderColumn>
                                 
                                 <TableHeaderColumn headerAlign='center' dataAlign='center'  dataField='status' >Status</TableHeaderColumn>    
