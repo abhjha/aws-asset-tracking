@@ -34,6 +34,7 @@ class zoneView extends React.Component {
             SelectedZone: [
                 {
                     materialName: "Copper",
+                    statusBox:"",
                     zoneName: "Sheet Metal Bending",
                     status: "Waiting",
                     visitDate: "Oct 24, 2019 12:00:00 AM",
@@ -44,7 +45,8 @@ class zoneView extends React.Component {
                 },
                 {
                     materialName: "Copper",
-                    zoneName: "Sheet Metal Bending",
+                    statusBox:"",
+                    zoneName: "xyz",
                     status: "Waiting",
                     visitDate: "Oct 24, 2019 12:00:00 AM",
                     visitTimein: "Oct 24, 2019 10:55:16 AM",
@@ -54,6 +56,7 @@ class zoneView extends React.Component {
                 },
                 {
                     materialName: "Copper",
+                    statusBox:"",
                     zoneName: "Sheet Metal Bending",
                     status: "Waiting",
                     visitDate: "Oct 24, 2019 12:00:00 AM",

@@ -70,23 +70,7 @@ export class DataTableComponent extends React.Component {
                                
                             </BootstrapTable>
 
-                            <BootstrapTable 
-                            ref='alertsTable' containerClass="alertsTable" data={this.state.filteredZoneData.SelectedZone}  striped hover bordered={ false } search={isSearchEnabled} multiColumnSearch options={ this.options }> 
-                                <TableHeaderColumn width='30' dataFormat={ this.setStatusStyle}></TableHeaderColumn>
-                                <TableHeaderColumn width='90' headerAlign='center' dataAlign='center' isKey  dataField='materialName' dataFormat={ this.alertDetails}>Asset</TableHeaderColumn>
-                                <TableHeaderColumn headerAlign='center' dataAlign='center'dataSort >Asset location</TableHeaderColumn>
-                                {/* <TableHeaderColumn headerAlign='center' dataAlign='center'dataSort  dataField='dateTime' >Zone</TableHeaderColumn> */}
-                                <TableHeaderColumn headerAlign='center' dataAlign='center'  dataField='status' >Status</TableHeaderColumn>    
-                                <TableHeaderColumn headerAlign='center' dataAlign='center'  dataField='visitTimein' >Zone IN time</TableHeaderColumn>    
-                                <TableHeaderColumn headerAlign='center' dataAlign='center'  dataField='visitTimeout' >Zone OUT time</TableHeaderColumn>    
-                                <TableHeaderColumn headerAlign='center' dataAlign='center'  dataField='description' >Description</TableHeaderColumn>    
-                                <TableHeaderColumn headerAlign='center' dataAlign='center'  dataField='superviserName' >Supervisor</TableHeaderColumn>                         
-                                <TableHeaderColumn headerAlign='center' dataAlign='center'  dataField='activeTime'>Standard Time</TableHeaderColumn>
-                                <TableHeaderColumn headerAlign='center' dataAlign='center'  dataField='description'>Actual Time</TableHeaderColumn>
-
-                              
-                               
-                            </BootstrapTable>
+                          
                 </div>
           </div>
     );

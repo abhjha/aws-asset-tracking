@@ -2,7 +2,7 @@ import React from 'react';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 import './ZoneDatatable.css';
 // import './dataTableComponent-dep.css';
-// import alert from './alert.svg'
+
 export class ZoneDatatable extends React.Component {
 
   constructor(props) {
@@ -25,7 +25,7 @@ export class ZoneDatatable extends React.Component {
         styleClassName = 'text-danger';
       } else if(row.status.toLowerCase() === 'non-critical'){
         styleClassName = 'text-primary';
-      } else if(row.status.toLowerCase() ==='warning'){
+      } else if(row.status.toLowerCase() ==='waiting'){
         styleClassName = 'text-warning';
       }
       return `<i class='fas fa-circle statusMarker ${ styleClassName }' ></i> ${cell}`; 
@@ -41,8 +41,8 @@ export class ZoneDatatable extends React.Component {
             
           <div id="tableGridPanel">
             <div className="alert-zone">
-            <img className="alerts-icon" src={alert} alt="alert"></img>
-            <div className="alerts-zone-heading">ALERTS</div>
+           
+            <div className="alerts-zone-heading">{this.state.filteredZoneData.SelectedZone[0].zoneName}</div>
             
             </div>
               
@@ -60,10 +60,10 @@ export class ZoneDatatable extends React.Component {
 
                             <BootstrapTable 
                             ref='alertsTable' containerClass="alertsTable" data={this.state.filteredZoneData.SelectedZone}  striped hover bordered={ false } search={isSearchEnabled} multiColumnSearch options={ this.options }> 
-                                <TableHeaderColumn width='30' dataFormat={ this.setStatusStyle}></TableHeaderColumn>
+                               <TableHeaderColumn width='30' dataField='statusBox' dataFormat={ this.setStatusStyle} border='0'></TableHeaderColumn>
                                 <TableHeaderColumn width='90' headerAlign='center' dataAlign='center' isKey  dataField='materialName' dataFormat={ this.alertDetails}>Asset</TableHeaderColumn>
                                 <TableHeaderColumn headerAlign='center' dataAlign='center'dataSort >Asset location</TableHeaderColumn>
-                                {/* <TableHeaderColumn headerAlign='center' dataAlign='center'dataSort  dataField='dateTime' >Zone</TableHeaderColumn> */}
+                                
                                 <TableHeaderColumn headerAlign='center' dataAlign='center'  dataField='status' >Status</TableHeaderColumn>    
                                 <TableHeaderColumn headerAlign='center' dataAlign='center'  dataField='visitTimein' >Zone IN time</TableHeaderColumn>    
                                 <TableHeaderColumn headerAlign='center' dataAlign='center'  dataField='visitTimeout' >Zone OUT time</TableHeaderColumn>    
