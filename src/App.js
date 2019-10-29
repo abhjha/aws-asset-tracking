@@ -6,7 +6,6 @@ import Menu from './Components/Menu/index';
 import DeviceRegistry from './Pages/DeviceRegistry';
 import EditAsset from './Pages/EditAsset';
 import DetachThing from './Pages/DetachThing'
-import './index.css'
 
 class App extends React.Component {
 
