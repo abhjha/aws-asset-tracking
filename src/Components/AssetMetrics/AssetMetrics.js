@@ -17,9 +17,9 @@ class AlertMetrics extends Component {
     return (
         <div className="asset-tracked-graph">
             <div className="asset-metrics-heading">
-                <span class="checkmark">
-                    <div class="checkmark_stem"></div>
-                    <div class="checkmark_kick"></div>
+                <span className="checkmark">
+                    <div className="checkmark_stem"></div>
+                    <div className="checkmark_kick"></div>
                 </span>
             <div className="heading">ASSETS METRICS</div>
             </div>
@@ -33,9 +33,9 @@ class AlertMetrics extends Component {
                         <Bar
           
                         data={this.state.chartData}
-                        height={168}
-                        width={470}
+                       
                         options= {{
+                            scaleFontColor: 'red',
                             legend: {
                                 display:true,
                             
@@ -44,18 +44,19 @@ class AlertMetrics extends Component {
                             marginRight:19,
                             labels :{
                             fontColor: 'black',
-                            fontSize: 12,
+                            fontSize: 10,
                             usePointStyle: true,
                             boxWidth:5,
                             }
                             },
+                            
                             scales: {
                             yAxes: [{
-                            
+                            color:'black',
                             borderColor: 'red',
                                 scaleLabel: {
                                 display:true,
-                                fontSize:16,
+                                fontSize:10,
                                 fontColor: 'black',
                                 },
                                 stacked: true,
@@ -67,28 +68,31 @@ class AlertMetrics extends Component {
                                     stepSize:1000,
                                     lineWidth: 1,
                                     fontColor: 'black',
-                                    fontSize: 16,
-                                    padding: 10.5,
-                                    
+                                    fontSize: 12,
+                                    padding:3
+                                
                                 
                                     
                                 },
                                 gridLines: {
                                     offsetGridLines: true,
-                                    color:'black',
+                                    display:false,
                                     drawTicks: false
                                 
                                 }
                                 }],
                                 xAxes: [{
+                                    
+                                    barPercentage:0.6,
                                     gridLines: {
                                         offsetGridLines: true,
-                                        color:'black',
-                                        drawTicks: false
+                                        display:false,
+                                        drawTicks: false,
+                                       
                                     },
                                 ticks: {
                                     fontColor: 'black',
-                                    fontSize: 16,
+                                    fontSize: 12,
                                     padding: 10.5
                                 },
                                 stacked: true
