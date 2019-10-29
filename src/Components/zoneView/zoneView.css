@@ -1,13 +1,19 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300,600,900);
-.main{
-    width: 100%;
+.zone-container{
+    width: 80%;
     height: auto;    
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     margin: auto;
 }
 
-.checkbox{
+.zone-view {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.zone-view .checkbox{
     width:50%;
     height: auto;
     border-bottom: 10px solid #464646;
