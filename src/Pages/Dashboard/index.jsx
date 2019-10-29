@@ -10,6 +10,31 @@ Chart.defaults.global.legend.labels.usePointStyle = true;
 
 class Dashboard extends Component {
   render() {
+    const filteredData= [
+      {
+      "id":"1",
+      "status":"warning",
+      "statusBox":"" ,
+      "dateTime":"123",
+      "activeTime":"431",
+      "description":"987",
+      "parameter":"987",
+      "location":"qwer"
+    },
+
+      {
+      "id":"2",
+      "status":"critical",
+      "statusBox":"" ,
+      "dateTime":"126",
+      "activeTime":"432",
+      "description":"987",
+      "parameter":"987",
+      "location":"qwer"
+    },
+      {"id":"3","status":"warning","statusBox":"" ,"dateTime":"125","activeTime":"434","description":"987","parameter":"987","location":"qwer"},
+      {"id":"4","status":"non-critical","statusBox":"" ,"dateTime":"124","activeTime":"435","description":"987","parameter":"987","location":"qwer"}
+  ]
     const data = {
       labels : ['ZONE 1', 'ZONE 2', 'ZONE 3', 'ZONE 4', 'ZONE 5'],
       datasets: [
@@ -56,7 +81,9 @@ class Dashboard extends Component {
           </div>
           <div className="db-alerts">
               
-              <DataTableComponent/>
+              <DataTableComponent
+               filteredData={filteredData}/>
+             
               
           </div>
         </div>

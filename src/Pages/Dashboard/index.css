@@ -35,7 +35,8 @@
 
 .db-data-metrics-contents {
     display: flex;
-    height:92%
+    height:92%;
+    width:100%;
 }
 .total-count-and-graph {
     background-color:white;
@@ -50,18 +51,16 @@
 }
 .work-in-progress {
     text-align: center;
-    width: 108%;
-    margin-left: 33px;
     font-size: 13px;
 }
 .total-count {
-    font-size: 39px;
+    font-size: 30px;
     margin-top: 40px;
     text-align: center;
-    margin-left: 51px;
+   
 }
 .graph-view {
-  height:100%;
+  height:80%;
   width:80%
   
   

@@ -6,14 +6,18 @@
 .alert-zone {
     display: flex;
     width:100%;
-    border-bottom: 1px solid grey;
+    border-bottom: 2px solid grey;
 }
 .alerts-zone-heading{
     margin-left: 12px;
-    font-weight: bold
+    font-weight: bold;
+    font-size: 20px;
+    font-weight: bold;
+    width: 95%;
+    height: 11%;
 }
 .alerts-icon {
-    width: 3%;
+    width: 4%;
     margin-bottom: 2px;
 }
 #overLay{
@@ -156,11 +160,6 @@ a.alertId{
 	background-color: #868686;
 }
 
-
-#tableGridPanel .statusMarker{
-    font-size: 8px;
-    margin: 0px 10px 0px -20px;
-}
 #tableGridPanel .filterOverlay {
     height: auto;
     width: 160px;

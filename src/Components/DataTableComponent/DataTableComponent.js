@@ -14,12 +14,7 @@ export class DataTableComponent extends React.Component {
         isSearchEnabled: true,
         isFilterEnabled: true,
         filterItem : [],
-        filteredData: [
-            {"id":"1","status":"warning","statusBox":"" ,"dateTime":"123","activeTime":"431","description":"987","parameter":"987","location":"qwer"},
-            {"id":"2","status":"critical","statusBox":"" ,"dateTime":"126","activeTime":"432","description":"987","parameter":"987","location":"qwer"},
-            {"id":"3","status":"warning","statusBox":"" ,"dateTime":"125","activeTime":"434","description":"987","parameter":"987","location":"qwer"},
-            {"id":"4","status":"non-critical","statusBox":"" ,"dateTime":"124","activeTime":"435","description":"987","parameter":"987","location":"qwer"}
-        ],
+       
     };
   }
   
@@ -39,7 +34,8 @@ export class DataTableComponent extends React.Component {
  render() {
     
   
-    const { isSearchEnabled, filteredData,} = this.state; 
+    const { isSearchEnabled,} = this.state; 
+    const { filteredData } = this.props;
           return ( 
           
           <div id="tableGridPanel">
