@@ -10,6 +10,9 @@ Chart.defaults.global.legend.labels.usePointStyle = true;
 
 class Dashboard extends Component {
   render() {
+
+   
+  
     const filteredData= [
       {
       "id":"1",

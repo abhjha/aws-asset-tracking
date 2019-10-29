@@ -1,9 +1,9 @@
 import React from 'react';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
-import './dataTableComponent.css';
-import './dataTableComponent-dep.css';
-import alert from './alert.svg'
-export class DataTableComponent extends React.Component {
+import './ZoneDatatable.css';
+// import './dataTableComponent-dep.css';
+// import alert from './alert.svg'
+export class ZoneDatatable extends React.Component {
 
   constructor(props) {
     super(props);
@@ -57,18 +57,6 @@ export class DataTableComponent extends React.Component {
                    
                     <input type="hidden" value={this.state.activeTabKey} />
                    
-                            <BootstrapTable 
-                            ref='alertsTable' containerClass="alertsTable" data={this.state.filteredData}  striped hover bordered={ false } search={isSearchEnabled} multiColumnSearch options={ this.options }> 
-
-
-                                <TableHeaderColumn width='30' dataField='statusBox' dataFormat={ this.setStatusStyle} border='0'></TableHeaderColumn>
-                                <TableHeaderColumn width='90' headerAlign='center' dataAlign='center' isKey  dataField='id'dataFormat={ this.alertDetails}>Asset</TableHeaderColumn>
-                                <TableHeaderColumn headerAlign='center' dataAlign='center'dataSort  dataField='dateTime' >Zone</TableHeaderColumn>
-                                <TableHeaderColumn headerAlign='center' dataAlign='center'  dataField='status' >Status</TableHeaderColumn>                                
-                                <TableHeaderColumn headerAlign='center' dataAlign='center'  dataField='activeTime'>Standard Time</TableHeaderColumn>
-                                <TableHeaderColumn headerAlign='center' dataAlign='center'  dataField='description'>Actual Time</TableHeaderColumn>
-                               
-                            </BootstrapTable>
 
                             <BootstrapTable 
                             ref='alertsTable' containerClass="alertsTable" data={this.state.filteredZoneData.SelectedZone}  striped hover bordered={ false } search={isSearchEnabled} multiColumnSearch options={ this.options }> 
@@ -94,5 +82,5 @@ export class DataTableComponent extends React.Component {
  
 }
 
-export default DataTableComponent;
+export default ZoneDatatable;
 
