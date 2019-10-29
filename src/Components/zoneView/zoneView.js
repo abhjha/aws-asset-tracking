@@ -1,8 +1,7 @@
 import React from 'react';
 import {DataTableComponent} from '../../Components/DataTableComponent/DataTableComponent';
-import './zoneView.css';
+import './zoneView.scss';
 
-import './zoneView.css';
 class zoneView extends React.Component {
 
     constructor(props){
