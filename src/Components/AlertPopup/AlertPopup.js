@@ -7,7 +7,6 @@ class AlertPopup extends React.Component {
         super(props)
         this.state = {
             alertList: [
-                [
                 {
                     key: 'ASSET',
                     value: 2753
@@ -36,7 +35,7 @@ class AlertPopup extends React.Component {
             ]            
         }
     }
-var input;
+    
     closeWindow = () => {
         // var close = document.getElementById("alertDetail");
         // close.style.display = "none";
