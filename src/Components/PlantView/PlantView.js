@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import './PlantView.css';
-import plantView from './plantView.jpg'
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import factoryImage from './factoryImage.png';
+import mapLocation from './mapLocation.png';
+import {zoneView} from '../../Components/zoneView/zoneView';
+
 class PlantView extends Component {
     
   constructor(props) {
@@ -14,8 +18,21 @@ class PlantView extends Component {
   render() {
    
     return (
+     
         <div>
-          <img className="plant-view-image" src={plantView} alt="alert"></img>
+          <div className="plant-view-heading">
+          
+          
+          <img className="mapImage" src={mapLocation} alt="mapLocation"></img>
+          <div className="main-heading">PLANT VIEW</div>
+          
+          </div>
+          
+            <div>
+            {/* <Route path="/zoneView" exact component={zoneView} /> */}
+          <img className="factoryImage" src={factoryImage} alt="factoryImage"></img>
+          </div>
+         
         </div>
         
           
