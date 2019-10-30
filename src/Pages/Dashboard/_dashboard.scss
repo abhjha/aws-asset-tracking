@@ -29,11 +29,12 @@
 
     .db-alerts{
         margin-right: 20px;
+        margin-bottom: 20px;
     }
 
     .db-plant-view{
-        height: 96%;
         margin-left: 20px;
+        margin-bottom: 20px;
     }
 
     .db-data {
@@ -44,7 +45,7 @@
 
     .db-data-values {
         display: grid;
-        grid-template-rows: 40% 60%;
+        grid-template-rows: 40% 1fr;
         grid-gap: 20px;
     }
 
