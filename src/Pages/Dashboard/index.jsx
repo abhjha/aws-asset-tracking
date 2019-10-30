@@ -6,7 +6,6 @@ import AssetMetrics from '../../Components/AssetMetrics/AssetMetrics';
 import PlantView from '../../Components/PlantView/PlantView';
 import AlertPopup from '../../Components/AlertPopup/AlertPopup';
 
-
 Chart.defaults.global.legend.labels.usePointStyle = true;
 
 class Dashboard extends Component {
@@ -54,19 +53,18 @@ class Dashboard extends Component {
         {
           label: 'In Progress',
           data: [1000, 200, 1500, 500, 200, 600],
-          backgroundColor: 'rgb(250,85,63)',
+          backgroundColor: '#8ad0f9',
           borderWidth: 1
         },
         {
           data: [800, 400, 500, 430, 180, 1000],
           label: 'Working',
-
-          backgroundColor: 'rgb(251,188,0)'
+          backgroundColor: '#ffda78'
         },
         {
           data: [400, 400, 50, 600, 1700, 900],
           label: 'Completed',
-          backgroundColor: 'rgb(3,160,69)'
+          backgroundColor: '#bad96b'
         }
       ]
     };

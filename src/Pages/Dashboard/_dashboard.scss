@@ -8,55 +8,68 @@
         padding: 0;
     }
 }
-.data-container.dashboard {
-    height: 100vh;
-    display: grid;
-    grid-template-rows: 75px 1fr;
-    grid-gap: 3%;
-    
-}
+.data-container{
 
-.db-header-label{
-    width: auto;
-    background-color: $card-bg-color;
-    line-height: 78px;
-    padding-left:  20px;
-    border-radius: $border-radius;
-    margin-top: 10px;
-    
-}
-.db-alerts,.db-data-metrics,.db-plant-view{
-    // background-color: #f7f7f7;
-    padding: 20px;
-}
+    .db-header-label{
+        width: auto;
+        background-color: $card-bg-color;
+        line-height: 75px;
+        padding-left:  20px;
+        font-weight: bold;
+        border-radius: $border-radius;
+    }
 
-.db-data {
-    display: grid;
-    grid-template-columns: 54% 44%;
-    grid-gap: 2%;
-}
+    .db-alerts,.db-data-metrics,.db-plant-view{
+        padding: 20px;
+    }
 
-.db-data-values {
-    display: grid;
-    grid-template-rows: 40% 60%;
-    grid-gap: 3%;
-}
+    .db-data-metrics{
+        margin-left: 20px;
+    }
 
-.asset-metrics-heading {
-   display: flex;
-//    border-bottom: 2px solid grey;
-}
+    .db-alerts{
+        margin-right: 20px;
+    }
 
-.heading {
-    font-size: 17px;
-    font-weight: bold;
-    
-    width: 95%;
-    height: 11%;
-}
+    .db-plant-view{
+        height: 96%;
+        margin-left: 20px;
+    }
 
-.db-data-metrics-contents {
-    display: flex;
-    height:92%;
-    width:100%;
+    .db-data {
+        display: grid;
+        grid-template-columns: 60% 1fr;
+        grid-gap: 20px;
+    }
+
+    .db-data-values {
+        display: grid;
+        grid-template-rows: 40% 60%;
+        grid-gap: 20px;
+    }
+
+    .asset-metrics-heading {
+        display: flex;
+    }
+
+    .heading {
+        font-size: 17px;
+        font-weight: bold;
+        width: 95%;
+        height: 11%;
+    }
+
+    .db-data-metrics-contents {
+        display: flex;
+        height:92%;
+        width:100%;
+    }
+
+    &.dashboard {
+        height: 100vh;
+        display: grid;
+        grid-template-rows: 75px 1fr;
+        grid-gap: 20px ;
+        
+    }
 }
