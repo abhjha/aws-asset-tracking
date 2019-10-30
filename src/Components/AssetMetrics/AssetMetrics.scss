@@ -1,0 +1,87 @@
+$bgcolor: white;
+$marginTop: 8px;
+$marginLB: 10px;
+$bgcolorTicks: black;
+
+.asset-tracked-graph{
+    height: 100%;
+}
+
+.total-count-and-graph {
+    background-color:$bgcolor;
+    width: 80%;
+    display: flex;
+    margin-top: $marginTop;
+    box-shadow: 3px 3px 3px lightgrey
+}
+
+.total-count-and-work-in-progress {
+    width:20%;
+}
+
+.work-in-progress {
+    text-align: center;
+    font-size: 13px;
+}
+
+.total-count {
+    font-size: 30px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.graph-view {
+    width:70%
+}
+
+.dormant-and-completed-assets {
+    margin-left: $marginLB;
+}
+
+.dormant-assets {
+    margin-bottom: $marginLB;
+    margin-top: $marginTop;
+}
+
+.dormant-assets,.completed-assets {
+    background-color: $bgcolor;
+    height: 47%;
+    box-shadow: 3px 3px 3px lightgrey;
+}
+
+.dormant-assets-label,.completed-assets-label {
+   text-align: center;
+   font-size:10px
+    
+}
+
+.dormant-assets-count, .completed-assets-count {
+    font-size:25px;
+    text-align: center;
+    padding-top: 15px;
+}
+
+.checkmark {
+    width: 4%;
+    height: 11%;
+    margin-left: 9px;
+    transform: rotate(45deg);
+}
+
+.checkmark_stem {
+    position: absolute;
+    width: 2px;
+    height: 20px;
+    background-color: $bgcolorTicks;
+    left: 11px;
+    top: 9px;
+}
+
+.checkmark_kick {
+    position: absolute;
+    width: 4px;
+    height: 3px;
+    background-color: $bgcolorTicks;
+    left: 7px;
+    top: 26px;
+}

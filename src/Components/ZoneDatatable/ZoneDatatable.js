@@ -1,6 +1,6 @@
 import React from 'react';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
-import './ZoneDatatable.css';
+import './ZoneDatatable.scss';
 // import './dataTableComponent-dep.css';
 
 export class ZoneDatatable extends React.Component {
@@ -63,7 +63,6 @@ export class ZoneDatatable extends React.Component {
                                <TableHeaderColumn width='80' dataField='statusBox' dataFormat={ this.setStatusStyle} border='0'></TableHeaderColumn>
                                 <TableHeaderColumn width='90' headerAlign='left' dataAlign='center' isKey  dataField='materialName' dataFormat={ this.alertDetails}>Asset</TableHeaderColumn>
                                 <TableHeaderColumn headerAlign='center' dataAlign='center'dataSort >Asset location</TableHeaderColumn>
-                                
                                 <TableHeaderColumn headerAlign='center' dataAlign='center'  dataField='status' >Status</TableHeaderColumn>    
                                 <TableHeaderColumn headerAlign='center' dataAlign='center'  dataField='visitTimein' >Zone IN time</TableHeaderColumn>    
                                 <TableHeaderColumn headerAlign='center' dataAlign='center'  dataField='visitTimeout' >Zone OUT time</TableHeaderColumn>    
