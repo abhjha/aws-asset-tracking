@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import { Bar } from 'react-chartjs-2';
-import './AssetMetrics.css';
+import './AssetMetrics.scss';
 class AlertMetrics extends Component {
 
     constructor(props) {

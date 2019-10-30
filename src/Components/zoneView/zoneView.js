@@ -9,23 +9,33 @@ class zoneView extends React.Component {
         this.state = {
 
             
-            zoneList:[
+            zoneList: [
                 {
-                zoneId: 'ZONE 1',
-                assetCount: 123
-            }, {
-                zoneId: 'ZONE 2',
-                assetCount: 143
-            }, {
-                zoneId: 'ZONE 3',
-                assetCount: 64
-            }, {
-                zoneId: 'ZONE 4',
-                assetCount: 88
-            }, {
-                zoneId: 'ZONE 5',
-                assetCount: 198
-            }]
+                  "zoneName": "Sheet Metal Bending",
+                  "zoneId": "zone001",
+                  "count": 1
+                },
+                {
+                  "zoneName": "Cabinet Assembly",
+                  "zoneId": "zone002",
+                  "count": 0
+                },
+                {
+                  "zoneName": "Cooling System Installation",
+                  "zoneId": "zone003",
+                  "count": 1
+                },
+                {
+                  "zoneName": "Gasket Installation",
+                  "zoneId": "zone004",
+                  "count": 0
+                },
+                {
+                  "zoneName": "Testing Area",
+                  "zoneId": "zone005",
+                  "count": 0
+                }
+              ]
         }
     }
 
@@ -67,6 +77,8 @@ class zoneView extends React.Component {
                 }
             ]
         }
+    
+          
         const {zoneList} = this.state;
         return(
             <div className="zone-container">
@@ -74,10 +86,10 @@ class zoneView extends React.Component {
                     {zoneList.length > 0 && zoneList.map(item => {
                         return (<div className="checkbox">
                         <div className="upper">
-                        {item.zoneId}
+                        {item.zoneName}
                         </div>
                         <div className="lower">
-                            {item.assetCount} Assets
+                            {item.count} Assets
                         </div>
                     </div>)
                     })}
