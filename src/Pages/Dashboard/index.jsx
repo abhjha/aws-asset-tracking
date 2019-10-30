@@ -6,7 +6,7 @@ import AssetMetrics from '../../Components/AssetMetrics/AssetMetrics';
 import PlantView from '../../Components/PlantView/PlantView';
 import AlertPopup from '../../Components/AlertPopup/AlertPopup';
 
-import './index.css';
+
 Chart.defaults.global.legend.labels.usePointStyle = true;
 
 class Dashboard extends Component {
@@ -71,21 +71,21 @@ class Dashboard extends Component {
       ]
     };
     return (
-      < div className="data-container dashboard">
-        <div className="db-header-label">
+      < div className="data-container dashboard ">
+        <div className="db-header-label ">
           DASHBOARD
         </div>
         <div className="db-data">
-          <div className="db-data-values">
-            <div className="db-data-metrics">
+          <div className="db-data-values ">
+            <div className="db-data-metrics card-tile ">
               <AssetMetrics
                 data={data} />
             </div>
-            <div className="db-plant-view">
+            <div className="db-plant-view card-tile ">
               <PlantView />
             </div>
           </div>
-          <div className="db-alerts">
+          <div className="db-alerts card-tile ">
             <DataTableComponent filteredData={filteredData} triggerPopupOpen={this.openModal} />
           </div>
           {this.state.isModalOpen && <AlertPopup />}

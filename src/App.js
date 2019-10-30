@@ -8,6 +8,8 @@ import EditAsset from './Pages/EditAsset';
 import DetachThing from './Pages/DetachThing';
 import zoneView from './Components/zoneView/zoneView.js';
 
+import './SCSS/main.scss';
+
 class App extends React.Component {
 
   render (){

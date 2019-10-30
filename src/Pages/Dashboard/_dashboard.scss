@@ -1,18 +1,32 @@
+.card-tile{
+    @include tile-card();
+}
+.card-heading{
+    h1{
+        @include heading-sub();
+        margin:0;
+        padding: 0;
+    }
+}
 .data-container.dashboard {
     height: 100vh;
     display: grid;
     grid-template-rows: 75px 1fr;
     grid-gap: 3%;
+    
 }
 
 .db-header-label{
-    background-color: #f7f7f7;
-    line-height: 75px;
-    padding-left:  20px
-    /* padding: 3% 3%; */
+    width: auto;
+    background-color: $card-bg-color;
+    line-height: 78px;
+    padding-left:  20px;
+    border-radius: $border-radius;
+    margin-top: 10px;
+    
 }
 .db-alerts,.db-data-metrics,.db-plant-view{
-    background-color: #f7f7f7;
+    // background-color: #f7f7f7;
     padding: 20px;
 }
 
@@ -30,7 +44,7 @@
 
 .asset-metrics-heading {
    display: flex;
-   border-bottom: 2px solid grey;
+//    border-bottom: 2px solid grey;
 }
 
 .heading {

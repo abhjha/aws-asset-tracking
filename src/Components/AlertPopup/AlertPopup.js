@@ -35,16 +35,6 @@ class AlertPopup extends React.Component {
             ]            
         }
     }
-    
-    closeWindow = () => {
-        // var close = document.getElementById("alertDetail");
-        // close.style.display = "none";
-    }
-    // openWindow() {
-    //     var open = document.getElementById("alertDetail");
-    //     close.style.display = "block";
-    // }
-    
     render() {
         const  alertList  = this.state.alertList;
 

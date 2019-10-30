@@ -1,6 +1,5 @@
 import React from 'react';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
-import './DataTableComponent.scss';
 import './dataTableComponent-dep.css';
 import alert from './alert.svg'
 export class DataTableComponent extends React.Component {
@@ -36,8 +35,8 @@ export class DataTableComponent extends React.Component {
     return (
       <div id="tableGridPanel">
         <div className="alert-zone">
-          <img className="alerts-icon" src={alert} alt="alert"></img>
-          <div className="alerts-zone-heading">ALERTS</div>
+          
+          <div className="card-heading"><h1>Alert</h1></div>
         </div>
 
         <div className="tableAndFilterContainer withoutTabs">

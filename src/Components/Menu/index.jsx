@@ -1,8 +1,8 @@
 import React from 'react';
 import { withRouter } from "react-router-dom";
-import logo from './TURNKEYFAI.png';
 
-import './index.scss';
+
+
 
 class Menu extends React.Component {
 
@@ -10,8 +10,9 @@ class Menu extends React.Component {
         super(props);
         this.state = {
             selectedMenuId: 0,
-            //menuItems: ['Dashboard', 'Asset Registry', 'Device Registry', 'Edit Asset','Detach Thing',""],
-            menuItems: ['Dashboard'],
+            menuItems: ['Dashboard', 'Asset Registry', 'Device Registry', 'Device Registry'],
+            // menuItems: ['Dashboard', 'Asset Registry', 'Device Registry', 'Edit Asset','Detach Thing',""],
+            // menuItems: ['Dashboard'],
         }
     }
 
@@ -48,7 +49,7 @@ class Menu extends React.Component {
         return (
             <div onClick={this.setActiveState} className="menu-container">
                 <div className="menu-heading">
-                    <img src={logo} className="App-logo" alt="logo" />
+                    MATERIAL TRACKING
                 </div>
                 <div onClick={this.setActiveState} className="menu-option-items">
                     {this.state.menuItems.map((item, index) => {
@@ -59,10 +60,11 @@ class Menu extends React.Component {
                             </div>
                         )
                     })}
-                    <div></div>
-                    <p style={this.UserStyle}>abcnx7868</p>
-                    <p style={this.LineStyle}>Line Operator</p>
-                    <button className="logout-button">LOGOUT</button>
+                    <div className="menu-logout">
+                        <p style={this.UserStyle}>abcnx7868</p>
+                        <p style={this.LineStyle}>Line Operator</p>
+                        <button className="logout-button">LOGOUT</button>
+                    </div>
                 </div>
             </div>
 

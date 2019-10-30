@@ -1,6 +1,5 @@
 import React from 'react';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
-import './ZoneDatatable.scss';
 // import './dataTableComponent-dep.css';
 
 export class ZoneDatatable extends React.Component {

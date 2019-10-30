@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import './PlantView.css';
 import factoryImage from './factoryImage.png';
-import mapLocation from './mapLocation.png';
 import { withRouter } from "react-router-dom";
 
 class PlantView extends Component {
@@ -16,8 +14,8 @@ class PlantView extends Component {
      
         <div>
           <div className="plant-view-heading">
-          <img className="mapImage" src={mapLocation} alt="mapLocation"></img>
-          <div className="main-heading">PLANT VIEW</div>
+          {/* <img className="mapImage" src={mapLocation} alt="mapLocation"></img> */}
+          <div className="card-heading"><h1>Plant View</h1></div>
           </div>
             <div>
             {/* <Route path="/zoneView" exact component={zoneView} /> */}
