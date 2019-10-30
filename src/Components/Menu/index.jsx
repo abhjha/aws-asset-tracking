@@ -1,12 +1,8 @@
 import React from 'react';
 import { withRouter } from "react-router-dom";
 import logo from './TURNKEYFAI.png';
-import plantIcon from './plantIcon.png'
-import alertIcon from './alertIcon.png';
-import analyticsIcon from './analyticsIcon.png';
-import CTIcon from './CTIcon.png';
 
-import './index.css';
+import './index.scss';
 
 class Menu extends React.Component {
 
@@ -14,7 +10,8 @@ class Menu extends React.Component {
         super(props);
         this.state = {
             selectedMenuId: 0,
-            menuItems: ['Dashboard', 'Asset Registry', 'Device Registry', 'Edit Asset','Detach Thing',""],
+            //menuItems: ['Dashboard', 'Asset Registry', 'Device Registry', 'Edit Asset','Detach Thing',""],
+            menuItems: ['Dashboard'],
         }
     }
 
@@ -24,10 +21,10 @@ class Menu extends React.Component {
             this.setState({ selectedMenuId });
             switch (selectedMenuId) {
                 case "0": this.props.history.push({ pathname: '/' }); break;
-                case "1": this.props.history.push({ pathname: '/assetRegistry' }); break;
-                case "2": this.props.history.push({ pathname: '/deviceRegistry' }); break;
-                case "3": this.props.history.push({ pathname: '/editAsset' }); break;
-                case "4": this.props.history.push({ pathname: '/detachThing' }); break;
+                // case "1": this.props.history.push({ pathname: '/assetRegistry' }); break;
+                // case "2": this.props.history.push({ pathname: '/deviceRegistry' }); break;
+                // case "3": this.props.history.push({ pathname: '/editAsset' }); break;
+                // case "4": this.props.history.push({ pathname: '/detachThing' }); break;
                 default: this.props.history.push({ pathname: '/' });
             }
         }
@@ -65,8 +62,7 @@ class Menu extends React.Component {
                     <div></div>
                     <p style={this.UserStyle}>abcnx7868</p>
                     <p style={this.LineStyle}>Line Operator</p>
-                    <button className="logout-button"
-                    >LOGOUT</button>
+                    <button className="logout-button">LOGOUT</button>
                 </div>
             </div>
 
