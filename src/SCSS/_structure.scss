@@ -1,7 +1,7 @@
 /* structural classes */
 
-@mixin card-tile() {
-    padding: 50px ;
+@mixin tile-card() {
+    padding: 40px ;
     border-radius: $border-radius;
     background-color: $card-bg-color;
 }
@@ -11,7 +11,9 @@
     width: 20px;
     border-radius: 50%;
     background-color: $card-bg-color;
-    border: 5px solid inset $color;   
+    border: 5px solid $color;   
+    box-sizing: border-box;
+    display:inline-block;
 }
 
 /* structural classes */
@@ -23,6 +25,8 @@ body{
     margin: 0;
     padding: 0;
     background-color: $base-color;
+    height: 100%;
+    overflow-y: scroll;
 }
 
 /*structure style-sheet */

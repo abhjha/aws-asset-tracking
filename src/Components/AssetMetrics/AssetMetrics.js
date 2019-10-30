@@ -1,7 +1,6 @@
 
 import React, { Component } from 'react';
 import { Bar } from 'react-chartjs-2';
-import './AssetMetrics.scss';
 class AlertMetrics extends Component {
 
     constructor(props) {
@@ -14,12 +13,12 @@ class AlertMetrics extends Component {
     render() {
         return (
             <div className="asset-tracked-graph">
-                <div className="asset-metrics-heading">
-                    <span className="checkmark">
+                <div className="card-heading">
+                    {/* <span className="checkmark">
                         <div className="checkmark_stem"></div>
                         <div className="checkmark_kick"></div>
-                    </span>
-                    <div className="heading">ASSETS METRICS</div>
+                    </span> */}
+                    <div className="heading"><h1>Asset Metrics</h1></div>
                 </div>
                 <div className="db-data-metrics-contents">
                     <div className="total-count-and-graph">
@@ -33,7 +32,7 @@ class AlertMetrics extends Component {
                                 height={null}
                                 width={null}
                                 options={{
-                                    scaleFontColor: 'red',
+                                    scaleFontColor: '',
                                     maintainAspectRatio: false,
                                     legend: {
                                         display: true,

@@ -1,6 +1,6 @@
 import React from 'react';
 import {ZoneDatatable} from '../ZoneDatatable/ZoneDatatable';
-import './zoneView.scss';
+
 
 class zoneView extends React.Component {
 
