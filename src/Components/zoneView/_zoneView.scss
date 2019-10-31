@@ -23,22 +23,19 @@
         }
     
         .upper{
-            border-bottom: 1px solid #dedede;
-            height: auto;
-            @include heading-micro();
+            @include heading-micro();        
             text-align: center;
             margin: 10px auto;
-            
+            min-height: 82px; 
         }
         
         .lower{
-            height: auto;
             @include text-normal();
-            // font-size: 150%;
-            // font-weight: normal;
+            height: auto;            
             text-align: center;
             margin: 10px auto;
-           
+            width: 150px;
+            border-radius: 20px; 
         }
     }
 }
