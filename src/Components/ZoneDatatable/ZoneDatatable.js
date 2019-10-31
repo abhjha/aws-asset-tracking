@@ -13,22 +13,23 @@ export class ZoneDatatable extends React.Component {
         isSearchEnabled: true,
         isFilterEnabled: true,
         filterItem : [],
-        filteredZoneData: props.filteredZoneData,
-        zoneName: ""
+      
+        zoneName: "",
+        filteredZoneData: {}
     };
   }
   
-  // setStatusStyle(cell, row){
-  //    let styleClassName = '';
-  //     if(row.status.toLowerCase() === 'critical'){
-  //       styleClassName = 'text-danger';
-  //     } else if(row.status.toLowerCase() === 'non-critical'){
-  //       styleClassName = 'text-primary';
-  //     } else if(row.status.toLowerCase() ==='waiting'){
-  //       styleClassName = 'text-warning';
-  //     }
-  //     return `<i class='fas fa-circle statusMarker ${ styleClassName }' ></i> ${cell}`; 
-  // }
+  setStatusStyle(cell, row){
+     let styleClassName = '';
+      if(row.status.toLowerCase() === 'critical'){
+        styleClassName = 'text-danger';
+      } else if(row.status.toLowerCase() === 'non-critical'){
+        styleClassName = 'text-primary';
+      } else if(row.status.toLowerCase() ==='waiting'){
+        styleClassName = 'text-warning';
+      }
+      return `<i class='fas fa-circle statusMarker ${ styleClassName }' ></i> ${cell}`; 
+  }
   triggerZoneViewTable = () => {
     fetch('https://iy78q5dt50.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialHistory?zoneId=zone001')
       .then(resp => resp.json())
@@ -40,7 +41,7 @@ export class ZoneDatatable extends React.Component {
       });
   }
 
-  componentWillMount = () => {
+  componentDidMount = () => {
     this.triggerZoneViewTable();
   }
 
