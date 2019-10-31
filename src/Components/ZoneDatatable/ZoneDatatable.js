@@ -13,23 +13,37 @@ export class ZoneDatatable extends React.Component {
         isSearchEnabled: true,
         isFilterEnabled: true,
         filterItem : [],
-        filteredData:props.filteredData,
-        filteredZoneData:props.filteredZoneData
+        filteredZoneData: props.filteredZoneData,
+        zoneName: ""
     };
   }
   
-  setStatusStyle(cell, row){
-     let styleClassName = '';
-      if(row.status.toLowerCase() === 'critical'){
-        styleClassName = 'text-danger';
-      } else if(row.status.toLowerCase() === 'non-critical'){
-        styleClassName = 'text-primary';
-      } else if(row.status.toLowerCase() ==='waiting'){
-        styleClassName = 'text-warning';
-      }
-      return `<i class='fas fa-circle statusMarker ${ styleClassName }' ></i> ${cell}`; 
+  // setStatusStyle(cell, row){
+  //    let styleClassName = '';
+  //     if(row.status.toLowerCase() === 'critical'){
+  //       styleClassName = 'text-danger';
+  //     } else if(row.status.toLowerCase() === 'non-critical'){
+  //       styleClassName = 'text-primary';
+  //     } else if(row.status.toLowerCase() ==='waiting'){
+  //       styleClassName = 'text-warning';
+  //     }
+  //     return `<i class='fas fa-circle statusMarker ${ styleClassName }' ></i> ${cell}`; 
+  // }
+  triggerZoneViewTable = () => {
+    fetch('https://iy78q5dt50.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialHistory?zoneId=zone001')
+      .then(resp => resp.json())
+      .then(response => {
+        this.setState({
+          filteredZoneData: response,
+          zoneName: response.SelectedZone[0].zoneName
+        })
+      });
   }
- 
+
+  componentWillMount = () => {
+    this.triggerZoneViewTable();
+  }
+
 
  render() {
     
@@ -41,7 +55,7 @@ export class ZoneDatatable extends React.Component {
           <div id="tableGridPanel">
             <div className="alert-zone">
            
-            <div className="alerts-zone-heading">{this.state.filteredZoneData.SelectedZone[0].zoneName}</div>
+            <div className="alerts-zone-heading">{this.state.zoneName}</div>
             
             </div>
               

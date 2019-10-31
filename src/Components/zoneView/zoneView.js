@@ -4,81 +4,34 @@ import {ZoneDatatable} from '../ZoneDatatable/ZoneDatatable';
 
 class zoneView extends React.Component {
 
-    constructor(props){
-        super(props)
-        this.state = {
-
-            
-            zoneList: [
-                {
-                  "zoneName": "Sheet Metal Bending",
-                  "zoneId": "zone001",
-                  "count": 1
-                },
-                {
-                  "zoneName": "Cabinet Assembly",
-                  "zoneId": "zone002",
-                  "count": 0
-                },
-                {
-                  "zoneName": "Cooling System Installation",
-                  "zoneId": "zone003",
-                  "count": 1
-                },
-                {
-                  "zoneName": "Gasket Installation",
-                  "zoneId": "zone004",
-                  "count": 0
-                },
-                {
-                  "zoneName": "Testing Area",
-                  "zoneId": "zone005",
-                  "count": 0
-                }
-              ]
-        }
-    }
-
-    render() {
-        const filteredZoneData= {
-            SelectedZone: [
-                {
-                    materialName: "Copper",
-                    statusBox:"",
-                    zoneName: "Sheet Metal Bending",
-                    status: "Waiting",
-                    visitDate: "Oct 24, 2019 12:00:00 AM",
-                    visitTimein: "Oct 24, 2019 10:55:16 AM",
-                    visitTimeout: "Oct 24, 2019 10:55:16 AM",
-                    description: "---",
-                    superviserName: "John"
-                },
-                {
-                    materialName: "Copper",
-                    statusBox:"",
-                    zoneName: "xyz",
-                    status: "Waiting",
-                    visitDate: "Oct 24, 2019 12:00:00 AM",
-                    visitTimein: "Oct 24, 2019 10:55:16 AM",
-                    visitTimeout: "Oct 24, 2019 10:55:16 AM",
-                    description: "---",
-                    superviserName: "John"
-                },
-                {
-                    materialName: "Copper",
-                    statusBox:"",
-                    zoneName: "Sheet Metal Bending",
-                    status: "Waiting",
-                    visitDate: "Oct 24, 2019 12:00:00 AM",
-                    visitTimein: "Oct 24, 2019 10:55:16 AM",
-                    visitTimeout: "Oct 24, 2019 10:55:16 AM",
-                    description: "---",
-                    superviserName: "John"
-                }
-            ]
+   
+        constructor(props){
+            super(props)
+            this.state = {
+                zoneList: {},   
+                
+            }
         }
     
-          
+        triggerZoneViewCardData=()=> {
+           fetch('https://iy78q5dt50.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialCountPerZone')
+            .then(resp => resp.json())
+            .then(response => {
+                this.setState({
+                zoneList: response
+                })
+            });
+        }
+       
+        componentDidMount() {
+            this.triggerZoneViewCardData();
+            clearInterval(this.triggerZoneViewCardData);
+            setInterval(this.triggerZoneViewCardData,5000)
+           
+        }
+
+    render() {
+       
         const {zoneList} = this.state;
         return(
             <div className="zone-container">
@@ -97,7 +50,7 @@ class zoneView extends React.Component {
                     
                 <div className="db-alerts">
                         <ZoneDatatable
-                        filteredZoneData={filteredZoneData}
+                        
                         />
                 </div>
             </div>        
