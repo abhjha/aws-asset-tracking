@@ -17,7 +17,6 @@ class zoneView extends React.Component {
            fetch('https://iy78q5dt50.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialCountPerZone')
             .then(resp => resp.json())
             .then(response => {
-                console.log(response);
                 this.setState({
                 zoneList: response
                 })
@@ -26,17 +25,18 @@ class zoneView extends React.Component {
        
         componentDidMount() {
             this.triggerZoneViewCardData();
+            clearInterval(this.triggerZoneViewCardData);
             setInterval(this.triggerZoneViewCardData,5000)
            
         }
 
     render() {
-        const filteredZoneData={}
+       
         const {zoneList} = this.state;
         return(
             <div className="zone-container">
                 <div className = "zone-view">
-                    {this.state.zoneList.length > 0 && zoneList.map(item => {
+                    {zoneList.length > 0 && zoneList.map(item => {
                         return (<div className="checkbox">
                         <div className="upper">
                         {item.zoneName}
@@ -50,7 +50,7 @@ class zoneView extends React.Component {
                     
                 <div className="db-alerts">
                         <ZoneDatatable
-                        filteredZoneData={filteredZoneData}
+                        
                         />
                 </div>
             </div>        
