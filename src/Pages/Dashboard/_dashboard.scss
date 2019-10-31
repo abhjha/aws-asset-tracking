@@ -9,6 +9,7 @@
     }
 }
 .data-container{
+    overflow-x: hidden;
 
     .db-header-label{
         width: auto;
@@ -16,7 +17,6 @@
         line-height: 75px;
         padding-left:  20px;
         font-weight: bold;
-        border-radius: $border-radius;
     }
 
     .db-alerts,.db-data-metrics,.db-plant-view{

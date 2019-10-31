@@ -27,7 +27,7 @@ export class DataTableComponent extends React.Component {
     } else if (row.status.toLowerCase() === 'warning') {
       styleClassName = 'text-warning';
     }
-    return `<i class='fas fa-circle statusMarker ${styleClassName}' ></i> ${cell}`;
+    return `<i class='fas fa-circle statusMarker ${styleClassName}'></i> ${cell}`;
   }
 
   render() {
