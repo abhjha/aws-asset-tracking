@@ -3,7 +3,6 @@
   height: 100vh;
   display: grid;
   grid-template-columns: 245px 1fr;
-  overflow-x: hidden;
 }
 
 *{
