@@ -14,10 +14,6 @@ class AlertMetrics extends Component {
         return (
             <div className="asset-tracked-graph">
                 <div className="card-heading">
-                    {/* <span className="checkmark">
-                        <div className="checkmark_stem"></div>
-                        <div className="checkmark_kick"></div>
-                    </span> */}
                     <div className="heading"><h1>Asset Metrics</h1></div>
                 </div>
                 <div className="db-data-metrics-contents">

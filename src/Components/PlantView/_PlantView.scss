@@ -1,21 +1,140 @@
+$heightPrimary: 20px;
+$widthPrimary: 20px;
+
 .plant-view-heading {
     display: flex;
     width:100%;
 }
 
+
 .mapImage {
-    height:20px;
-    width:20px;
+    height:$heightPrimary;
+    width:$widthPrimary;
     margin-bottom: 2px;
 }
-
+.arrow-down,.cooling-arrow-down,.testing-arrow-down {
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 12px solid black;
+   
+   
+  }
+  .arrow-down {
+    margin-left: 33px;
+    margin-top:-2px
+  }
+  
 .main-heading {
     font-weight: bold;
     margin-left: 5px;
+}
+.factory-floor-plan {
+    
+    width:650px;
+    position: relative;
+    margin: 0px auto;
+}
+.floor-plan-wrapper {
+    width: 650px;
+    position: relative;
+}
+.zone-details {
+    position: absolute;
+    z-index: 100;
+}
+.asset-list {
+    height:30px;
+}
+.headings {
+    font-size: 11px;
+    margin-left: 4px;
+    font-weight: bold;
+}
+.cooling-heading {
+    font-size: 10px;
+    font-weight: bold
+}
+.gasket-installation,.cooling-system,.testing,.sheet,.cabinet {
+    border: 1px solid;
+    border-radius: 10px;
+    width: 80px;
+    height: 100px;
+    position: relative;
+    background-color: white;
+}
+.gasket-installation {
+margin-left: 281px;
+margin-top: 25px;
+}
+.cooling-system {
+    margin-left: 380px;
+    margin-top: -11em;
+}
+ul {
+    list-style: none;
+}
+.red,.green,.yellow {
+    width: 8px;
+    height: 10px;
+    border-radius: 30px;
+   
+
+}
+.red {
+
+background-color: $warning-yellow;
+
+}
+.green {
+
+    background-color: $success-green;
+
+}
+.yellow {
+    background-color: $highlight-blue;
+}
+
+.bullet-and-count {
+    display: flex;
+}
+.count {
+    margin-left: 2px;
+}
+.main-list {
+    padding-left: 5px;
+}
+.sheet {
+    margin-left: 150px;
+    margin-top: -43px;
+}
+.cooling-arrow-down {
+    margin-left: 33px;
+    margin-top: -11px
+}
+.cabinet {
+    margin-left: 224px;
+}
+.testing {
+    margin-left: 485px;
+    margin-top: -201px;
+}
+.testing-heading {
+    margin-top : 9px
+}
+.testing-list {
+    margin-top: 7px;
+    padding-left: 5px;
+}
+.testing-arrow-down {
+    margin-left: 33px;
+    margin-top : 23px;
 }
 
 .factoryImage {
     width: 100%;
     max-width: 650px;
     background-color: white;
+    z-index: 0;
 }
