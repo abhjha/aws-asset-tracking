@@ -91,7 +91,10 @@ a.alertId{
     z-index: 1000;
 }
 #tableGridPanel .react-bs-table-container .react-bs-table-search-form > input.form-control{
-    /* border-color: #cc0000; */
+    background-color: #ffffff;
+    box-shadow: none;
+    position: absolute;
+    bottom: 20%;
 }
 #tableGridPanel .page-item.active .page-link{
     background-color: #cc0000;
