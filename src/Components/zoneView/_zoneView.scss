@@ -12,6 +12,8 @@
         width: 100%;
 
         .checkbox{
+            @include sheet-card();
+            padding: 10px;
             width:50%;
             height: auto;
             border-bottom: 10px solid #464646;
@@ -23,8 +25,7 @@
         .upper{
             border-bottom: 1px solid #dedede;
             height: auto;
-            font-size: 150%;
-            font-weight: normal;
+            @include heading-micro();
             text-align: center;
             margin: 10px auto;
             
@@ -32,8 +33,9 @@
         
         .lower{
             height: auto;
-            font-size: 150%;
-            font-weight: normal;
+            @include text-normal();
+            // font-size: 150%;
+            // font-weight: normal;
             text-align: center;
             margin: 10px auto;
            
