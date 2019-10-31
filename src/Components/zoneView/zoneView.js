@@ -48,7 +48,7 @@ class zoneView extends React.Component {
                     })}
                 </div>
                     
-                <div className="db-alerts">
+                <div className="db-alerts card-tile">
                         <ZoneDatatable
                         
                         />
