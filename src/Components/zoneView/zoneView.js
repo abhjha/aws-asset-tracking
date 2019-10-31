@@ -8,6 +8,7 @@ class zoneView extends React.Component {
         constructor(props){
             super(props)
             this.state = {
+                colorArray:[ '#44b8e2','#db9bc8','#8ad0f9','#ffde77','#dbdde1'],
                 zoneList: {},   
                 
             }
@@ -36,12 +37,12 @@ class zoneView extends React.Component {
         return(
             <div className="zone-container">
                 <div className = "zone-view">
-                    {zoneList.length > 0 && zoneList.map(item => {
+                    {zoneList.length > 0 && zoneList.map((item, index)=> {
                         return (<div className="checkbox">
                         <div className="upper">
                         {item.zoneName}
                         </div>
-                        <div className="lower">
+                        <div className="lower" style={{backgroundColor: this.state.colorArray[index]}}>
                             {item.count} Assets
                         </div>
                     </div>)
