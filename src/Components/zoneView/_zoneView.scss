@@ -43,3 +43,7 @@
     }
 }
 
+.card-tile{
+    @include tile-card();
+}
+
