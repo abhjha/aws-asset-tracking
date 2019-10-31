@@ -11,9 +11,6 @@
 card-heading{
     @include text-normal();
     margin-left: 12px;
-    font-weight: bold;
-    font-size: 20px;
-    font-weight: bold;
     width: 95%;
     height: 11%;
     
@@ -60,9 +57,12 @@ a.alertId{
     border-color: #ffffff;
 }
 #tableGridPanel .react-bs-table .react-bs-container-footer>table>thead>tr>th, #tableGridPanel .react-bs-table .react-bs-container-header>table>thead>tr>th {
-    /* color: #868686; */
-    font-size: 12px;
-    border: 1px solid black;
+    @include text-normal-table();
+    border: 2px solid #ffffff;
+    background-color: $base-color;
+    border-radius: 5px;
+    font-family: 'Roboto';
+
 }
 #tableGridPanel .react-bs-table table td, .react-bs-table table th {
 //     padding: 10px 20px !important;
@@ -71,8 +71,9 @@ a.alertId{
     outline: none;
 }
 #tableGridPanel .table>tbody>tr>td {
-    font-size: 13px;
+    font-size: 14px;
     background-color: white;
+    font-family: 'Roboto';
 }
 #tableGridPanel .react-bs-table table tr > td:first-child{
     /* color: #000; */
