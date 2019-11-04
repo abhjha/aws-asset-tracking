@@ -1,6 +1,3 @@
-$heightPrimary: 20px;
-$widthPrimary: 20px;
-
 .plant-view-heading {
     display: flex;
     width:100%;
@@ -8,8 +5,8 @@ $widthPrimary: 20px;
 
 
 .mapImage {
-    height:$heightPrimary;
-    width:$widthPrimary;
+    height:20px;
+    width:20px;
     margin-bottom: 2px;
 }
 .arrow-down,.cooling-arrow-down,.testing-arrow-down {
@@ -75,25 +72,25 @@ margin-top: 25px;
 ul {
     list-style: none;
 }
-.red,.green,.yellow {
+.completed,.in-progress,.waiting {
     width: 8px;
     height: 10px;
     border-radius: 30px;
    
 
 }
-.red {
+.completed {
 
-background-color: $warning-yellow;
-
-}
-.green {
-
-    background-color: $success-green;
+background-color: $success-green;
 
 }
-.yellow {
+.in-progress {
+
     background-color: $highlight-blue;
+
+}
+.waiting {
+    background-color: $warning-yellow;
 }
 
 .bullet-and-count {
