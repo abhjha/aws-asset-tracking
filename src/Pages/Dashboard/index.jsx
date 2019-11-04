@@ -20,8 +20,26 @@ class Dashboard extends Component {
   openModal = () => {
     this.setState({ isModalOpen: true })
   }
+  triggerAssetMetricsGraphData = () => {
+    fetch('https://iy78q5dt50.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialMetrics ')
+      .then(resp => resp.json())
+      .then(response => {
+        this.setState({
+        metricsAndStatus:response,
+         zoneName: Object.keys(response)
+        })
+      });
+  }
+
+  componentDidMount() {
+   
+    this.triggerAssetMetricsGraphData();
+  
+  }
+
 
   render() {
+   
     const filteredData = [
       {
         "id": "1",
@@ -47,27 +65,7 @@ class Dashboard extends Component {
       { "id": "3", "status": "warning", "statusBox": "", "dateTime": "125", "activeTime": "434", "description": "987", "parameter": "987", "location": "qwer" },
       { "id": "4", "status": "non-critical", "statusBox": "", "dateTime": "124", "activeTime": "435", "description": "987", "parameter": "987", "location": "qwer" }
     ]
-    const data = {
-      labels: ['ZONE 1', 'ZONE 2', 'ZONE 3', 'ZONE 4', 'ZONE 5'],
-      datasets: [
-        {
-          label: 'In Progress',
-          data: [1000, 200, 1500, 500, 200, 600],
-          backgroundColor: '#8ad0f9',
-          borderWidth: 1
-        },
-        {
-          data: [800, 400, 500, 430, 180, 1000],
-          label: 'Working',
-          backgroundColor: '#ffda78'
-        },
-        {
-          data: [400, 400, 50, 600, 1700, 900],
-          label: 'Completed',
-          backgroundColor: '#bad96b'
-        }
-      ]
-    };
+   
     return (
       < div className="data-container dashboard ">
         <div className="db-header-label ">
@@ -77,7 +75,7 @@ class Dashboard extends Component {
           <div className="db-data-values ">
             <div className="db-data-metrics card-tile ">
               <AssetMetrics
-                data={data} />
+                 />
             </div>
             <div className="db-plant-view card-tile ">
               <PlantView />

@@ -7,8 +7,10 @@ import DeviceRegistry from './Pages/DeviceRegistry';
 import EditAsset from './Pages/EditAsset';
 import DetachThing from './Pages/DetachThing';
 import zoneView from './Components/zoneView/zoneView.js';
+// import PlantView from './Components/PlantView/PlantView.js';
 
 import './SCSS/main.scss';
+import ZoneDatatable from './Components/ZoneDatatable/ZoneDatatable';
 
 class App extends React.Component {
 
@@ -22,7 +24,8 @@ class App extends React.Component {
           <Route path="/deviceRegistry" exact component={DeviceRegistry} />
           <Route path="/editAsset" exact component={EditAsset} />
           <Route path="/detachThing" exact component={DetachThing} />
-          <Route path="/zoneView" exact component={zoneView} />
+          <Route path="/:zoneView" exact component={zoneView} />
+          
         </div>
       </Router>
     )
