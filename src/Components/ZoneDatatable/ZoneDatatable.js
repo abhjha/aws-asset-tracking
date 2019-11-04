@@ -21,9 +21,9 @@ export class ZoneDatatable extends React.Component {
   
   setStatusStyle(cell, row){
      let styleClassName = '';
-      if(row.status.toLowerCase() === 'critical'){
+      if(row.status.toLowerCase() === 'completed'){
         styleClassName = 'text-danger';
-      } else if(row.status.toLowerCase() === 'non-critical'){
+      } else if(row.status.toLowerCase() === 'in progress'){
         styleClassName = 'text-primary';
       } else if(row.status.toLowerCase() ==='waiting'){
         styleClassName = 'text-warning';
