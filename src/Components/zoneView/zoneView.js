@@ -64,7 +64,7 @@ class zoneView extends React.Component {
             <div className="zone-container">
                 <div className = "zone-view">
                     {zoneList.length > 0 && zoneList.map((item, index)=> {
-                        return (<div className="checkbox">
+                        return (<div className="zone-detail-checkbox">
                         <div className="upper">
                         {item.zoneName}
                         
@@ -75,9 +75,8 @@ class zoneView extends React.Component {
                     </div>)
                     })}
                 </div>
-                    
-                <div className="db-alerts card-tile">
-               
+                   
+                <div className="db-alerts card-tile">         
                         <ZoneDatatable
                         zoneID={this.state.zoneID}
                         />
