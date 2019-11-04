@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import factoryImage from './factoryImage.png';
-// import axios from 'axios';
+
 import { withRouter } from "react-router-dom";
 // import zoneView from '../zoneView/zoneView';
-import {Link} from "react-router-dom";
-import axios from 'axios';
+
 
 
 class PlantView extends Component {
@@ -43,13 +42,7 @@ class PlantView extends Component {
         zoneName: Object.keys(response)
         })
       });
-      // axios.get('https://jsonplaceholder.typicode.com/metricsAndStatus/')
-      // .then(res=> {
-      //   console.log(res)
-      //   this.setState ({
-      //     metricsAndStatus:res,
-      //   })
-      // })
+     
   }
 
 
