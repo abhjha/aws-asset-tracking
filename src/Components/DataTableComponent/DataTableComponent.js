@@ -1,7 +1,7 @@
 import React from 'react';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import './dataTableComponent-dep.css';
-import alert from './alert.svg'
+
 export class DataTableComponent extends React.Component {
 
   constructor(props) {

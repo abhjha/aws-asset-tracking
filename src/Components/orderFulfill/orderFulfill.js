@@ -106,10 +106,7 @@ export class OrderFulfillViz extends Component {
     this.handleLoad();          
   }
 
-  componentWillUnmount() {
-      this.handleLoad();				
-  }
-
+  
   render() {
     var tmp = this.state.appData;
     return (

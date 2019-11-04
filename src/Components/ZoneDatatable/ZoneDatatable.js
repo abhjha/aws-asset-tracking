@@ -1,6 +1,8 @@
 import React from 'react';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
+
 // import './dataTableComponent-dep.css';
+import axios from 'axios'
 
 export class ZoneDatatable extends React.Component {
 
@@ -15,7 +17,10 @@ export class ZoneDatatable extends React.Component {
         filterItem : [],
       
         zoneName: "",
-        filteredZoneData: {}
+        filteredZoneData: {},
+        zoneViewthing:null,
+        
+        
     };
   }
   
@@ -30,6 +35,24 @@ export class ZoneDatatable extends React.Component {
       }
       return `<i class='fas fa-circle statusMarker ${ styleClassName }' ></i> ${cell}`; 
   }
+
+
+
+
+
+// triggerZoneViewCardData=()=> {
+//   fetch('https://iy78q5dt50.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialCountPerZone')
+//    .then(response => response.json())
+//    .then(responseCard => {
+//        this.setState({
+//        zoneList: responseCard,
+//        zoneID:responseCard.length>0 && responseCard.map((item) => {
+//            return(item.zoneId)
+
+//        }),
+//        })
+//    });
+// }
   triggerZoneViewTable = () => {
     fetch('https://iy78q5dt50.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialHistory?zoneId=zone001')
       .then(resp => resp.json())
@@ -43,12 +66,13 @@ export class ZoneDatatable extends React.Component {
 
   componentDidMount = () => {
     this.triggerZoneViewTable();
+    // this.triggerZoneViewCardData();
   }
 
 
  render() {
     
-  
+   
     const { isSearchEnabled} = this.state; 
    
           return ( 
