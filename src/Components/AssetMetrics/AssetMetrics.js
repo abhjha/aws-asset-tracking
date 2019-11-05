@@ -40,10 +40,13 @@ class AssetMetrics extends Component {
             }
         }
     triggerAssetMetricsData = () => {
-    var array1 = [];
-     var array2 = [];
-     var array3=[];
-     var labelArray = [];
+    let array1 = [];
+    let array2 = [];
+    let array3=[];
+    let sumCompleted = 0;
+    let sumInProgress = 0;
+    let sumWaiting = 0;
+    let labelArray = [];
     
       
 
@@ -52,15 +55,21 @@ class AssetMetrics extends Component {
         .then(response => {
             Object.keys(response).map((item) => {
                labelArray.push(item);
+               
                array1.push(response[item][0].count); 
+               sumCompleted=sumCompleted+response[item][0].count;
+
                array2.push(response[item][1].count);
+               sumInProgress=sumInProgress+response[item][1].count;
+               
                array3.push(response[item][2].count);
+               sumWaiting=sumWaiting+response[item][2].count;
                return 0; 
             }
             )            
                      
             this.setState({
-            zoneName: Object.keys(response),
+            zoneName: Object.keys(response),    
             metricsAndStatus:response,
             dataElements: {
                 labels: labelArray,
@@ -83,21 +92,19 @@ class AssetMetrics extends Component {
                    }
                 ]
             },
-            
            
+            sumCompleted:sumCompleted,
+            sumInProgress:sumInProgress,
+            sumWaiting:sumWaiting
+
+            
           })
-          
         });
-        
-      }
-     
-      componentDidMount = () => {
+    }
+    componentDidMount = () => {
         this.triggerAssetMetricsData();
-     
-      }
-    
+    }
     render() {
-        
         return (
             <div className="asset-tracked-graph">
                 <div className="card-heading">
