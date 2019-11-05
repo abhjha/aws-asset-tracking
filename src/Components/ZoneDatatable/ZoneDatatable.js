@@ -1,5 +1,7 @@
 import React from 'react';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+import FadeLoader from 'react-spinners/FadeLoader';
+
 export class ZoneDatatable extends React.Component {
 
   constructor(props) {
@@ -14,6 +16,7 @@ export class ZoneDatatable extends React.Component {
       zoneName: "",
       filteredZoneData: {},
       zoneViewthing: null,
+      loading: true
     };
   }
 
@@ -30,10 +33,12 @@ export class ZoneDatatable extends React.Component {
   }
 
   triggerZoneViewTable = () => {
+    this.setState({loading:true})
     fetch(`https://iy78q5dt50.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialHistory?zoneId=${this.props.zoneId}`)
       .then(resp => resp.json())
       .then(response => {
         this.setState({
+          loading: false,
           filteredZoneData: response,
           zoneName: response.SelectedZone[0].zoneName
         })
@@ -41,6 +46,7 @@ export class ZoneDatatable extends React.Component {
       .catch((err) => {
         console.log(err);
         this.setState({
+          loading: false,
           filteredZoneData:{SelectedZone:[]},
           zoneName:''
         })
@@ -58,7 +64,7 @@ export class ZoneDatatable extends React.Component {
   }
 
   render() {
-    const { isSearchEnabled } = this.state;
+    const { isSearchEnabled, loading } = this.state;
 
     return (
       <div id="tableGridPanel">
@@ -67,6 +73,17 @@ export class ZoneDatatable extends React.Component {
         </div>
 
         <div className="tableAndFilterContainer withoutTabs">
+          { loading && <div className='loader-icon'>
+            <FadeLoader
+              sizeUnit={"px"}
+              size={150}
+              color={'#e4e4e4'}
+              loading={this.state.loading}
+            />
+          </div>
+          }
+          { !loading && <div>
+
           <div className="filterIcons">
             <i className="fas fa-calendar pull-right tableTools" onClick={this.showHideCalendarTool}></i>
             <i className="fas fa-filter pull-right tableTools" onClick={this.showHideFilterTool}></i>
@@ -89,6 +106,8 @@ export class ZoneDatatable extends React.Component {
             <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='activeTime'>Standard Time</TableHeaderColumn>
             <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='description'>Actual Time</TableHeaderColumn>
           </BootstrapTable>
+          </div>
+          }
         </div>
       </div>
     );
