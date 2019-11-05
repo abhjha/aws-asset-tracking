@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import factoryImage from './factoryImage.png';
 
 import { withRouter } from "react-router-dom";
-// import zoneView from '../zoneView/zoneView';
+
 
 
 
@@ -22,15 +22,11 @@ class PlantView extends Component {
 
   triggerNavigation = (e) => {
     
-    // console.log(lineID)
+    
     this.props.history.push({ pathname: '/zoneView',
     state: {
       zoneId:'zone004'
     } });
-    // state : {lineID}
-    
-    
-
   }
 
   triggerZoneViewTable = () => {

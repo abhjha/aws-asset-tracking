@@ -1,6 +1,6 @@
 import React from 'react';
 import {ZoneDatatable} from '../ZoneDatatable/ZoneDatatable';
-import axios from 'axios';
+
 
 
 class zoneView extends React.Component {
@@ -22,20 +22,14 @@ class zoneView extends React.Component {
            fetch('https://iy78q5dt50.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialCountPerZone')
             .then(resp => resp.json())
             .then(response => {
-            
+                
                 this.setState({
                 zoneList: response,
                 zoneID:response.length>0 && response.map((item) => {
                     return(item.zoneId)
 
-                })
-
-                
-                ,
-                
-                
-              
-                })
+                }),
+               })
             });
         }
        
@@ -43,17 +37,6 @@ class zoneView extends React.Component {
             this.triggerZoneViewCardData();
             clearInterval(this.triggerZoneViewCardData);
             setInterval(this.triggerZoneViewCardData,5000);
-           
-            // let id=this.props.match.params.zoneViewId;
-            // axios.get('https://jsonplaceholder.typicode.com/metricsAnsStatus/'+ id)
-            // .then(res=> {
-            //     this.setState({
-            //         zoneViewthing:res.data
-            //     })
-            //     console.log(res);
-
-            // })
-           
            
         }
 
