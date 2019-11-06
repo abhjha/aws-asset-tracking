@@ -32,11 +32,8 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-   
     this.triggerAssetMetricsGraphData();
-  
   }
-
 
   render() {
    
@@ -45,7 +42,7 @@ class Dashboard extends Component {
         "id": "1",
         "status": "warning",
         "statusBox": "",
-        "dateTime": "123",
+        "dateTime": "1234",
         "activeTime": "431",
         "description": "987",
         "parameter": "987",

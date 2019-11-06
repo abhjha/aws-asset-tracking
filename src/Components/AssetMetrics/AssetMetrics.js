@@ -7,99 +7,93 @@ class AssetMetrics extends Component {
         super(props);
         this.state = {
             metricsAndStatus: {},
-            sumCompleted:0,
-            sumInProgress:0,
-            sumWaiting:0,
-          
+            sumCompleted: 0,
+            sumInProgress: 0,
+            sumWaiting: 0,
             status: "",
-            completedData:[],
-            inProgressData:[],
-            waitingData:[],
-            dataElements:   {
+            completedData: [],
+            inProgressData: [],
+            waitingData: [],
+            dataElements: {
                 labels: [],
                 datasets: [
                     {
-                        
-                         label: "",
-                         data:  [],
-                         backgroundColor: ''
+
+                        label: "",
+                        data: [],
+                        backgroundColor: ''
                     },
-                   {
-                     label: '',
-                     data:  [],
-                     backgroundColor: '',
-                     
-                   },
-                   {
-                     data:  [],
-                     label: '',
-                     backgroundColor: ''
-                   }
+                    {
+                        label: '',
+                        data: [],
+                        backgroundColor: '',
+
+                    },
+                    {
+                        data: [],
+                        label: '',
+                        backgroundColor: ''
+                    }
                 ]
-                }
             }
         }
+    }
     triggerAssetMetricsData = () => {
-    let array1 = [];
-    let array2 = [];
-    let array3=[];
-    let sumCompleted = 0;
-    let sumInProgress = 0;
-    let sumWaiting = 0;
-    let labelArray = [];
-    
-      
+        let array1 = [];
+        let array2 = [];
+        let array3 = [];
+        let sumCompleted = 0;
+        let sumInProgress = 0;
+        let sumWaiting = 0;
+        let labelArray = [];
 
         fetch('https://iy78q5dt50.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialMetrics ')
-        .then(resp => resp.json())
-        .then(response => {
-            Object.keys(response).map((item) => {
-               labelArray.push(item);
-               
-               array1.push(response[item][0].count); 
-               sumCompleted=sumCompleted+response[item][0].count;
+            .then(resp => resp.json())
+            .then(response => {
+                Object.keys(response).map((item) => {
+                    labelArray.push(item);
 
-               array2.push(response[item][1].count);
-               sumInProgress=sumInProgress+response[item][1].count;
-               
-               array3.push(response[item][2].count);
-               sumWaiting=sumWaiting+response[item][2].count;
-               return 0; 
-            }
-            )            
-                     
-            this.setState({
-            zoneName: Object.keys(response),    
-            metricsAndStatus:response,
-            dataElements: {
-                labels: labelArray,
-                datasets: [
-                    {
-                        label: "Completed",
-                        data:  array1,
-                        backgroundColor: "#bad96b"
+                    array1.push(response[item][0].count);
+                    sumCompleted = sumCompleted + response[item][0].count;
+
+                    array2.push(response[item][1].count);
+                    sumInProgress = sumInProgress + response[item][1].count;
+
+                    array3.push(response[item][2].count);
+                    sumWaiting = sumWaiting + response[item][2].count;
+                    return 0;
+                })
+
+                this.setState({
+                    zoneName: Object.keys(response),
+                    metricsAndStatus: response,
+                    dataElements: {
+                        labels: labelArray,
+                        datasets: [
+                            {
+                                label: "Completed",
+                                data: array1,
+                                backgroundColor: "#bad96b"
+                            },
+                            {
+                                label: "In Progress",
+                                data: array2,
+                                backgroundColor: "#8ad0f9",
+
+                            },
+                            {
+                                label: "Waiting",
+                                data: array3,
+                                backgroundColor: "#ffda78"
+                            }
+                        ]
                     },
-                   {
-                     label: "In Progress",
-                     data:  array2,
-                     backgroundColor: "#8ad0f9",
-                     
-                   },
-                   {
-                    label: "Waiting", 
-                    data:  array3,
-                    backgroundColor: "#ffda78"
-                   }
-                ]
-            },
-           
-            sumCompleted:sumCompleted,
-            sumInProgress:sumInProgress,
-            sumWaiting:sumWaiting
 
-            
-          })
-        });
+                    sumCompleted: sumCompleted,
+                    sumInProgress: sumInProgress,
+                    sumWaiting: sumWaiting
+                })
+            });
     }
     componentDidMount = () => {
         this.triggerAssetMetricsData();
@@ -148,7 +142,7 @@ class AssetMetrics extends Component {
                                             ticks: {
                                                 beginAtZero: true,
                                                 min: 0,
-                                                
+
                                                 stepSize: 2,
                                                 lineWidth: 1,
                                                 fontColor: 'black',
