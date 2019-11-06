@@ -1,3 +1,5 @@
+$margin: 2px 4px;
+
 .plant-view-heading {
     display: flex;
     width:100%;
@@ -9,18 +11,20 @@
     width:20px;
     margin-bottom: 2px;
 }
-.arrow-down,.cooling-arrow-down,.testing-arrow-down {
+.arrow-down {
     width: 0;
     height: 0;
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
     border-top: 12px solid black;
+    margin-left: 55px;
+    margin-top: -4px;
    
    
   }
-  .arrow-down {
-    margin-left: 33px;
-    margin-top:-2px
+  .quality-assurance-arrow-down {
+    margin-left: 46px;
+    margin-top: 11px;
   }
   
 .main-heading {
@@ -48,86 +52,85 @@
     font-size: 11px;
     margin-left: 4px;
     font-weight: bold;
+    margin-top: 4px;
 }
-.cooling-heading {
-    font-size: 10px;
-    font-weight: bold
-}
-.gasket-installation,.cooling-system,.testing,.sheet,.cabinet {
+
+.piping-and-cooling-shop,.vaccum-foaming-shop,.metal-shop,.quality-insurance,.paint-shop {
     border: 1px solid;
     border-radius: 10px;
-    width: 80px;
-    height: 100px;
+    width: 131px;
+    height: 55px;
     position: relative;
     background-color: white;
 }
-.gasket-installation {
-margin-left: 281px;
-margin-top: 25px;
+
+.piping-and-cooling-shop {
+    margin-left: 294px;
+    margin-top: -149px;
+   
 }
-.cooling-system {
-    margin-left: 380px;
-    margin-top: -11em;
+.vaccum-foaming-shop {
+    
+    margin-left: 368px;
+    margin-top: -122px;
 }
 ul {
     list-style: none;
 }
 .completed,.in-progress,.waiting {
-    width: 8px;
-    height: 10px;
-    border-radius: 30px;
+    width: 12px;
+    height: 14px;
+    border-radius: 41px;
    
 
 }
 .completed {
 
 background-color: $success-green;
+margin: $margin;
 
 }
 .in-progress {
 
     background-color: $highlight-blue;
+    margin: $margin;
 
 }
 .waiting {
     background-color: $warning-yellow;
+    margin: $margin;
 }
 
 .bullet-and-count {
     display: flex;
+   margin-right: 10px
+   
+   ;
 }
 .count {
     margin-left: 2px;
 }
 .main-list {
     padding-left: 5px;
+    display: flex;
+    margin-top: 9px;
 }
-.sheet {
-    margin-left: 150px;
-    margin-top: -43px;
+.quality-insurance {
+    
+    margin-left: 144px;
+    margin-top: 62px;
 }
-.cooling-arrow-down {
-    margin-left: 33px;
-    margin-top: -11px
+.paint-shop {
+    margin-left: 184px;
+    margin-top: 61px;
 }
-.cabinet {
-    margin-left: 224px;
+.metal-shop {
+    margin-left: 456px;
+    margin-top: 28px;
 }
-.testing {
-    margin-left: 485px;
-    margin-top: -201px;
-}
-.testing-heading {
-    margin-top : 9px
-}
-.testing-list {
-    margin-top: 7px;
-    padding-left: 5px;
-}
-.testing-arrow-down {
-    margin-left: 33px;
-    margin-top : 23px;
-}
+
+
+
 
 .factoryImage {
     width: 100%;
