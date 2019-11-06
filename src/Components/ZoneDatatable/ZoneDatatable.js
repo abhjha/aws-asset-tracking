@@ -68,9 +68,9 @@ export class ZoneDatatable extends React.Component {
 
     return (
       <div id="tableGridPanel">
-        <div className="alert-zone">
+        {/* <div className="alert-zone">
           <div className="alerts-zone-heading">{this.state.zoneName}</div>
-        </div>
+        </div> */}
 
         <div className="tableAndFilterContainer withoutTabs">
           { loading && <div className='loader-icon'>
@@ -97,7 +97,7 @@ export class ZoneDatatable extends React.Component {
             ref='alertsTable' containerClass="alertsTable" data={this.state.filteredZoneData.SelectedZone} striped hover bordered={false} search={isSearchEnabled} multiColumnSearch options={this.options}>
             <TableHeaderColumn width='80' dataField='statusBox' dataFormat={this.setStatusStyle} border='0'></TableHeaderColumn>
             <TableHeaderColumn width='90' headerAlign='left' dataAlign='center' isKey dataField='materialName' dataFormat={this.alertDetails}>Asset</TableHeaderColumn>
-            <TableHeaderColumn headerAlign='center' dataAlign='center' dataSort >Asset location</TableHeaderColumn>
+            <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='zoneName' dataSort >Asset location</TableHeaderColumn>
             <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='status' >Status</TableHeaderColumn>
             <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='visitTimein' >Zone In time</TableHeaderColumn>
             <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='visitTimeout' >Zone Out time</TableHeaderColumn>
