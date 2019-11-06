@@ -100,16 +100,12 @@ class AssetMetrics extends Component {
     }
     render() {
         return (
-            <div className="asset-tracked-graph">
-                <div className="card-heading">
-                    <div className="heading"><h1>Asset Metrics</h1></div>
-                </div>
-                <div className="db-data-metrics-contents">
-                    <div className="total-count-and-graph">
-                        <div className="total-count-and-work-in-progress">
-                            <div className="total-count">{this.state.sumInProgress}</div>
-                            <div className="work-in-progress">WORK IN PROGRESS ASSETS</div>
-                        </div>
+            <div className="asset-metrics-wrapper">
+                <div className="asset-tracked-graph">
+                    <div className="card-heading">
+                        <div className="heading"><h1>Asset Metrics</h1></div>
+                    </div>
+                    <div className="db-data-metrics-contents">
                         <div className="graph-view">
                             <Bar
                                 data={this.state.dataElements}
@@ -174,16 +170,20 @@ class AssetMetrics extends Component {
                                 }} />
                         </div>
                     </div>
-                    <div className="dormant-and-completed-assets">
-                        <div className="dormant-assets">
-                            <div className="dormant-assets-count">{this.state.sumWaiting}</div>
-                            <div className="dormant-assets-label">DORMANT ASSETS</div>
-                        </div>
-                        <div className="completed-assets">
-                            <div className="completed-assets-count">{this.state.sumCompleted}</div>
-                            <div className="completed-assets-label">COMPLETED ASSETS</div>
-                        </div>
+                </div>
+                <div className="asset-status-count ">
+                    <div className="total-count-and-work-in-progress">
+                        <div className="total-count">{this.state.sumInProgress}</div>
+                        <div className="work-in-progress">WORK IN PROGRESS ASSETS</div>
+                    </div>                    
+                    <div className="dormant-assets">
+                        <div className="dormant-assets-count">{this.state.sumWaiting}</div>
+                        <div className="dormant-assets-label">DORMANT ASSETS</div>
                     </div>
+                    <div className="completed-assets">
+                        <div className="completed-assets-count">{this.state.sumCompleted}</div>
+                        <div className="completed-assets-label">COMPLETED ASSETS</div>
+                    </div>                  
                 </div>
             </div>
         )
