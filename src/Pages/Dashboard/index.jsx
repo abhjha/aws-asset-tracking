@@ -70,7 +70,7 @@ class Dashboard extends Component {
         </div>
         <div className="db-data">
           <div className="db-data-values ">
-            <div className="db-data-metrics card-tile ">
+            <div className="db-data-metrics ">
               <AssetMetrics
                  />
             </div>

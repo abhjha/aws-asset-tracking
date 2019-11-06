@@ -53,7 +53,7 @@ class PlantView extends Component {
 
       <div>
         <div className="plant-view-heading">
-          <div className="card-heading"><h1>Plant View</h1></div>
+          <div className="card-heading"><h1>Factory Floor</h1></div>
         </div>
         <div className="factory-floor-plan">
           <div className="floor-plan-wrapper">
