@@ -49,7 +49,7 @@ class Menu extends React.Component {
         return (
             <div onClick={this.setActiveState} className="menu-container">
                 <div className="menu-heading">
-                    MATERIAL TRACKING
+                    MATERIAL VISIBILITY
                 </div>
                 <div onClick={this.setActiveState} className="menu-option-items">
                     {this.state.menuItems.map((item, index) => {

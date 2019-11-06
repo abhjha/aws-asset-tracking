@@ -99,8 +99,8 @@ export class ZoneDatatable extends React.Component {
             <TableHeaderColumn width='90' headerAlign='left' dataAlign='center' isKey dataField='materialName' dataFormat={this.alertDetails}>Asset</TableHeaderColumn>
             <TableHeaderColumn headerAlign='center' dataAlign='center' dataSort >Asset location</TableHeaderColumn>
             <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='status' >Status</TableHeaderColumn>
-            <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='visitTimein' >Zone IN time</TableHeaderColumn>
-            <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='visitTimeout' >Zone OUT time</TableHeaderColumn>
+            <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='visitTimein' >Zone In time</TableHeaderColumn>
+            <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='visitTimeout' >Zone Out time</TableHeaderColumn>
             <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='description' >Description</TableHeaderColumn>
             <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='superviserName' >Supervisor</TableHeaderColumn>
             <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='activeTime'>Standard Time</TableHeaderColumn>
