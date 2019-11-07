@@ -16,9 +16,10 @@ $margin: 2px 4px;
     height: 0;
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
-    border-top: 12px solid black;
+    border-top: 12px solid white;
+    
     margin-left: 55px;
-    margin-top: -4px;
+    margin-top: 1px;
    
    
   }
@@ -56,12 +57,13 @@ $margin: 2px 4px;
 }
 
 .piping-and-cooling-shop,.vaccum-foaming-shop,.metal-shop,.quality-insurance,.paint-shop {
-    border: 1px solid;
+    border: 1px ;
     border-radius: 10px;
-    width: 131px;
+    width: 25%;
     height: 55px;
     position: relative;
     background-color: white;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
 }
 
 .piping-and-cooling-shop {
@@ -72,7 +74,7 @@ $margin: 2px 4px;
 .vaccum-foaming-shop {
     
     margin-left: 368px;
-    margin-top: -122px;
+    margin-top: -134px;
 }
 ul {
     list-style: none;
@@ -103,7 +105,7 @@ margin: $margin;
 
 .bullet-and-count {
     display: flex;
-   margin-right: 10px
+//    margin-right: 10px
    
    ;
 }
