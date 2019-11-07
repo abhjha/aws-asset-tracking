@@ -46,7 +46,7 @@ class zoneView extends React.Component {
                                 {item.zoneName}
                             </div>
                             <div className="lower">
-                                {item.count} Assets
+                                {item.count} Materials
                         </div>
                         </div>)
                     })}

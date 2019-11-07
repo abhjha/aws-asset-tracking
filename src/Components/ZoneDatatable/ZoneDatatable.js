@@ -61,6 +61,8 @@ export class ZoneDatatable extends React.Component {
 
   componentDidMount = () => {
     this.triggerZoneViewTable();
+    clearInterval(this.triggerZoneViewTable);
+    setInterval(this.triggerZoneViewTable, 5000);
   }
 
   render() {
@@ -96,8 +98,8 @@ export class ZoneDatatable extends React.Component {
           <BootstrapTable
             ref='alertsTable' containerClass="alertsTable" data={this.state.filteredZoneData.SelectedZone} striped hover bordered={false} search={isSearchEnabled} multiColumnSearch options={this.options}>
             <TableHeaderColumn width='80' dataField='statusBox' dataFormat={this.setStatusStyle} border='0'></TableHeaderColumn>
-            <TableHeaderColumn width='90' headerAlign='left' dataAlign='center' isKey dataField='materialName' dataFormat={this.alertDetails}>Asset</TableHeaderColumn>
-            <TableHeaderColumn headerAlign='center' dataAlign='center'  >Asset location</TableHeaderColumn>
+            <TableHeaderColumn width='90' headerAlign='left' dataAlign='center' isKey dataField='materialName' dataFormat={this.alertDetails}>Material</TableHeaderColumn>
+            <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='zoneName'  >Material location</TableHeaderColumn>
             <TableHeaderColumn headerAlign='center' dataAlign='center' dataSort dataField='status' >Status</TableHeaderColumn>
             <TableHeaderColumn headerAlign='center' dataAlign='center'  dataField='visitTimein' >Zone In time</TableHeaderColumn>
             <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='visitTimeout' >Zone Out time</TableHeaderColumn>

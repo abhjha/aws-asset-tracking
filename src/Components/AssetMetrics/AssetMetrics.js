@@ -105,7 +105,7 @@ class AssetMetrics extends Component {
             <div className="asset-metrics-wrapper">
                 <div className="asset-tracked-graph">
                     <div className="card-heading">
-                        <div className="heading"><h1>Asset Metrics</h1></div>
+                        <div className="heading"><h1>Material Metrics</h1></div>
                     </div>
                     <div className="db-data-metrics-contents">
                         <div className="graph-view">
@@ -118,7 +118,7 @@ class AssetMetrics extends Component {
                                     maintainAspectRatio: false,
                                     legend: {
                                         display: true,
-                                        position: 'top',
+                                        position: 'bottom',
                                         marginRight: 19,
                                         labels: {
                                             fontColor: 'black',
@@ -149,7 +149,7 @@ class AssetMetrics extends Component {
                                             },
                                             gridLines: {
                                                 offsetGridLines: true,
-                                                display: false,
+                                                display: true,
                                                 drawTicks: false
                                             }
                                         }],
@@ -157,7 +157,7 @@ class AssetMetrics extends Component {
                                             barPercentage: 0.6,
                                             gridLines: {
                                                 offsetGridLines: true,
-                                                display: false,
+                                                display: true,
                                                 drawTicks: false,
                                             },
                                             ticks: {
@@ -176,15 +176,15 @@ class AssetMetrics extends Component {
                 <div className="asset-status-count ">
                     <div className="total-count-and-work-in-progress">
                         <div className="total-count">{this.state.sumInProgress}</div>
-                        <div className="work-in-progress">IN PROGRESS ASSETS</div>
+                        <div className="work-in-progress">IN PROGRESS MATERIALS</div>
                     </div>                    
                     <div className="dormant-assets">
                         <div className="dormant-assets-count">{this.state.sumWaiting}</div>
-                        <div className="dormant-assets-label">WAITING ASSETS</div>
+                        <div className="dormant-assets-label">WAITING MATERIALS</div>
                     </div>
                     <div className="completed-assets">
                         <div className="completed-assets-count">{this.state.sumCompleted}</div>
-                        <div className="completed-assets-label">COMPLETED ASSETS</div>
+                        <div className="completed-assets-label">COMPLETED MATERIALS</div>
                     </div>                  
                 </div>
             </div>
