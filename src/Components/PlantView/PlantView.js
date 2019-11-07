@@ -26,7 +26,7 @@ class PlantView extends Component {
     });
   }
 
-  triggerZoneViewTable = () => {
+  triggerFactoryFloorPlan = () => {
     fetch('https://iy78q5dt50.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialMetrics ')
       .then(resp => resp.json())
       .then(response => {
@@ -41,7 +41,10 @@ class PlantView extends Component {
 
   componentDidMount() {
 
-    this.triggerZoneViewTable();
+    this.triggerFactoryFloorPlan();
+    clearInterval(this.triggerFactoryFloorPlan);
+    setInterval(this.triggerFactoryFloorPlan, 5000);
+   
 
 
   }
