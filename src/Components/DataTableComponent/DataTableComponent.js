@@ -36,7 +36,7 @@ export class DataTableComponent extends React.Component {
       <div id="tableGridPanel">
         <div className="alert-zone">
           
-          <div className="card-heading"><h1>Alert</h1></div>
+          <div className="card-heading"><h1>Alerts</h1></div>
         </div>
 
         <div className="tableAndFilterContainer withoutTabs">
