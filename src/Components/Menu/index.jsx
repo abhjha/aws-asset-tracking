@@ -25,9 +25,6 @@ class Menu extends React.Component {
             switch (selectedMenuId) {
                 case "0": this.props.history.push({ pathname: '/' }); break;
                 case "1": this.props.history.push({ pathname: '/zoneView',state: {zoneId:'zone001'} }); break;
-            //     // case "2": this.props.history.push({ pathname: '/deviceRegistry' }); break;
-            //     // case "3": this.props.history.push({ pathname: '/editAsset' }); break;
-            //     // case "4": this.props.history.push({ pathname: '/detachThing' }); break;
                 default: this.props.history.push({ pathname: '/' });
             }
         }
