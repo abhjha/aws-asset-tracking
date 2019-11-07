@@ -12,7 +12,7 @@ class PlantView extends Component {
       metricsAndStatus: {},
       zoneName: "",
       status: "",
-      lineId: ""
+      
     };
   }
 
