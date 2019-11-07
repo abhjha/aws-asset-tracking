@@ -38,19 +38,15 @@ class PlantView extends Component {
 
   }
 
-
   componentDidMount() {
-
     this.triggerZoneViewTable();
-
-
+    clearInterval(this.triggerZoneViewTable);
+    setInterval(this.triggerZoneViewTable, 5000);
   }
 
   render() {
     const { zoneName } = this.state;
-
     return (
-
       <div>
         <div className="plant-view-heading">
           <div className="card-heading"><h1>Factory Floor</h1></div>
@@ -70,9 +66,6 @@ class PlantView extends Component {
                     </ul>
                     <div className="arrow-down"></div>
                   </div>
-
-                 
-
 
                   <div className="paint-shop" data-id={this.state.metricsAndStatus[this.state.zoneName[3]][0].zoneId} onClick={this.triggerNavigation}>
                     <div className="headings">{this.state.zoneName[3]}</div>
