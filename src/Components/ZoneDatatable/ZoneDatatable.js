@@ -23,11 +23,11 @@ export class ZoneDatatable extends React.Component {
   setStatusStyle(cell, row) {
     let styleClassName = '';
     if (row.status.toLowerCase() === 'completed') {
-      styleClassName = 'text-danger';
+      styleClassName = 'completed-status';
     } else if (row.status.toLowerCase() === 'in progress') {
-      styleClassName = 'text-primary';
+      styleClassName = 'in-progress-status';
     } else if (row.status.toLowerCase() === 'waiting') {
-      styleClassName = 'text-warning';
+      styleClassName = 'waiting-status';
     }
     return `<i class='fas fa-circle statusMarker ${styleClassName}' ></i> ${cell}`;
   }
@@ -61,6 +61,8 @@ export class ZoneDatatable extends React.Component {
 
   componentDidMount = () => {
     this.triggerZoneViewTable();
+    clearInterval(this.triggerZoneViewTable);
+    setInterval(this.triggerZoneViewTable, 5000);
   }
 
   render() {
@@ -68,9 +70,9 @@ export class ZoneDatatable extends React.Component {
 
     return (
       <div id="tableGridPanel">
-        {/* <div className="alert-zone">
+        <div className="alert-zone">
           <div className="alerts-zone-heading">{this.state.zoneName}</div>
-        </div> */}
+        </div>
 
         <div className="tableAndFilterContainer withoutTabs">
           { loading && <div className='loader-icon'>
@@ -96,15 +98,13 @@ export class ZoneDatatable extends React.Component {
           <BootstrapTable
             ref='alertsTable' containerClass="alertsTable" data={this.state.filteredZoneData.SelectedZone} striped hover bordered={false} search={isSearchEnabled} multiColumnSearch options={this.options}>
             <TableHeaderColumn width='80' dataField='statusBox' dataFormat={this.setStatusStyle} border='0'></TableHeaderColumn>
-            <TableHeaderColumn width='90' headerAlign='left' dataAlign='center' isKey dataField='materialName' dataFormat={this.alertDetails}>Asset</TableHeaderColumn>
-            <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='zoneName' dataSort >Asset location</TableHeaderColumn>
-            <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='status' >Status</TableHeaderColumn>
-            <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='visitTimein' >Zone In time</TableHeaderColumn>
+            <TableHeaderColumn width='90' headerAlign='left' dataAlign='center' isKey dataField='materialName' dataFormat={this.alertDetails}>Material</TableHeaderColumn>
+            <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='zoneName'  >Material location</TableHeaderColumn>
+            <TableHeaderColumn headerAlign='center' dataAlign='center' dataSort dataField='status' >Status</TableHeaderColumn>
+            <TableHeaderColumn headerAlign='center' dataAlign='center'  dataField='visitTimein' >Zone In time</TableHeaderColumn>
             <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='visitTimeout' >Zone Out time</TableHeaderColumn>
             <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='description' >Description</TableHeaderColumn>
             <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='superviserName' >Supervisor</TableHeaderColumn>
-            <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='activeTime'>Standard Time</TableHeaderColumn>
-            <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='description'>Actual Time</TableHeaderColumn>
           </BootstrapTable>
           </div>
           }

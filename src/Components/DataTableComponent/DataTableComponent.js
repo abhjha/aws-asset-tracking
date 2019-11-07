@@ -50,7 +50,7 @@ export class DataTableComponent extends React.Component {
           <BootstrapTable
             ref='alertsTable' containerClass="alertsTable" data={this.state.filteredData} striped hover bordered={false} search={isSearchEnabled} multiColumnSearch options={this.options}>
             <TableHeaderColumn width='30' dataField='statusBox' dataFormat={this.setStatusStyle} border='0'></TableHeaderColumn>
-            <TableHeaderColumn width='90' headerAlign='center' dataAlign='center' isKey dataField='id' dataFormat={this.alertDetails}>Asset</TableHeaderColumn>
+            <TableHeaderColumn width='90' headerAlign='center' dataAlign='center' isKey dataField='id' dataFormat={this.alertDetails}>Material</TableHeaderColumn>
             <TableHeaderColumn headerAlign='center' dataAlign='center' dataSort dataField='dateTime' >Zone</TableHeaderColumn>
             <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='status' >Status</TableHeaderColumn>
             <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='activeTime'>Standard Time</TableHeaderColumn>

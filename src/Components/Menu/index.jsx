@@ -10,7 +10,7 @@ class Menu extends React.Component {
         super(props);
         this.state = {
             selectedMenuId: 0,
-            menuItem:['Dashboard'],
+            menuItem:['Dashboard','Floor View'],
             // menuItems: ['Dashboard', 'Asset Registry', 'Device Registry', 'Device Registry'],
             // menuItems: ['Dashboard', 'Asset Registry', 'Device Registry', 'Edit Asset','Detach Thing',""],
             // menuItems: ['Dashboard'],
@@ -22,14 +22,14 @@ class Menu extends React.Component {
             const selectedMenuId = e.target.parentElement.id;
             this.setState({ selectedMenuId });
             this.props.history.push({ pathname: '/' });
-            // switch (selectedMenuId) {
-            //     case "0": this.props.history.push({ pathname: '/' }); break;
-            //     // case "1": this.props.history.push({ pathname: '/assetRegistry' }); break;
+            switch (selectedMenuId) {
+                case "0": this.props.history.push({ pathname: '/' }); break;
+                case "1": this.props.history.push({ pathname: '/zoneView',state: {zoneId:'zone001'} }); break;
             //     // case "2": this.props.history.push({ pathname: '/deviceRegistry' }); break;
             //     // case "3": this.props.history.push({ pathname: '/editAsset' }); break;
             //     // case "4": this.props.history.push({ pathname: '/detachThing' }); break;
-            //     default: this.props.history.push({ pathname: '/' });
-            // }
+                default: this.props.history.push({ pathname: '/' });
+            }
         }
     }
 

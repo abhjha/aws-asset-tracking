@@ -23,5 +23,14 @@
     background-color: white;
     
 }
+.completed-status {
+    @include ring-icon($success-green);
 
+}
+.in-progress-status {
+    @include ring-icon($highlight-blue);
+}
+.waiting-status {
+    @include ring-icon($warning-yellow);
+}
      
