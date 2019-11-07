@@ -10,7 +10,7 @@ class Menu extends React.Component {
         super(props);
         this.state = {
             selectedMenuId: 0,
-            menuItem:['Dashboard','Floor View'],
+            menuItem:['Dashboard','Zone Details'],
             // menuItems: ['Dashboard', 'Asset Registry', 'Device Registry', 'Device Registry'],
             // menuItems: ['Dashboard', 'Asset Registry', 'Device Registry', 'Edit Asset','Detach Thing',""],
             // menuItems: ['Dashboard'],
