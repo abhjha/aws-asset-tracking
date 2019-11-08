@@ -122,26 +122,27 @@ class PlantView extends Component {
 
                 </div>
               }
+              
             </div>
-            <div className="legends">
-              <ul>
-                <li className="bullet-and-count-legends">
-                  <div className="waiting"></div>
-                  <div className="legends-labels">Waiting</div></li>
-                <li className="bullet-and-count-legends">
-                  <div className="in-progress"></div>
-                  <div className="legends-labels">In Progress</div></li>
-                <li className="bullet-and-count-legends">
-                  <div className="completed"></div>
-                  <div className="legends-labels">Completed</div></li>
-              </ul>
-              </div>
           </div>
           <div>
             <img className="factoryImage" src={factoryImage} alt="factoryImage"></img>
           </div>
+          </div>
+        <div className="legends">
+          <ul>
+            <li className="bullet-and-count-legends">
+              <div className="waiting"></div>
+              <div className="legends-labels">Waiting</div></li>
+            <li className="bullet-and-count-legends">
+              <div className="in-progress"></div>
+              <div className="legends-labels">In Progress</div></li>
+            <li className="bullet-and-count-legends">
+              <div className="completed"></div>
+              <div className="legends-labels">Completed</div></li>
+          </ul>
         </div>
-      </div>
+        </div>
     )
   }
 }

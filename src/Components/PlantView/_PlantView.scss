@@ -146,10 +146,10 @@ margin: $margin;
 }
 
 .legends {
-    position: fixed;
-    top: 90%;
-    left: 48%;
-    float:right;
+    position: absolute;
+    right: 43%;
+    bottom: 5%;
+
 
     ul{
         display: flex;

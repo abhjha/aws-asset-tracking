@@ -42,9 +42,16 @@ ul {
     font-size: 10px;
 }
 
+.legends-wrapper{
+//     position: absolute;
+//     bottom: 0;
+}
+
 .zone-data-table-legends{
     position: absolute;
-    float:bottom;
+    bottom: 50px;
+    right: 50px;
+    ;
 
     .zone-legends {
         padding: 6px;

@@ -53,8 +53,7 @@ class AssetMetrics extends Component {
                 Object.keys(response).map((item) => {
                     labelArray.push(item);
 
-                    array1.push(response[item][0].count);
-                    sumCompleted = sumCompleted + response[item][0].count;
+                    sumCompleted = response["Quality Assurance"][0].count;
 
                     array2.push(response[item][1].count);
                     sumInProgress = sumInProgress + response[item][1].count;
