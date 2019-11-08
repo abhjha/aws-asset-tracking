@@ -69,11 +69,12 @@ export class ZoneDatatable extends React.Component {
     const { isSearchEnabled, loading } = this.state;
 
     return (
+      <div>
       <div id="tableGridPanel">
         <div className="alert-zone">
           <div className="alerts-zone-heading">{this.state.zoneName}</div>
         </div>
-
+        <div>
         <div className="tableAndFilterContainer withoutTabs">
           { loading && <div className='loader-icon'>
             <FadeLoader
@@ -111,7 +112,12 @@ export class ZoneDatatable extends React.Component {
           </div>
           }
         </div>
-        <div className="zone-data-table-legends">
+        </div>
+        
+        
+      </div>
+      <div className="legends-wrapper">
+      <div className="zone-data-table-legends">
           <ul className="zone-legends">
             <li className="zone-bullet-and-count-legends">
               <div className="zone-waiting"></div>
@@ -123,7 +129,9 @@ export class ZoneDatatable extends React.Component {
               <div className="zone-completed"></div>
               <div className="zone-data-table-legends-labels">Completed</div></li>
           </ul>
-            </div>
+           </div>
+      </div>
+      
       </div>
     );
   }
