@@ -77,9 +77,9 @@ class Dashboard extends Component {
    
     return (
       < div className="data-container dashboard ">
-        <div className="db-header-label ">
+        {/* <div className="db-header-label ">
           DASHBOARD
-        </div>
+        </div> */}
         <div className="db-data">
           <div className="db-data-values ">
             <div className="db-data-metrics ">
