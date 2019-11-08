@@ -24,6 +24,17 @@ class zoneView extends React.Component {
             });
     }
 
+    setMenuActiveState =() => {
+        var pageId = document.getElementsByClassName("dashboard");
+        if(pageId.length > 0){
+          document.getElementsByClassName('menu-heading-container')[0].classList.add('active');
+          document.getElementsByClassName('menu-heading-container')[1].classList.remove('active');
+        }else{
+          document.getElementsByClassName('menu-heading-container')[0].classList.remove('active');
+          document.getElementsByClassName('menu-heading-container')[1].classList.add('active');
+        }
+      }
+
     triggerTabSelection = (e) => {
         const zoneId = e.currentTarget.getAttribute('data-id');
         this.setState({zoneId});
@@ -31,8 +42,9 @@ class zoneView extends React.Component {
 
     componentDidMount() {
         this.triggerZoneViewCardData();
-        clearInterval(this.triggerZoneViewCardData);
-        setInterval(this.triggerZoneViewCardData, 30000);
+        this.setMenuActiveState();
+        // clearInterval(this.triggerZoneViewCardData);
+        // setInterval(this.triggerZoneViewCardData, 30000);
     }
 
     render() {
