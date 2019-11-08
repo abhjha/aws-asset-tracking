@@ -47,5 +47,6 @@
 
 .work-in-progress,.dormant-assets-label,.completed-assets-label {
     text-align: center;
-    font-size: 20px;
+    @include text-normal();
+    font-size: 15px;
 }

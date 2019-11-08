@@ -20,6 +20,16 @@ class Dashboard extends Component {
   openModal = () => {
     this.setState({ isModalOpen: true })
   }
+  setMenuActiveState =() => {
+    var pageId = document.getElementsByClassName("dashboard");
+    if(pageId.length > 0){
+      document.getElementsByClassName('menu-heading-container')[0].classList.add('active');
+      document.getElementsByClassName('menu-heading-container')[1].classList.remove('active');
+    }else{
+      document.getElementsByClassName('menu-heading-container')[0].classList.remove('active');
+      document.getElementsByClassName('menu-heading-container')[1].classList.add('active');
+    }
+  }
   triggerAssetMetricsGraphData = () => {
     fetch('https://iy78q5dt50.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialMetrics ')
       .then(resp => resp.json())
@@ -33,6 +43,8 @@ class Dashboard extends Component {
 
   componentDidMount() {
     this.triggerAssetMetricsGraphData();
+    this.setMenuActiveState();
+
   }
 
   render() {

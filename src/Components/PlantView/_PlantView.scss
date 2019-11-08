@@ -76,9 +76,13 @@ $margin: 2px 4px;
     margin-left: 368px;
     margin-top: -134px;
 }
+
 ul {
     list-style: none;
+
 }
+
+
 .completed,.in-progress,.waiting {
     width: 12px;
     height: 14px;
@@ -139,4 +143,27 @@ margin: $margin;
     max-width: 650px;
     background-color: white;
     z-index: 0;
+}
+
+.legends {
+    position: fixed;
+    top: 90%;
+    left: 48%;
+    float:right;
+
+    ul{
+        display: flex;
+        width: 100px;
+        width: 233px;
+        padding: 0px;
+    }
+
+    .bullet-and-count-legends {
+        display: flex;
+
+        .legends-labels {
+            font-size: 10px;
+            margin: 2px;
+        }
+    }
 }

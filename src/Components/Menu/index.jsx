@@ -51,6 +51,7 @@ class Menu extends React.Component {
         return (
             <div onClick={this.setActiveState} className="menu-container">
                 <div className="menu-heading">
+                    SMART FACTORY FABRIC
                     MATERIAL VISIBILITY
                 </div>
                 <div onClick={this.setActiveState} className="menu-option-items">

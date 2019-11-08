@@ -61,8 +61,8 @@ export class ZoneDatatable extends React.Component {
 
   componentDidMount = () => {
     this.triggerZoneViewTable();
-    clearInterval(this.triggerZoneViewTable);
-    setInterval(this.triggerZoneViewTable, 30000);
+    // clearInterval(this.triggerZoneViewTable);
+    // setInterval(this.triggerZoneViewTable, 30000);
   }
 
   render() {
@@ -92,9 +92,10 @@ export class ZoneDatatable extends React.Component {
             <i className="fab fa-sistrix pull-right tableTools"
               onClick={(e) => this.options.showSearchTool(e)}></i>
           </div>
+         
 
           <input type="hidden" value={this.state.activeTabKey} />
-
+          
           <BootstrapTable
             ref='alertsTable' containerClass="alertsTable" data={this.state.filteredZoneData.SelectedZone} striped hover bordered={false} search={isSearchEnabled} multiColumnSearch options={this.options}>
             <TableHeaderColumn width='80' dataField='statusBox' dataFormat={this.setStatusStyle} border='0'></TableHeaderColumn>
@@ -103,12 +104,26 @@ export class ZoneDatatable extends React.Component {
             <TableHeaderColumn headerAlign='center' dataAlign='center' dataSort dataField='status' >Status</TableHeaderColumn>
             <TableHeaderColumn headerAlign='center' dataAlign='center'  dataField='visitTimein' >Zone In time</TableHeaderColumn>
             <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='visitTimeout' >Zone Out time</TableHeaderColumn>
-            <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='description' >Description</TableHeaderColumn>
+            {/* <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='description' >Description</TableHeaderColumn> */}
             <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='superviserName' >Supervisor</TableHeaderColumn>
           </BootstrapTable>
+        
           </div>
           }
         </div>
+        <div className="zone-data-table-legends">
+          <ul className="zone-legends">
+            <li className="zone-bullet-and-count-legends">
+              <div className="zone-waiting"></div>
+              <div className="zone-data-table-legends-labels">Waiting</div></li>
+            <li className="zone-bullet-and-count-legends">
+              <div className="zone-in-progress"></div>
+              <div className="zone-data-table-legends-labels">In Progress</div></li>
+            <li className="zone-bullet-and-count-legends">
+              <div className="zone-completed"></div>
+              <div className="zone-data-table-legends-labels">Completed</div></li>
+          </ul>
+            </div>
       </div>
     );
   }
