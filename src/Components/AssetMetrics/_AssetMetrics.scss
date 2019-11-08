@@ -40,7 +40,8 @@
 }
 
 .total-count,.dormant-assets-count,.completed-assets-count {
-    font-size: 20px;
+    @include text-normal();
+    font-size: 25px;
     margin: 10px;
     text-align: center;
 }
