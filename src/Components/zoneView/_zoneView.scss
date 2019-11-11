@@ -4,6 +4,7 @@
     margin-top: 0;
 }
 .zone-container{
+    
     width: 100%;
     height: auto;    
     display: flex;
@@ -95,6 +96,7 @@
     .card-tile {
         margin: 0 20px;
         width: 100%;
+        overflow-y: auto;
         height: calc( 100vh - 250px);
     }
     .loader-icon {

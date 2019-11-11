@@ -35,6 +35,7 @@
     .db-alerts{
         margin-right: 20px;
         margin-bottom: 20px;
+        
     }
 
     .db-plant-view{
@@ -72,10 +73,13 @@
     }
 
     &.dashboard {
-        height: 100vh;
-        display: grid;
-        grid-template-rows: 75px 1fr;
-        grid-gap: 20px ;
+        height: 98vh;
+        margin-top: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        // grid-template-rows: 75px 1fr;
+        // grid-gap: 20px ;
         
     }
 }

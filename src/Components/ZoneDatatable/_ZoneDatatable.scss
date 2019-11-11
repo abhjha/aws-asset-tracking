@@ -33,4 +33,60 @@
 .waiting-status {
     @include ring-icon($warning-yellow);
 }
+ul {
+    list-style: none;
+
+}
+
+.legends-labels {
+    font-size: 10px;
+}
+
+.legends-wrapper{
+//     position: absolute;
+//     bottom: 0;
+}
+
+.zone-data-table-legends{
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    ;
+
+    .zone-legends {
+        padding: 6px;
+        display: flex;
+
+        .zone-bullet-and-count-legends {
+            display: flex;
+            margin: 8px;
+        }
+
+    }    
+
+    .zone-data-table-legends-labels {
+        font-size: 13px;
+        margin-top: 4px;
+    }
+}
+
+
+.zone-completed {
+
+   @include ring-icon($success-green);
+    margin: $margin;
+    
+    
+    }
+    .zone-in-progress {
+    
+        @include ring-icon($highlight-blue);
+        margin: $margin;
+    
+    }
+    .zone-waiting {
+        @include ring-icon($warning-yellow);
+        margin: $margin;
+    }
+
      
