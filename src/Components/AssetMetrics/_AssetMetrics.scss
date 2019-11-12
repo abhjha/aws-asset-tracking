@@ -41,8 +41,10 @@
 
 .total-count,.dormant-assets-count,.completed-assets-count {
     @include text-normal();
-    font-size: 25px;
-    margin: 10px;
+    font-weight: normal;
+    color: #000000;
+    font-size: 20px;
+    margin: 17px;
     text-align: center;
 }
 

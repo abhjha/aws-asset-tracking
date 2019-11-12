@@ -53,7 +53,7 @@ class AssetMetrics extends Component {
                 Object.keys(response).map((item) => {
                     labelArray.push(item);
 
-                    sumCompleted = response["Quality Assurance"][0].count;
+                    sumCompleted = response["Quality Assurance"] == undefined ? '0' :  response["Quality Assurance"][0].count;
 
                     array2.push(response[item][1].count);
                     sumInProgress = sumInProgress + response[item][1].count;
@@ -177,15 +177,15 @@ class AssetMetrics extends Component {
                 <div className="asset-status-count ">
                     <div className="dormant-assets">
                         <div className="dormant-assets-count">{this.state.sumWaiting}</div>
-                        <div className="dormant-assets-label">TOTAL WAITING MATERIALS</div>
+                        <div className="dormant-assets-label">Waiting Materials</div>
                     </div>
                     <div className="total-count-and-work-in-progress">
                         <div className="total-count">{this.state.sumInProgress}</div>
-                        <div className="work-in-progress">TOTAL IN PROGRESS MATERIALS</div>
+                        <div className="work-in-progress">In Progress Materials</div>
                     </div>
                     <div className="completed-assets">
                         <div className="completed-assets-count">{this.state.sumCompleted}</div>
-                        <div className="completed-assets-label">TOTAL COMPLETED MATERIALS</div>
+                        <div className="completed-assets-label">Completed Materials</div>
                     </div>                  
                 </div>
             </div>

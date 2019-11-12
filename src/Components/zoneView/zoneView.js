@@ -9,7 +9,8 @@ class zoneView extends React.Component {
             zoneList: {},
             zoneId: props.location.state.zoneId,
             zoneViewthing: null,
-            zoneLength: 0
+            zoneLength: 0,
+            zoneName : ""
 
         }
     }
@@ -37,25 +38,31 @@ class zoneView extends React.Component {
 
     triggerTabSelection = (e) => {
         const zoneId = e.currentTarget.getAttribute('data-id');
-        this.setState({zoneId});
+        // const zoneName=e.currentTarget.getAttribute('zoneName');
+        const zoneName = e.currentTarget.childNodes[0].innerText;
+        this.setState({
+            zoneId : zoneId,
+            zoneName : zoneName
+        });
     }
 
     componentDidMount() {
         this.triggerZoneViewCardData();
         this.setMenuActiveState();
-        // clearInterval(this.triggerZoneViewCardData);
-        // setInterval(this.triggerZoneViewCardData, 30000);
+        clearInterval(this.triggerZoneViewCardData);
+        setInterval(this.triggerZoneViewCardData, 30000);
     }
 
     render() {
-        const { zoneList, zoneId } = this.state;
+        const { zoneList, zoneId, zoneName } = this.state;
         return (
             <div className="zone-container">
                 <div className="zone-view">
                     {zoneList.length > 0 && zoneList.map((item) => {
-                        return (<div className={"zone-detail-checkbox " + (item.zoneId === zoneId ? "active" : "")} data-id={item.zoneId} onClick={this.triggerTabSelection}>
-                            <div className="upper">
-                                {item.zoneName}
+                        return (<div className={"zone-detail-checkbox " + (item.zoneId === zoneId  ?  "active" : "")} data-id={item.zoneId} onClick={this.triggerTabSelection}>
+                            <div className="upper"> 
+                            {item.zoneName}
+                               
                             </div>
                             <div className="lower">
                                 {item.count} Materials
@@ -66,7 +73,7 @@ class zoneView extends React.Component {
 
                 <div className="db-alerts card-tile">
                     <ZoneDatatable
-                        zoneId={zoneId}
+                        zoneId={zoneId} zoneName ={zoneName}
                     />
                 </div>
             </div>
