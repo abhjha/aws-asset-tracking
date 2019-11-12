@@ -13,10 +13,10 @@ class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isModalOpen: false
+      isModalOpen: false,
+     
     }
   }
-
   openModal = () => {
     this.setState({ isModalOpen: true })
   }
@@ -77,9 +77,6 @@ class Dashboard extends Component {
    
     return (
       < div className="data-container dashboard ">
-        {/* <div className="db-header-label ">
-          DASHBOARD
-        </div> */}
         <div className="db-data">
           <div className="db-data-values ">
             <div className="db-data-metrics ">

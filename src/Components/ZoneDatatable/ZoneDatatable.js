@@ -1,6 +1,6 @@
 import React from 'react';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
-import FadeLoader from 'react-spinners/FadeLoader';
+// import FadeLoader from 'react-spinners/FadeLoader';
 
 export class ZoneDatatable extends React.Component {
 
@@ -61,8 +61,8 @@ export class ZoneDatatable extends React.Component {
 
   componentDidMount = () => {
     this.triggerZoneViewTable();
-    // clearInterval(this.triggerZoneViewTable);
-    // setInterval(this.triggerZoneViewTable, 30000);
+    clearInterval(this.triggerZoneViewTable);
+    setInterval(this.triggerZoneViewTable, 30000);
   }
 
   render() {
@@ -72,17 +72,17 @@ export class ZoneDatatable extends React.Component {
       <div>
       <div id="tableGridPanel">
         <div className="alert-zone">
-          <div className="alerts-zone-heading">{this.state.zoneName}</div>
+          <div className="alerts-zone-heading">{this.props.zoneName}</div>
         </div>
         <div>
         <div className="tableAndFilterContainer withoutTabs">
           { loading && <div className='loader-icon'>
-            <FadeLoader
+            {/* <FadeLoader
               sizeUnit={"px"}
               size={150}
               color={'#e4e4e4'}
               loading={this.state.loading}
-            />
+            /> */}
           </div>
           }
           { !loading && <div>
@@ -113,8 +113,6 @@ export class ZoneDatatable extends React.Component {
           }
         </div>
         </div>
-        
-        
       </div>
       <div className="legends-wrapper">
       <div className="zone-data-table-legends">
