@@ -6,6 +6,7 @@ class AlertPopup extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            alertData:{},
             alertList: [
                 {
                     key: 'ASSET',
@@ -35,6 +36,24 @@ class AlertPopup extends React.Component {
             ]            
         }
     }
+    triggerAlertPopup = () => {
+        this.setState({loading:true})
+        fetch(`https://iy78q5dt50.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialHistory?zoneId=${this.props.zoneId}`)
+          .then(resp => resp.json())
+          .then(response => {
+            this.setState({
+             
+              alertData: response,
+              zoneName: response.SelectedZone[0].zoneName
+            })
+          })
+        }
+        
+  componentDidMount = () => {
+    this.triggerAlertPopup();
+    clearInterval(this.triggerZoneViewTable);
+    setInterval(this.triggerZoneViewTable, 30000);
+  }
     render() {
         const  alertList  = this.state.alertList;
 
@@ -53,7 +72,7 @@ class AlertPopup extends React.Component {
                     <div className="rightSection">
                         <ul>
                             <li><p className="title">{alertList[3].key}:</p><p className="content">{alertList[3].value}</p></li>
-                            <li><p className="title">{alertList[4].key}:</p><p className="content">{alertList[4].value}</p></li>
+                            <li><p className="title">{alertList[4].key}:</p><p className="content">{this.state.alertData.visitTimein}</p></li>
                         </ul>
                     </div>
                     <div className="lower-section">
@@ -87,8 +106,8 @@ class AlertPopup extends React.Component {
                     </div>
                 </div>
                 <div className="button" >
-                    <input type="button" className="bttn" value="Acknowledge" onClick={this.closeWindow} ></input>
-                    <input type="button" className="bttn bttn-yes" value="Cancel" onClick={this.closeWindow}></input>
+                    <input type="button" className="bttn" value="Acknowledge" onClick={this.props.closeWindow} ></input>
+                    <input type="button" className="bttn bttn-yes" value="Cancel" onClick={this.props.closeWindow}></input>
                 </div>
             </div>
         );

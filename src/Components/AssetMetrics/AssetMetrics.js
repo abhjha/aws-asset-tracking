@@ -42,7 +42,6 @@ class AssetMetrics extends Component {
         let array1 = [];
         let array2 = [];
         let array3 = [];
-        let sumCompleted = 0;
         let sumInProgress = 0;
         let sumWaiting = 0;
         let labelArray = [];
@@ -50,10 +49,11 @@ class AssetMetrics extends Component {
         fetch('https://iy78q5dt50.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialMetrics ')
             .then(resp => resp.json())
             .then(response => {
+               
                 Object.keys(response).map((item) => {
                     labelArray.push(item);
 
-                    sumCompleted = response["Quality Assurance"] == undefined ? '0' :  response["Quality Assurance"][0].count;
+                    array1.push(response[item][0].count);
 
                     array2.push(response[item][1].count);
                     sumInProgress = sumInProgress + response[item][1].count;
@@ -90,7 +90,7 @@ class AssetMetrics extends Component {
                         ]
                     },
 
-                    sumCompleted: sumCompleted,
+                    sumCompleted: response["Quality Assurance"][0].count,
                     sumInProgress: sumInProgress,
                     sumWaiting: sumWaiting
                 })
@@ -142,7 +142,7 @@ class AssetMetrics extends Component {
                                                 beginAtZero: true,
                                                 min: 0,
 
-                                                stepSize: 10,
+                                                stepSize: 5,
                                                 lineWidth: 1,
                                                 fontColor: 'black',
                                                 fontSize: 12,
