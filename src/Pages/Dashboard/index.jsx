@@ -19,7 +19,7 @@ class Dashboard extends Component {
   }
 
   openModal = () => {
-    this.setState({ isModalOpen: true })
+    this.setState({ isModalOpen: !this.state.isModalOpen})
   }
 
   setMenuActiveState =() => {
@@ -92,7 +92,8 @@ class Dashboard extends Component {
           <div className="db-alerts card-tile ">
             <DataTableComponent filteredData={filteredData} triggerPopupOpen={this.openModal} />
           </div>
-          {this.state.isModalOpen && <AlertPopup />}
+          {this.state.isModalOpen ?  <AlertPopup
+           closeWindow={this.openModal.bind(this)} /> : null}
         </div>
       </div>
     );

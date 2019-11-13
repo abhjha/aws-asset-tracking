@@ -54,8 +54,8 @@ export class DataTableComponent extends React.Component {
               <TableHeaderColumn width='90' headerAlign='center' dataAlign='center' isKey dataField='id' dataFormat={this.alertDetails}>Material</TableHeaderColumn>
               <TableHeaderColumn headerAlign='center' dataAlign='center' dataSort dataField='dateTime' >Zone</TableHeaderColumn>
               <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='status' >Status</TableHeaderColumn>
-              <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='activeTime'>Standard Time</TableHeaderColumn>
-              <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='description'>Actual Time</TableHeaderColumn>
+              <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='activeTime'>Time Stamp</TableHeaderColumn>
+              <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='description'>Description</TableHeaderColumn>
             </BootstrapTable>
           </div>
       

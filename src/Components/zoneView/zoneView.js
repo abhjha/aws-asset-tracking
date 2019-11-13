@@ -1,5 +1,7 @@
 import React from 'react';
 import { ZoneDatatable } from '../ZoneDatatable/ZoneDatatable';
+import  ZoneDetailPopup  from '../ZoneDetailPopup/ZoneDetailPopup';
+
 
 class zoneView extends React.Component {
 
@@ -10,10 +12,15 @@ class zoneView extends React.Component {
             zoneId: props.location.state.zoneId,
             zoneViewthing: null,
             zoneLength: 0,
-            zoneName : ""
-
+            zoneName : "",
+            isModalOpen: false,
+     
         }
-    }
+      }
+
+        openModal = () => {
+            this.setState({ isModalOpen: !this.state.isModalOpen})
+          }
 
     triggerZoneViewCardData = () => {
         fetch('https://iy78q5dt50.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialCountPerZone')
@@ -49,8 +56,8 @@ class zoneView extends React.Component {
     componentDidMount() {
         this.triggerZoneViewCardData();
         this.setMenuActiveState();
-        clearInterval(this.triggerZoneViewCardData);
-        setInterval(this.triggerZoneViewCardData, 30000);
+        // clearInterval(this.triggerZoneViewCardData);
+        // setInterval(this.triggerZoneViewCardData, 30000);
     }
 
     render() {
@@ -73,9 +80,11 @@ class zoneView extends React.Component {
 
                 <div className="db-alerts card-tile">
                     <ZoneDatatable
-                        zoneId={zoneId} zoneName ={zoneName}
+                        zoneId={zoneId} zoneName ={zoneName} triggerPopupOpen={this.openModal}
                     />
                 </div>
+                {this.state.isModalOpen ?  <ZoneDetailPopup
+           closeWindow={this.openModal.bind(this)} /> : null}
             </div>
         );
     }

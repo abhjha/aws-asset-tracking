@@ -37,6 +37,7 @@ export class ZoneDatatable extends React.Component {
     fetch(`https://iy78q5dt50.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialHistory?zoneId=${this.props.zoneId}`)
       .then(resp => resp.json())
       .then(response => {
+        console.log(response)
         this.setState({
           loading: false,
           filteredZoneData: response,
@@ -61,8 +62,8 @@ export class ZoneDatatable extends React.Component {
 
   componentDidMount = () => {
     this.triggerZoneViewTable();
-    clearInterval(this.triggerZoneViewTable);
-    setInterval(this.triggerZoneViewTable, 30000);
+    // clearInterval(this.triggerZoneViewTable);
+    // setInterval(this.triggerZoneViewTable, 30000);
   }
 
   render() {
@@ -76,16 +77,16 @@ export class ZoneDatatable extends React.Component {
         </div>
         <div>
         <div className="tableAndFilterContainer withoutTabs">
-          { loading && <div className='loader-icon'>
-            {/* <FadeLoader
+          {/* { loading && <div className='loader-icon'>
+            <FadeLoader
               sizeUnit={"px"}
               size={150}
               color={'#e4e4e4'}
               loading={this.state.loading}
-            /> */}
+            />
           </div>
-          }
-          { !loading && <div>
+          } */}
+        
 
           <div className="filterIcons">
             <i className="fas fa-calendar pull-right tableTools" onClick={this.showHideCalendarTool}></i>
@@ -96,7 +97,7 @@ export class ZoneDatatable extends React.Component {
          
 
           <input type="hidden" value={this.state.activeTabKey} />
-          
+          <div onClick={this.props.triggerPopupOpen}> 
           <BootstrapTable
             ref='alertsTable' containerClass="alertsTable" data={this.state.filteredZoneData.SelectedZone} striped hover bordered={false} search={isSearchEnabled} multiColumnSearch options={this.options}>
             <TableHeaderColumn width='80' dataField='statusBox' dataFormat={this.setStatusStyle} border='0'></TableHeaderColumn>
@@ -110,9 +111,10 @@ export class ZoneDatatable extends React.Component {
           </BootstrapTable>
         
           </div>
-          }
+          
         </div>
         </div>
+       
       </div>
       <div className="legends-wrapper">
       <div className="zone-data-table-legends">
