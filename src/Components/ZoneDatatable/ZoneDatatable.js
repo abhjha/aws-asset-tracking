@@ -6,9 +6,7 @@ export class ZoneDatatable extends React.Component {
 
   constructor(props) {
     super(props);
-    this.options = {
-      responsive: true
-    };
+   
     this.state = {
       isSearchEnabled: true,
       isFilterEnabled: true,
@@ -53,7 +51,9 @@ export class ZoneDatatable extends React.Component {
         })
     });
   }
-
+  rowEvents =(e)=> {
+  
+  }
   componentDidUpdate(prevProps) {
     if (prevProps.zoneId !== this.props.zoneId) {
       this.triggerZoneViewTable();
@@ -62,12 +62,17 @@ export class ZoneDatatable extends React.Component {
 
   componentDidMount = () => {
     this.triggerZoneViewTable();
-    // clearInterval(this.triggerZoneViewTable);
-    // setInterval(this.triggerZoneViewTable, 30000);
+    clearInterval(this.triggerZoneViewTable);
+    setInterval(this.triggerZoneViewTable, 30000);
   }
+  
 
   render() {
-    const { isSearchEnabled, loading } = this.state;
+    const { isSearchEnabled} = this.state;
+    const options = {
+      responsive: true,
+      onRowClick : this.props.triggerPopupOpen
+    };
 
     return (
       <div>
@@ -77,17 +82,6 @@ export class ZoneDatatable extends React.Component {
         </div>
         <div>
         <div className="tableAndFilterContainer withoutTabs">
-          {/* { loading && <div className='loader-icon'>
-            <FadeLoader
-              sizeUnit={"px"}
-              size={150}
-              color={'#e4e4e4'}
-              loading={this.state.loading}
-            />
-          </div>
-          } */}
-        
-
           <div className="filterIcons">
             <i className="fas fa-calendar pull-right tableTools" onClick={this.showHideCalendarTool}></i>
             <i className="fas fa-filter pull-right tableTools" onClick={this.showHideFilterTool}></i>
@@ -97,9 +91,9 @@ export class ZoneDatatable extends React.Component {
          
 
           <input type="hidden" value={this.state.activeTabKey} />
-          <div onClick={this.props.triggerPopupOpen}> 
+          <div > 
           <BootstrapTable
-            ref='alertsTable' containerClass="alertsTable" data={this.state.filteredZoneData.SelectedZone} striped hover bordered={false} search={isSearchEnabled} multiColumnSearch options={this.options}>
+            ref='alertsTable' containerClass="alertsTable" data={this.state.filteredZoneData.SelectedZone} striped hover bordered={false} search={isSearchEnabled} multiColumnSearch options={options} >
             <TableHeaderColumn width='80' dataField='statusBox' dataFormat={this.setStatusStyle} border='0'></TableHeaderColumn>
             <TableHeaderColumn width='90' headerAlign='left' dataAlign='center' isKey dataField='materialName' dataFormat={this.alertDetails}>Material</TableHeaderColumn>
             <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='zoneName'  >Material location</TableHeaderColumn>

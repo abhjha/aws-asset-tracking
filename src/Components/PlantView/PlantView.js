@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import factoryImage from './factoryImage.png';
 import { withRouter } from "react-router-dom";
-// import {Menu} from './'
 
 class PlantView extends Component {
   constructor(props) {
@@ -19,11 +18,13 @@ class PlantView extends Component {
 
   triggerNavigation = (e) => {
     const zoneId = e.currentTarget.getAttribute('data-id');
+    const zoneViewName = e.currentTarget.childNodes[0].innerText;
     
     this.props.history.push({
       pathname: '/zoneView',
       state: {
         zoneId:zoneId,
+        zoneViewName : zoneViewName
        
       },
     });
@@ -132,14 +133,15 @@ class PlantView extends Component {
       <div className="legends">
                 <ul>
                       <li className="bullet-and-count-legends">
-                        <div className="completed"></div>
-                        <div className="legends-labels">Completed</div></li>
+                      <div className="waiting"></div>
+                        <div className="legends-labels">Waiting</div></li>
                       <li className="bullet-and-count-legends">
                         <div className="in-progress"></div>
                         <div className="legends-labels">In Progress</div></li>
                       <li className="bullet-and-count-legends">
-                        <div className="waiting"></div>
-                          <div className="legends-labels">Waiting</div></li>
+                      <div className="completed"></div>
+                        <div className="legends-labels">Completed</div></li>
+                       
                       </ul></div>
           </div>
     )
