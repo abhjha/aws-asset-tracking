@@ -62,16 +62,13 @@ export class ZoneDatatable extends React.Component {
 
   componentDidMount = () => {
     this.triggerZoneViewTable();
-    // clearInterval(this.triggerZoneViewTable);
-    // setInterval(this.triggerZoneViewTable, 30000);
+    clearInterval(this.triggerZoneViewTable);
+    setInterval(this.triggerZoneViewTable, 30000);
   }
   
 
   render() {
-    const { isSearchEnabled, loading } = this.state;
-    // const options = {
-    //   hideSizePerPage: true,
-    //       };
+    const { isSearchEnabled} = this.state;
     const options = {
       responsive: true,
       onRowClick : this.props.triggerPopupOpen
@@ -85,17 +82,6 @@ export class ZoneDatatable extends React.Component {
         </div>
         <div>
         <div className="tableAndFilterContainer withoutTabs">
-          {/* { loading && <div className='loader-icon'>
-            <FadeLoader
-              sizeUnit={"px"}
-              size={150}
-              color={'#e4e4e4'}
-              loading={this.state.loading}
-            />
-          </div>
-          } */}
-        
-
           <div className="filterIcons">
             <i className="fas fa-calendar pull-right tableTools" onClick={this.showHideCalendarTool}></i>
             <i className="fas fa-filter pull-right tableTools" onClick={this.showHideFilterTool}></i>

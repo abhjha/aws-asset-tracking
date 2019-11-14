@@ -4,12 +4,10 @@ var originalDoughnutDraw = Chart.controllers.doughnut.prototype.draw;
 Chart.helpers.extend(Chart.controllers.doughnut.prototype, {
   draw: function() {
     originalDoughnutDraw.apply(this, arguments);
-    
     var chart = this.chart;
     var width = chart.chart.width,
         height = chart.chart.height,
         ctx = chart.chart.ctx;
-
     var fontSize = "25px";
     ctx.font = fontSize + "em sans-serif";
     ctx.textBaseline = "middle";
@@ -32,7 +30,6 @@ export class ZoneDetailPopup extends React.Component {
             materialStatusState : "gray-state",   
             datasets: [
                     {
-                       
                         data: [2,4,25],
                         backgroundColor: ['rgb(237,237,237)','rgb(237,237,237)','rgb(151, 221, 198)'],
                         borderWidth:1,
@@ -58,13 +55,9 @@ export class ZoneDetailPopup extends React.Component {
                 }
             ],
             alertCount : 0,
-            zoneDetailsObject : {
-               
-                               
-                    },
-
-                   
-                } }
+            zoneDetailsObject : {},
+        } 
+    }
                 
            
     getTime = (data , status) =>{
@@ -141,30 +134,27 @@ export class ZoneDetailPopup extends React.Component {
                     />
                     </div>
                     </div>
-                    
                     <div className="zone">
-                        
-                            {Object.keys(this.state.zoneDetailsObject).length>0 && Object.keys(this.state.zoneDetailsObject).map((item,index)=> {
+                        {Object.keys(this.state.zoneDetailsObject).length>0 && Object.keys(this.state.zoneDetailsObject).map((item,index)=> {
                                 return(
                                     <div className="zone-popup-container">
-                                <div className="zone-heading">{item}</div>
-                                 <ul className='zone-main-list'>
-                                        <div className="alert-links">
-                                            <li className={"alert-zone-waiting " + ("--:--" == this.getTime(this.state.zoneDetailsObject[item]  , "waiting") ? "gray-state" : "")}></li>
-                                            <li className={"alert-zone-in-progress " +( "--:--" == this.getTime(this.state.zoneDetailsObject[item]  , "In Progress") ? "gray-state" : "")}></li>
-                                            <li className={"alert-zone-completed " + ("--:--" == this.getTime(this.state.zoneDetailsObject[item]  , "Completed") ? "gray-state" : "")}></li>
-                                        </div> </ul> 
-                                        <div className="time-stamps">
-                                            <div className="waiting-time">{this.getTime(this.state.zoneDetailsObject[item] , "waiting")}</div>
-                                            <div className="in-progress-time">{this.getTime(this.state.zoneDetailsObject[item],"In Progress")}</div>
-                                            <div className="completed-time">{this.getTime(this.state.zoneDetailsObject[item],"Completed")}</div>
-                                        </div> 
+                                        <div className="zone-heading">{item}</div>
+                                        <ul className='zone-main-list'>
+                                            <div className="alert-links">
+                                                <li className={"alert-zone-waiting " + ("--:--" === this.getTime(this.state.zoneDetailsObject[item]  , "waiting") ? "gray-state" : "")}></li>
+                                                <li className={"alert-zone-in-progress " +( "--:--" === this.getTime(this.state.zoneDetailsObject[item]  , "In Progress") ? "gray-state" : "")}></li>
+                                                <li className={"alert-zone-completed " + ("--:--" === this.getTime(this.state.zoneDetailsObject[item]  , "Completed") ? "gray-state" : "")}></li>
+                                            </div> 
+                                        </ul> 
+                                            <div className="time-stamps">
+                                                <div className="waiting-time">{this.getTime(this.state.zoneDetailsObject[item] , "waiting")}</div>
+                                                <div className="in-progress-time">{this.getTime(this.state.zoneDetailsObject[item],"In Progress")}</div>
+                                                <div className="completed-time">{this.getTime(this.state.zoneDetailsObject[item],"Completed")}</div>
+                                            </div> 
                                         </div>
                                 
-                                 )})} </div>
-                        
-                   
-                   
+                                 )})} 
+                    </div>
                      <div className="legends-wrapper">
                      <div className="alert-legends">
                          <ul className="zone-alert-legends">
@@ -181,15 +171,6 @@ export class ZoneDetailPopup extends React.Component {
                           </div>
                      </div>
                      </div>
-                     
-                    
-        );}}
-
-                                
-                            
-                   
-               
-               
-        
-       
+                    );}}
+    
 export default ZoneDetailPopup;
