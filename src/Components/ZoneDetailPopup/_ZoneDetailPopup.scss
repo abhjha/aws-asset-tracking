@@ -1,43 +1,66 @@
 $alertMargin: 12px;
 .all-zones {
-    display: flex;
+    
 }
 .zone {
-    width: 20%;
+   
     margin-top: 44px;
+    width:95%;
+    display: flex;
 }
+.zone-popup-container{
 
     .zone-heading {
-        height:36px;
-        font-size: 20px;
-        margin-left:14px
+        
+        font-size: 17px;
+        padding-left: 3px;
+        height: 105px;
+
     }
         .zone-main-list {
-            display: flex;
+            
             padding-left: 5px;
             position: bottom;
-            margin-top: 70px;
 
         }   
+        border-left : 6px solid lightgray;
+}
+.zone-popup-container:last-child{
+    border-right : 6px solid lightgray;
+}
+    
         
     .alert-zone-waiting,.alert-zone-in-progress, .alert-zone-completed {
-    margin: 2px 12px;
+    margin: -11px auto;
     }
 .alert-zone-completed {
 
-   @include ring-icon($success-green)
-    
+   @include ring-icon($success-green);
+   &.gray-state{
+    border: 5px solid gray;   
+}
      
      }
      .alert-zone-in-progress {
      
-        @include ring-icon($highlight-blue)
-     
+        @include ring-icon($highlight-blue);
+        &.gray-state{
+            border: 5px solid gray;   
+        }
      }
      .alert-zone-waiting {
-        @include ring-icon($warning-yellow)
+        @include ring-icon($warning-yellow);
+        &.gray-state{
+            border: 5px solid gray;   
+        }
          
      }
+.alert-links {
+    border-top: 6px solid lightgray;;
+    width:95%;
+    display: flex;
+   
+}
 .alert-legends {
     position: absolute;
     bottom: 0px;
@@ -45,6 +68,16 @@ $alertMargin: 12px;
 }
 .sections {
     border:0
+}
+.time-stamps {
+    display: flex;
+    width: 100%;
+    div{
+        width:33%;
+    }
+}
+.waiting-time,.in-progress-time,.completed-time {
+    margin: 11px 0px 0px 9px;
 }
 .heading-and-sections {
     width:70%

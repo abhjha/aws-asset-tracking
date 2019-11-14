@@ -6,9 +6,7 @@ export class ZoneDatatable extends React.Component {
 
   constructor(props) {
     super(props);
-    this.options = {
-      responsive: true
-    };
+   
     this.state = {
       isSearchEnabled: true,
       isFilterEnabled: true,
@@ -53,7 +51,9 @@ export class ZoneDatatable extends React.Component {
         })
     });
   }
-
+  rowEvents =(e)=> {
+  
+  }
   componentDidUpdate(prevProps) {
     if (prevProps.zoneId !== this.props.zoneId) {
       this.triggerZoneViewTable();
@@ -65,9 +65,17 @@ export class ZoneDatatable extends React.Component {
     // clearInterval(this.triggerZoneViewTable);
     // setInterval(this.triggerZoneViewTable, 30000);
   }
+  
 
   render() {
     const { isSearchEnabled, loading } = this.state;
+    // const options = {
+    //   hideSizePerPage: true,
+    //       };
+    const options = {
+      responsive: true,
+      onRowClick : this.props.triggerPopupOpen
+    };
 
     return (
       <div>
@@ -97,9 +105,9 @@ export class ZoneDatatable extends React.Component {
          
 
           <input type="hidden" value={this.state.activeTabKey} />
-          <div onClick={this.props.triggerPopupOpen}> 
+          <div > 
           <BootstrapTable
-            ref='alertsTable' containerClass="alertsTable" data={this.state.filteredZoneData.SelectedZone} striped hover bordered={false} search={isSearchEnabled} multiColumnSearch options={this.options}>
+            ref='alertsTable' containerClass="alertsTable" data={this.state.filteredZoneData.SelectedZone} striped hover bordered={false} search={isSearchEnabled} multiColumnSearch options={options} >
             <TableHeaderColumn width='80' dataField='statusBox' dataFormat={this.setStatusStyle} border='0'></TableHeaderColumn>
             <TableHeaderColumn width='90' headerAlign='left' dataAlign='center' isKey dataField='materialName' dataFormat={this.alertDetails}>Material</TableHeaderColumn>
             <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='zoneName'  >Material location</TableHeaderColumn>

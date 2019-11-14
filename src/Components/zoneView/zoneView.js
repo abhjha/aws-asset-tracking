@@ -12,14 +12,20 @@ class zoneView extends React.Component {
             zoneId: props.location.state.zoneId,
             zoneViewthing: null,
             zoneLength: 0,
-            zoneName : "",
+            zoneName : props.location.state.zoneViewName,
             isModalOpen: false,
+            popUpName : ""
      
         }
       }
 
         openModal = () => {
-            this.setState({ isModalOpen: !this.state.isModalOpen})
+            // eslint-disable-next-line no-restricted-globals
+            const popUpName = event.path[1].cells[1].innerText;
+            this.setState({
+                 isModalOpen: !this.state.isModalOpen,
+                 popUpName : popUpName
+            })
           }
 
     triggerZoneViewCardData = () => {
@@ -83,7 +89,7 @@ class zoneView extends React.Component {
                         zoneId={zoneId} zoneName ={zoneName} triggerPopupOpen={this.openModal}
                     />
                 </div>
-                {this.state.isModalOpen ?  <ZoneDetailPopup
+                {this.state.isModalOpen ?  <ZoneDetailPopup popUpName={this.state.popUpName}
            closeWindow={this.openModal.bind(this)} /> : null}
             </div>
         );
