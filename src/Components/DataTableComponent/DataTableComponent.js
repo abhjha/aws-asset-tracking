@@ -13,6 +13,7 @@ export class DataTableComponent extends React.Component {
       isSearchEnabled: true,
       isFilterEnabled: true,
       filterItem: [],
+      alertsDatatableData:{},
       filteredData: props.filteredData,
       filteredZoneData: props.filteredZoneData
     };
@@ -29,7 +30,25 @@ export class DataTableComponent extends React.Component {
     }
     return `<i class='fas fa-circle statusMarker ${styleClassName}'></i> ${cell}`;
   }
+  triggerAlertDatatable = () => {
+    fetch(`https://b7h0jkep5i.execute-api.us-west-2.amazonaws.com/Stage/GetAlertDetails`)
+      .then(resp => resp.json())
+      .then(response => {
+        console.log(response)
+        this.setState({
 
+          alertDatatableData:response
+         
+         
+        })
+      })
+    }
+    componentDidMount = () => {
+      this.triggerAlertDatatable();
+      clearInterval(this.triggerAlertDatatable);
+      setInterval(this.triggerAlertDatatable, 30000);
+      
+    }
   render() {
     const { isSearchEnabled } = this.state;
     return (
@@ -49,13 +68,13 @@ export class DataTableComponent extends React.Component {
           <input type="hidden" value={this.state.activeTabKey} />
           <div onClick={this.props.triggerPopupOpen}> 
             <BootstrapTable
-              ref='alertsTable' containerClass="alertsTable" data={this.state.filteredData} striped hover bordered={false} search={isSearchEnabled} multiColumnSearch options={this.options}>
+              ref='alertsTable' containerClass="alertsTable" data={this.state.alertDatatableData} striped hover bordered={false} search={isSearchEnabled} multiColumnSearch options={this.options}>
               <TableHeaderColumn width='30' dataField='statusBox' dataFormat={this.setStatusStyle} border='0'></TableHeaderColumn>
-              <TableHeaderColumn width='90' headerAlign='center' dataAlign='center' isKey dataField='id' dataFormat={this.alertDetails}>Material</TableHeaderColumn>
-              <TableHeaderColumn headerAlign='center' dataAlign='center' dataSort dataField='dateTime' >Zone</TableHeaderColumn>
-              <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='status' >Status</TableHeaderColumn>
-              <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='activeTime'>Time Stamp</TableHeaderColumn>
-              <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='description'>Description</TableHeaderColumn>
+              <TableHeaderColumn width='90' headerAlign='center' dataAlign='center' isKey dataField='ASSET_NAME' dataFormat={this.alertDetails}>Material</TableHeaderColumn>
+              <TableHeaderColumn headerAlign='center' dataAlign='center' dataSort dataField='LINE' >Zone</TableHeaderColumn>
+              <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='STATUS' >Status</TableHeaderColumn>
+              <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='TIMESTAMP'>Time Stamp</TableHeaderColumn>
+              <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='ALARM_NAME'>Description</TableHeaderColumn>
             </BootstrapTable>
           </div>
       
