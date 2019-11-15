@@ -1,69 +1,95 @@
 $alertMargin: 12px;
-.all-zones {
+.sections-donut-chart {
     display: flex;
+    .heading-and-sections {
+        width:70%;
+        .sections {
+            border:0
+        }
+    }
 }
 .zone {
-    width: 20%;
     margin-top: 44px;
-}
-
-    .zone-heading {
-        height:36px;
-        font-size: 20px;
-        margin-left:14px
-    }
+    width:95%;
+    display: flex;
+    .zone-popup-container{
+        width:150px;
+        height:94px;
+        .zone-heading {
+            font-size: 17px;
+            padding-left: 3px;
+            height: 105px;
+            border-left : 6px solid rgb(246,246,246);
+        }
         .zone-main-list {
+            padding-left: 0px;
+            .alert-links {
+                border-top: 6px solid rgb(237,237,237);
+                width:100%;
+                display: flex;
+                .alert-zone-completed {
+                    @include ring-icon($success-green);
+                    &.gray-state{
+                        border: 5px solid rgb(214, 214, 214);   
+                    }
+                }
+                .alert-zone-in-progress {
+                    @include ring-icon($highlight-blue);
+                    &.gray-state{
+                        border: 5px solid rgb(214,214,214);   
+                    }
+                }
+                .alert-zone-waiting {
+                    @include ring-icon($warning-yellow);
+                    &.gray-state{
+                        border: 5px solid rgb(214,214,214);   
+                    }
+                }
+                .alert-zone-waiting,.alert-zone-in-progress, .alert-zone-completed {
+                    margin: -11px auto;
+                    }
+               }
+        }
+        .time-stamps {
             display: flex;
-            padding-left: 5px;
-            position: bottom;
-            margin-top: 70px;
-
-        }   
-        
-    .alert-zone-waiting,.alert-zone-in-progress, .alert-zone-completed {
-    margin: 2px 12px;
+            width: 100%;
+            div{
+                width:33%;
+            }
+            .waiting-time,.in-progress-time,.completed-time {
+                margin: 11px 0px 0px 9px;
+            }
+        }      
     }
-.alert-zone-completed {
-
-   @include ring-icon($success-green)
-    
-     
-     }
-     .alert-zone-in-progress {
-     
-        @include ring-icon($highlight-blue)
-     
-     }
-     .alert-zone-waiting {
-        @include ring-icon($warning-yellow)
-         
-     }
+}
 .alert-legends {
     position: absolute;
     bottom: 0px;
     right: 50px;
+    .zone-alert-legends {
+        display: flex;
+        margin-right:2px;
+        .zone-alert-bullet-and-count-legends {
+            display: flex;
+            margin-left: 13px;
+            .zone-alert-legends-labels {
+                margin-top:2px;
+                margin-left: 2px;
+            }
+        }
+    }
 }
-.sections {
-    border:0
-}
-.heading-and-sections {
-    width:70%
-}
-.sections-donut-chart {
-    display: flex;
-}
-.zone-alert-legends {
-    display: flex;
-    margin-right:2px
-}
-.zone-alert-legends-labels {
-    margin-top:2px;
-    margin-left: 2px;
-}
-.zone-alert-bullet-and-count-legends {
-    display: flex;
-    margin-left: 13px;
-}
+
+    .zone-heading:last-child
+    {
+    border-right : 6px solid rgb(246,246,246);
+    }
+
+
+
+
+
+
 
 
 

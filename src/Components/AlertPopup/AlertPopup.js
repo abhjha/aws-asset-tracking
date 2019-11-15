@@ -1,5 +1,5 @@
 import React from 'react';
-import './AlertPopup.css';
+
 
 class AlertPopup extends React.Component {
 
