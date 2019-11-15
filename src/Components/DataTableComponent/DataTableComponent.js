@@ -20,11 +20,11 @@ export class DataTableComponent extends React.Component {
 
   setStatusStyle(cell, row) {
     let styleClassName = '';
-    if (row.status.toLowerCase() === 'critical') {
+    if (row.STATUS.toLowerCase() === 'critical') {
       styleClassName = 'text-danger';
-    } else if (row.status.toLowerCase() === 'non-critical') {
+    } else if (row.STATUS.toLowerCase() === 'non-critical') {
       styleClassName = 'text-primary';
-    } else if (row.status.toLowerCase() === 'warning') {
+    } else if (row.STATUS.toLowerCase() === 'warning') {
       styleClassName = 'text-warning';
     }
     return `<i class='fas fa-circle statusMarker ${styleClassName}'></i> ${cell}`;
