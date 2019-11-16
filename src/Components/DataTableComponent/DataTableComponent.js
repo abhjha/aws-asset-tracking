@@ -13,7 +13,7 @@ export class DataTableComponent extends React.Component {
       isSearchEnabled: true,
       isFilterEnabled: true,
       filterItem: [],
-      alertsDatatableData:{},
+      alertsDatatableData: {},
       filteredData: props.filteredData,
       filteredZoneData: props.filteredZoneData
     };
@@ -21,12 +21,12 @@ export class DataTableComponent extends React.Component {
 
   setStatusStyle(cell, row) {
     let styleClassName = '';
-    if (row.STATUS.toLowerCase() === 'critical') {
-      styleClassName = 'text-danger';
-    } else if (row.STATUS.toLowerCase() === 'non-critical') {
-      styleClassName = 'text-primary';
-    } else if (row.STATUS.toLowerCase() === 'warning') {
-      styleClassName = 'text-warning';
+    if (row.STATUS.toLowerCase() === 'in progress') {
+      styleClassName = 'in-progress-status';
+    } else if (row.STATUS.toLowerCase() === 'completed') {
+      styleClassName = 'completed-status';
+    } else if (row.STATUS.toLowerCase() === 'waiting') {
+      styleClassName = 'waiting-status';
     }
     return `<i class='fas fa-circle statusMarker ${styleClassName}'></i> ${cell}`;
   }
@@ -36,25 +36,52 @@ export class DataTableComponent extends React.Component {
       .then(response => {
         console.log(response)
         this.setState({
-
-          alertDatatableData:response
-         
-         
+          alertDatatableData: response
         })
       })
-    }
-    componentDidMount = () => {
-      this.triggerAlertDatatable();
-      clearInterval(this.triggerAlertDatatable);
-      setInterval(this.triggerAlertDatatable, 30000);
-      
-    }
+  }
+  componentDidMount = () => {
+    this.triggerAlertDatatable();
+    clearInterval(this.triggerAlertDatatable);
+    setInterval(this.triggerAlertDatatable, 30000);
+
+  }
+
+  changeTimeFormat = () => {
+
+  }
+  secondsToMilliseconds = (cell,row) =>{
+    cell = cell*1000;
+    var dateVal = parseInt(cell);
+        var month = [];
+        month[0] = "Jan";
+        month[1] = "Feb";
+        month[2] = "Mar";
+        month[3] = "Apr";
+        month[4] = "May";
+        month[5] = "Jun";
+        month[6] = "Jul";
+        month[7] = "Aug";
+        month[8] = "Sep";
+        month[9] = "Oct";
+        month[10] = "Nov";
+        month[11] = "Dec";
+        var date = new Date(dateVal).getDate();
+        var monthName = month[new Date(dateVal).getMonth()];
+        // var year = new Date(dateVal).getFullYear();
+        var hours = new Date(dateVal).getHours();
+        var mins = new Date(dateVal).getMinutes();
+        // var seconds = new Date(dateVal).getSeconds();
+
+        return date + " " + monthName + " : " + hours + ":" + mins ;
+
+  }
   render() {
     const { isSearchEnabled } = this.state;
     return (
       <div id="tableGridPanel">
         <div className="alert-zone">
-          
+
           <div className="card-heading"><h1>Alerts</h1></div>
         </div>
 
@@ -66,18 +93,18 @@ export class DataTableComponent extends React.Component {
               onClick={(e) => this.options.showSearchTool(e)}></i>
           </div>
           <input type="hidden" value={this.state.activeTabKey} />
-          <div onClick={this.props.triggerPopupOpen}> 
+          <div onClick={this.props.triggerPopupOpen}>
             <BootstrapTable
               ref='alertsTable' containerClass="alertsTable" data={this.state.alertDatatableData} striped hover bordered={false} search={isSearchEnabled} multiColumnSearch options={this.options}>
               <TableHeaderColumn width='30' dataField='statusBox' dataFormat={this.setStatusStyle} border='0'></TableHeaderColumn>
               <TableHeaderColumn width='90' headerAlign='center' dataAlign='center' isKey dataField='ASSET_NAME' dataFormat={this.alertDetails}>Material</TableHeaderColumn>
               <TableHeaderColumn headerAlign='center' dataAlign='center' dataSort dataField='LINE' >Zone</TableHeaderColumn>
               <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='STATUS' >Status</TableHeaderColumn>
-              <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='TIMESTAMP'>Time Stamp</TableHeaderColumn>
+              <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='TIMESTAMP' dataFormat={ this.secondsToMilliseconds } >Time Stamp</TableHeaderColumn>
               <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='ALARM_NAME'>Description</TableHeaderColumn>
             </BootstrapTable>
           </div>
-      
+
         </div>
         {/* <div className="legends">
           <ul>
