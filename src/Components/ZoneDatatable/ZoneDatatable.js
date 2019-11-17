@@ -35,7 +35,6 @@ export class ZoneDatatable extends React.Component {
     fetch(`https://iy78q5dt50.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialHistory?zoneId=${this.props.zoneId}`)
       .then(resp => resp.json())
       .then(response => {
-        console.log(response)
         this.setState({
           loading: false,
           filteredZoneData: response,
@@ -43,7 +42,6 @@ export class ZoneDatatable extends React.Component {
         })
       })
       .catch((err) => {
-        console.log(err);
         this.setState({
           loading: false,
           filteredZoneData:{SelectedZone:[]},
@@ -51,9 +49,7 @@ export class ZoneDatatable extends React.Component {
         })
     });
   }
-  rowEvents =(e)=> {
   
-  }
   componentDidUpdate(prevProps) {
     if (prevProps.zoneId !== this.props.zoneId) {
       this.triggerZoneViewTable();
@@ -71,7 +67,11 @@ export class ZoneDatatable extends React.Component {
     const { isSearchEnabled} = this.state;
     const options = {
       responsive: true,
-      onRowClick : this.props.triggerPopupOpen
+      onRowClick : (row, columnIndex) => {
+        if(columnIndex === 1){
+          this.props.triggerPopupOpen()
+        }
+      }
     };
 
     return (
@@ -89,13 +89,12 @@ export class ZoneDatatable extends React.Component {
               onClick={(e) => this.options.showSearchTool(e)}></i>
           </div>
          
-
           <input type="hidden" value={this.state.activeTabKey} />
           <div > 
           <BootstrapTable
             ref='alertsTable' containerClass="alertsTable" data={this.state.filteredZoneData.SelectedZone} striped hover bordered={false} search={isSearchEnabled} multiColumnSearch options={options} >
             <TableHeaderColumn width='80' dataField='statusBox' dataFormat={this.setStatusStyle} border='0'></TableHeaderColumn>
-            <TableHeaderColumn width='90' headerAlign='left' dataAlign='center' isKey dataField='materialName' dataFormat={this.alertDetails}>Material</TableHeaderColumn>
+            <TableHeaderColumn width='90' headerAlign='left' dataAlign='center' isKey dataField='materialName' columnClassName='alerts-link'>Material</TableHeaderColumn>
             <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='zoneName'  >Material location</TableHeaderColumn>
             <TableHeaderColumn headerAlign='center' dataAlign='center' dataSort dataField='status' >Status</TableHeaderColumn>
             <TableHeaderColumn headerAlign='center' dataAlign='center'  dataField='visitTimein' >Zone In time</TableHeaderColumn>
