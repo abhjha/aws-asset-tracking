@@ -13,7 +13,7 @@ export class DataTableComponent extends React.Component {
       isSearchEnabled: true,
       isFilterEnabled: true,
       filterItem: [],
-      alertsDatatableData: {},
+     
       filteredData: props.filteredData,
       filteredZoneData: props.filteredZoneData
     };
@@ -51,33 +51,55 @@ export class DataTableComponent extends React.Component {
 
   }
   secondsToMilliseconds = (cell,row) =>{
-    cell = cell*1000;
-    var dateVal = parseInt(cell);
-        var month = [];
-        month[0] = "Jan";
-        month[1] = "Feb";
-        month[2] = "Mar";
-        month[3] = "Apr";
-        month[4] = "May";
-        month[5] = "Jun";
-        month[6] = "Jul";
-        month[7] = "Aug";
-        month[8] = "Sep";
-        month[9] = "Oct";
-        month[10] = "Nov";
-        month[11] = "Dec";
-        var date = new Date(dateVal).getDate();
-        var monthName = month[new Date(dateVal).getMonth()];
-        // var year = new Date(dateVal).getFullYear();
-        var hours = new Date(dateVal).getHours();
-        var mins = new Date(dateVal).getMinutes();
-        // var seconds = new Date(dateVal).getSeconds();
+    var currDate = new Date(cell);
+    var dateString = (new Date(cell)).toLocaleDateString("en-US", {
+      month: 'short',
+      day: '2-digit'
+                });
+    var dateArray = dateString.split(" ");
+    dateString = ""+dateArray[1]+" "+dateArray[0];
+    var dateHours = currDate.getHours();
+    var dateMins = currDate.getMinutes();
+    dateString = dateString+" : "+dateHours+":"+dateMins;
+    console.log("Aruba:"+dateString);
+    return dateString;
+    //cell = cell*1000;
+    // var dateVal = parseInt(cell);
+    //     var month = [];
+    //     month[0] = "Jan";
+    //     month[1] = "Feb";
+    //     month[2] = "Mar";
+    //     month[3] = "Apr";
+    //     month[4] = "May";
+    //     month[5] = "Jun";
+    //     month[6] = "Jul";
+    //     month[7] = "Aug";
+    //     month[8] = "Sep";
+    //     month[9] = "Oct";
+    //     month[10] = "Nov";
+    //     month[11] = "Dec";
+    //     var date = new Date(dateVal).getDate();
+    //     var monthName = month[new Date(dateVal).getMonth()];
+    //     // var year = new Date(dateVal).getFullYear();
+    //     var hours = new Date(dateVal).getHours();
+    //     var mins = new Date(dateVal).getMinutes();
+    //     // var seconds = new Date(dateVal).getSeconds();
 
-        return date + " " + monthName + " : " + hours + ":" + mins ;
+    //     return date + " " + monthName + " : " + hours + ":" + mins ;
+
 
   }
   render() {
+    
     const { isSearchEnabled } = this.state;
+    const options = {
+      responsive: true,
+      onRowClick : (row, columnIndex) => {
+        if(columnIndex === 1 || columnIndex === 2 || columnIndex === 3 || columnIndex === 4 || columnIndex === 5 ){
+          this.props.triggerAlertPopupOpen()
+        }
+      }
+    };
     return (
       <div id="tableGridPanel">
         <div className="alert-zone">
@@ -93,9 +115,9 @@ export class DataTableComponent extends React.Component {
               onClick={(e) => this.options.showSearchTool(e)}></i>
           </div>
           <input type="hidden" value={this.state.activeTabKey} />
-          <div onClick={this.props.triggerPopupOpen}>
+         
             <BootstrapTable
-              ref='alertsTable' containerClass="alertsTable" data={this.state.alertDatatableData} striped hover bordered={false} search={isSearchEnabled} multiColumnSearch options={this.options}>
+              ref='alertsTable' containerClass="alertsTable" data={this.state.alertDatatableData} striped hover bordered={false} search={isSearchEnabled} multiColumnSearch options={options} pagination>
               <TableHeaderColumn width='30' dataField='statusBox' dataFormat={this.setStatusStyle} border='0'></TableHeaderColumn>
               <TableHeaderColumn width='90' headerAlign='center' dataAlign='center' isKey dataField='ASSET_NAME' dataFormat={this.alertDetails}>Material</TableHeaderColumn>
               <TableHeaderColumn headerAlign='center' dataAlign='center' dataSort dataField='LINE' >Zone</TableHeaderColumn>
@@ -105,7 +127,7 @@ export class DataTableComponent extends React.Component {
             </BootstrapTable>
           </div>
 
-        </div>
+       
         {/* <div className="legends">
           <ul>
             <li className="bullet-and-count-legends">

@@ -1,18 +1,18 @@
 import React from 'react';
-import { Doughnut , Chart}  from 'react-chartjs-2';
+import { Chart}  from 'react-chartjs-2';
 var originalDoughnutDraw = Chart.controllers.doughnut.prototype.draw;
 Chart.helpers.extend(Chart.controllers.doughnut.prototype, {
   draw: function() {
     originalDoughnutDraw.apply(this, arguments);
     var chart = this.chart;
-    var width = chart.chart.width,
-        height = chart.chart.height,
-        ctx = chart.chart.ctx;
-    var fontSize = "25px";
+    var width = chart.width,
+        height = chart.height,
+        ctx = chart.ctx;
+    var fontSize = "14px";
     ctx.font = fontSize + "em sans-serif";
     ctx.textBaseline = "middle";
-    var sum=chart.config.data.datasets[0].data[2]+chart.config.data.datasets[0].data[1]+chart.config.data.datasets[0].data[0]
-    var text = ((chart.config.data.datasets[0].data[2]/sum)*100).toFixed(2) + "%" ,
+    
+    var text = chart.config.data.text  ,
         textX = Math.round((width - ctx.measureText(text).width) / 2),
         textY = height / 2;
 
@@ -28,30 +28,16 @@ export class ZoneDetailPopup extends React.Component {
         this.state = {
             dataElements: {
             materialStatusState : "gray-state",   
-            datasets: [
-                    {
-                        data: [2,4,25],
-                        backgroundColor: ['rgb(237,237,237)','rgb(237,237,237)','rgb(151, 221, 198)'],
-                        borderWidth:1,
-                        borderAlign:'inner'
-                    }
-                ],
-                labels: ['In Progress',"Waiting",'Completed'],
-                borderColor: [
-                    '#d0b000',
-                    '#bb112e'
-               ],
-               
-            },
+           },
             count:0,
             alertData:{},
             alertList: [
                 {
-                    key: 'Current Zone',
-                    value: 'Paint Shop'
+                    // key: 'Current Zone',
+                  
                 }, {
                      key: 'Total Alerts',
-                    value: '2'
+                    
                 
                 }
             ],
@@ -71,7 +57,23 @@ export class ZoneDetailPopup extends React.Component {
         }
         return defaultTime;
     }
-    triggerAlertPopup = () => {
+    updateGraph = (graphValue) => {
+        document.getElementById("graph-skills").innerHTML = `<canvas id="graph-matrix"></canvas>`;
+        var c1 = document.getElementById("graph-matrix");
+        var context1 =c1.getContext("2d");
+        var text = ((graphValue / 15) * 100).toFixed(2) + "%";
+        context1.font = "bold 24px Roboto, sans-serif ";
+        context1.beginPath();
+        context1.arc(150, 75, 62, 0, (((graphValue / 15) * 100)* Math.PI));
+        context1.lineWidth = 17;
+        context1.strokeStyle = "rgb(151,221,198)";
+        context1.fillStyle = "#000";
+        context1.stroke();
+        context1.fillText(text, 123, 83);
+        context1.width = context1.clientWidth;
+        context1.height = context1.clientHeight;
+    }
+    triggerZoneDetailPopup = () => {
         let completedCount=0
         this.setState({loading:true})
         fetch(`https://iy78q5dt50.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialInfo?materialId=${this.props.popUpName}`)
@@ -80,17 +82,17 @@ export class ZoneDetailPopup extends React.Component {
             var responseKeys = Object.keys(response);
            for (let i = 0; i < responseKeys.length; i++) {
             for (let j = 0; j < response[responseKeys[i]].length; j++) {
-               if ( response[responseKeys[i]][j].status === "Completed") {
+               if ( response[responseKeys[i]][j].status === "Completed" && response[responseKeys[i]][j].visitTimein) {
                  completedCount++;
               }
              }
            }
             this.setState({
-             zoneDetailsObject:response,
+            zoneDetailsObject:response,
             count:completedCount
-             
-             
             })
+            
+            this.updateGraph(this.state.count); 
           })
         }
         getAlertCount = () =>{
@@ -104,28 +106,11 @@ export class ZoneDetailPopup extends React.Component {
             })
           })
         }
-        updateGraph = (graphValue) => {
-            document.getElementById("graph-skills").innerHTML = `<canvas id="graph-matrix"></canvas>`;
-            
-            var c1 = document.getElementById("graph-matrix");
-            var context1 =c1.getContext("2d");
-            var text = (graphValue / 2).toFixed(2) * 100 + "%";
-            context1.font = "bold 24px Roboto, sans-serif ";
-            context1.beginPath();
-            context1.arc(150, 75, 62, 0, graphValue * Math.PI);
-            context1.lineWidth = 17;
-            context1.strokeStyle = "rgb(151,221,198)";
-            context1.fillStyle = "#000";
-            context1.stroke();
-            context1.fillText(text, 123, 83);
-            context1.width = context1.clientWidth;
-            context1.height = context1.clientHeight;
-        }
+        
       
   componentDidMount = () => {
-    this.triggerAlertPopup();
+    this.triggerZoneDetailPopup();
     this.getAlertCount();
-    this.updateGraph(this.state.completedCount); 
     clearInterval(this.triggerZoneViewTable);
     setInterval(this.triggerZoneViewTable, 30000);
   }
@@ -140,7 +125,7 @@ export class ZoneDetailPopup extends React.Component {
                         <div className="sections">                      
                             <div className="leftSection">
                                 <ul>
-                                    <li><p className="title">{alertList[0].key}:</p><p className="content">{alertList[0].value}</p></li>
+                                    {/* <li><p className="title">{alertList[0].key}:</p><p className="content">{alertList[0].value}</p></li> */}
                                     <li><p className="title">{alertList[1].key}:</p><p className="content">{this.state.alertCount}</p></li>
                                 </ul>
                             </div>
@@ -151,6 +136,10 @@ export class ZoneDetailPopup extends React.Component {
                     <canvas id="graph-matrix"></canvas>
                     
                     </div>
+                    
+                    <input type="button" className="close-button" value="x" onClick={this.props.closeWindow} ></input>
+                    
+               
                     </div>
                     <div className="zone">
                         {Object.keys(this.state.zoneDetailsObject).length>0 && Object.keys(this.state.zoneDetailsObject).map((item,index)=> {
