@@ -142,8 +142,8 @@ class AssetMetrics extends Component {
                                                 beginAtZero: true,
                                                 min: 0,
 
-                                                stepSize: 5,
-                                                lineWidth: 1,
+                                                stepSize: 10,
+                                               
                                                 fontColor: 'black',
                                                 fontSize: 12,
                                                 padding: 3

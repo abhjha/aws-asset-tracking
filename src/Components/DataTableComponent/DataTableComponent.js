@@ -33,7 +33,6 @@ export class DataTableComponent extends React.Component {
     fetch(`https://b7h0jkep5i.execute-api.us-west-2.amazonaws.com/Stage/GetAlertDetails`)
       .then(resp => resp.json())
       .then(response => {
-        console.log(response)
         this.setState({
           alertDatatableData: response
         })
@@ -60,33 +59,7 @@ export class DataTableComponent extends React.Component {
     var dateHours = currDate.getHours();
     var dateMins = currDate.getMinutes();
     dateString = dateString+" : "+dateHours+":"+dateMins;
-    console.log("Aruba:"+dateString);
     return dateString;
-    //cell = cell*1000;
-    // var dateVal = parseInt(cell);
-    //     var month = [];
-    //     month[0] = "Jan";
-    //     month[1] = "Feb";
-    //     month[2] = "Mar";
-    //     month[3] = "Apr";
-    //     month[4] = "May";
-    //     month[5] = "Jun";
-    //     month[6] = "Jul";
-    //     month[7] = "Aug";
-    //     month[8] = "Sep";
-    //     month[9] = "Oct";
-    //     month[10] = "Nov";
-    //     month[11] = "Dec";
-    //     var date = new Date(dateVal).getDate();
-    //     var monthName = month[new Date(dateVal).getMonth()];
-    //     // var year = new Date(dateVal).getFullYear();
-    //     var hours = new Date(dateVal).getHours();
-    //     var mins = new Date(dateVal).getMinutes();
-    //     // var seconds = new Date(dateVal).getSeconds();
-
-    //     return date + " " + monthName + " : " + hours + ":" + mins ;
-
-
   }
   render() {
     

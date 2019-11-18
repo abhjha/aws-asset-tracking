@@ -67,9 +67,11 @@ class PlantView extends Component {
                   <div className="quality-insurance" data-id={this.state.metricsAndStatus[this.state.zoneName[4]][0].zoneId}  onClick={this.triggerNavigation}>
                     <div className="headings">{this.state.zoneName[4]}</div>
                     <ul className='main-list'>
-                      <li className="bullet-and-count"><div className="completed"></div><div className="count">{this.state.metricsAndStatus[this.state.zoneName[4]][0].count}</div></li>
-                      <li className="bullet-and-count"><div className="in-progress"></div><div className="count">{this.state.metricsAndStatus[this.state.zoneName[4]][1].count}</div></li>
                       <li className="bullet-and-count"><div className="waiting"></div><div className="count">{this.state.metricsAndStatus[this.state.zoneName[4]][2].count}</div></li>
+                      <li className="bullet-and-count"><div className="in-progress"></div><div className="count">{this.state.metricsAndStatus[this.state.zoneName[4]][1].count}</div></li>
+                      <li className="bullet-and-count"><div className="completed"></div><div className="count">{this.state.metricsAndStatus[this.state.zoneName[4]][0].count}</div></li>
+                     
+                    
                     </ul>
                     <div className="arrow-down"></div>
                   </div>
@@ -77,9 +79,9 @@ class PlantView extends Component {
                   <div className="paint-shop" data-id={this.state.metricsAndStatus[this.state.zoneName[3]][0].zoneId} onClick={this.triggerNavigation}>
                     <div className="headings">{this.state.zoneName[3]}</div>
                     <ul className='main-list'>
-                      <li className="bullet-and-count"><div className="completed"></div><div className="count">{this.state.metricsAndStatus[this.state.zoneName[3]][0].count}</div></li>
+                    <li className="bullet-and-count"><div className="waiting"></div><div className="count">{this.state.metricsAndStatus[this.state.zoneName[3]][2].count}</div></li>
                       <li className="bullet-and-count"><div className="in-progress"></div><div className="count">{this.state.metricsAndStatus[this.state.zoneName[3]][1].count}</div></li>
-                      <li className="bullet-and-count"><div className="waiting"></div><div className="count">{this.state.metricsAndStatus[this.state.zoneName[3]][2].count}</div></li>
+                      <li className="bullet-and-count"><div className="completed"></div><div className="count">{this.state.metricsAndStatus[this.state.zoneName[3]][0].count}</div></li>
                     </ul>
                     <div className="arrow-down"></div>
                   </div>
@@ -87,14 +89,9 @@ class PlantView extends Component {
                   <div className="piping-and-cooling-shop" data-id={this.state.metricsAndStatus[this.state.zoneName[2]][0].zoneId} onClick={this.triggerNavigation}>
                     <div className="headings">{this.state.zoneName[2]}</div>
                     <ul className="main-list">
-                      <li className="bullet-and-count">
-                        <div className="completed"></div>
-                        <div className="count">
-                          {this.state.metricsAndStatus[this.state.zoneName[2]][0].count}
-                        </div>
-                      </li>
+                    <li className="bullet-and-count"><div className="waiting"></div><div className="count">{this.state.metricsAndStatus[this.state.zoneName[2]][2].count}</div></li>
                       <li className="bullet-and-count"><div className="in-progress"></div><div className="count">{this.state.metricsAndStatus[this.state.zoneName[2]][1].count}</div></li>
-                      <li className="bullet-and-count"><div className="waiting"></div><div className="count">{this.state.metricsAndStatus[this.state.zoneName[2]][2].count}</div></li>
+                      <li className="bullet-and-count"><div className="completed"></div><div className="count">{this.state.metricsAndStatus[this.state.zoneName[2]][0].count}</div></li>
                     </ul>
                     <div className="arrow-down"></div>
                   </div>
@@ -103,9 +100,9 @@ class PlantView extends Component {
                   <div className="vaccum-foaming-shop" data-id={this.state.metricsAndStatus[this.state.zoneName[1]][0].zoneId} onClick={this.triggerNavigation}>
                     <div className='headings'>{this.state.zoneName[1]}</div>
                     <ul className='main-list'>
-                      <li className="bullet-and-count"><div className="completed"></div><div className="count">{this.state.metricsAndStatus[this.state.zoneName[1]][0].count}</div></li>
+                    <li className="bullet-and-count"><div className="waiting"></div><div className="count">{this.state.metricsAndStatus[this.state.zoneName[1]][2].count}</div></li>
                       <li className="bullet-and-count"><div className="in-progress"></div><div className="count">{this.state.metricsAndStatus[this.state.zoneName[1]][1].count}</div></li>
-                      <li className="bullet-and-count"><div className="waiting"></div><div className="count">{this.state.metricsAndStatus[this.state.zoneName[1]][2].count}</div></li>
+                      <li className="bullet-and-count"><div className="completed"></div><div className="count">{this.state.metricsAndStatus[this.state.zoneName[1]][0].count}</div></li>
                     </ul>
                     <div className="arrow-down"></div>
                   </div>
@@ -114,9 +111,9 @@ class PlantView extends Component {
                   <div className="metal-shop" data-id={this.state.metricsAndStatus[this.state.zoneName[0]][0].zoneId} onClick={this.triggerNavigation}>
                     <div className="headings">{this.state.zoneName[0]}</div>
                     <ul className='main-list'>
-                      <li className="bullet-and-count"><div className="completed"></div><div className="count">{this.state.metricsAndStatus[this.state.zoneName[0]][0].count}</div></li>
+                    <li className="bullet-and-count"><div className="waiting"></div><div className="count">{this.state.metricsAndStatus[this.state.zoneName[0]][2].count}</div></li>
                       <li className="bullet-and-count"><div className="in-progress"></div><div className="count">{this.state.metricsAndStatus[this.state.zoneName[0]][1].count}</div></li>
-                      <li className="bullet-and-count"><div className="waiting"></div><div className="count">{this.state.metricsAndStatus[this.state.zoneName[0]][2].count}</div></li>
+                      <li className="bullet-and-count"><div className="completed"></div><div className="count">{this.state.metricsAndStatus[this.state.zoneName[0]][0].count}</div></li>
                     </ul>
                     <div className="arrow-down"></div>
                   </div>
