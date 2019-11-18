@@ -11,9 +11,6 @@ class Menu extends React.Component {
         this.state = {
             selectedMenuId: 0,
             menuItem:['Dashboard','Zone Details'],
-            // menuItems: ['Dashboard', 'Asset Registry', 'Device Registry', 'Device Registry'],
-            // menuItems: ['Dashboard', 'Asset Registry', 'Device Registry', 'Edit Asset','Detach Thing',""],
-            // menuItems: ['Dashboard'],
         }
     }
 
@@ -24,7 +21,7 @@ class Menu extends React.Component {
             this.props.history.push({ pathname: '/' });
             switch (selectedMenuId) {
                 case "0": this.props.history.push({ pathname: '/' }); break;
-                case "1": this.props.history.push({ pathname: '/zoneView',state: {zoneId:'zone001'} }); break;
+                case "1": this.props.history.push({ pathname: '/zoneView',state: {zoneId:'zone001', zoneViewName : "Metal Shop"} }); break;
                 default: this.props.history.push({ pathname: '/' });
             }
         }
@@ -49,7 +46,7 @@ class Menu extends React.Component {
             <div onClick={this.setActiveState} className="menu-container">
                 <div className="menu-heading">
                     SMART FACTORY FABRIC
-                    MATERIAL VISIBILITY
+                    Material Visibility
                 </div>
                 <div onClick={this.setActiveState} className="menu-option-items">
                     {this.state.menuItem.map((item, index) => {

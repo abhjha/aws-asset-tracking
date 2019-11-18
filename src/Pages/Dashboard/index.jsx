@@ -13,13 +13,15 @@ class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isModalOpen: false
+      isModalOpen: false,
+     
     }
   }
 
   openModal = () => {
-    this.setState({ isModalOpen: true })
+    this.setState({ isModalOpen: !this.state.isModalOpen})
   }
+
   setMenuActiveState =() => {
     var pageId = document.getElementsByClassName("dashboard");
     if(pageId.length > 0){
@@ -30,6 +32,7 @@ class Dashboard extends Component {
       document.getElementsByClassName('menu-heading-container')[1].classList.add('active');
     }
   }
+
   triggerAssetMetricsGraphData = () => {
     fetch('https://iy78q5dt50.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialMetrics ')
       .then(resp => resp.json())
@@ -44,7 +47,6 @@ class Dashboard extends Component {
   componentDidMount() {
     this.triggerAssetMetricsGraphData();
     this.setMenuActiveState();
-
   }
 
   render() {
@@ -77,9 +79,6 @@ class Dashboard extends Component {
    
     return (
       < div className="data-container dashboard ">
-        {/* <div className="db-header-label ">
-          DASHBOARD
-        </div> */}
         <div className="db-data">
           <div className="db-data-values ">
             <div className="db-data-metrics ">
@@ -93,7 +92,8 @@ class Dashboard extends Component {
           <div className="db-alerts card-tile ">
             <DataTableComponent filteredData={filteredData} triggerPopupOpen={this.openModal} />
           </div>
-          {this.state.isModalOpen && <AlertPopup />}
+          {this.state.isModalOpen ?  <AlertPopup
+           closeWindow={this.openModal.bind(this)} /> : null}
         </div>
       </div>
     );

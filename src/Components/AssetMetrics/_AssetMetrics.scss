@@ -41,16 +41,14 @@
 
 .total-count,.dormant-assets-count,.completed-assets-count {
     @include text-normal();
-    font-size: 25px;
+    font-weight: normal;
+    color: #000000;
+    font-size: $heading-sub-fontsize;
     margin: 10px;
     text-align: center;
 }
 
 .work-in-progress,.dormant-assets-label,.completed-assets-label {
     text-align: center;
-
-    @include text-normal();
-
-
-    font-size: 15px;
+    font-size: $font-normal-fontsize-table
 }

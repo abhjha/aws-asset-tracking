@@ -4,7 +4,19 @@ $margin: 2px 4px;
     display: flex;
     width:100%;
 }
-
+.factory-floor-plan {
+    width:650px;
+    position: relative;
+    margin: 0px auto;
+    .floor-plan-wrapper {
+        width: 650px;
+        position: relative;
+        .zone-details {
+            position: absolute;
+            z-index: 100;
+        }
+    }
+}
 
 .mapImage {
     height:20px;
@@ -17,34 +29,17 @@ $margin: 2px 4px;
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
     border-top: 12px solid white;
-    
     margin-left: 55px;
     margin-top: 1px;
-   
-   
-  }
-  .quality-assurance-arrow-down {
+}
+.quality-assurance-arrow-down {
     margin-left: 46px;
     margin-top: 11px;
-  }
+}
   
 .main-heading {
     font-weight: bold;
     margin-left: 5px;
-}
-.factory-floor-plan {
-    
-    width:650px;
-    position: relative;
-    margin: 0px auto;
-}
-.floor-plan-wrapper {
-    width: 650px;
-    position: relative;
-}
-.zone-details {
-    position: absolute;
-    z-index: 100;
 }
 .asset-list {
     height:30px;
@@ -79,16 +74,11 @@ $margin: 2px 4px;
 
 ul {
     list-style: none;
-
 }
-
-
 .completed,.in-progress,.waiting {
     width: 12px;
     height: 14px;
     border-radius: 41px;
-   
-
 }
 .completed {
 
@@ -109,9 +99,6 @@ margin: $margin;
 
 .bullet-and-count {
     display: flex;
-//    margin-right: 10px
-   
-   ;
 }
 .count {
     margin-left: 2px;
@@ -122,7 +109,6 @@ margin: $margin;
     margin-top: 9px;
 }
 .quality-insurance {
-    
     margin-left: 144px;
     margin-top: 62px;
 }
@@ -134,10 +120,6 @@ margin: $margin;
     margin-left: 456px;
     margin-top: 28px;
 }
-
-
-
-
 .factoryImage {
     width: 100%;
     max-width: 650px;
@@ -149,7 +131,6 @@ margin: $margin;
     position: absolute;
     right: 43%;
     bottom: 5%;
-
 
     ul{
         display: flex;
