@@ -27,6 +27,13 @@ class zoneView extends React.Component {
             popUpName: popUpName
         })
     }
+    closeModal= () => {
+        this.setState({
+            isModalOpen: !this.state.isModalOpen,
+          
+        })
+
+    }
 
     triggerZoneViewCardData = () => {
         fetch('https://iy78q5dt50.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialCountPerZone')
@@ -89,7 +96,7 @@ class zoneView extends React.Component {
                     />
                 </div>
                 {this.state.isModalOpen ? <ZoneDetailPopup popUpName={this.state.popUpName}
-                    closeWindow={this.openModal.bind(this)} /> : null}
+                    closeWindow={this.closeModal.bind(this)} /> : null}
             </div>
         );
     }

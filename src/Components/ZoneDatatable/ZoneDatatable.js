@@ -35,6 +35,7 @@ export class ZoneDatatable extends React.Component {
     fetch(`https://iy78q5dt50.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialHistory?zoneId=${this.props.zoneId}`)
       .then(resp => resp.json())
       .then(response => {
+        
         this.setState({
           loading: false,
           filteredZoneData: response,
@@ -58,8 +59,8 @@ export class ZoneDatatable extends React.Component {
 
   componentDidMount = () => {
     this.triggerZoneViewTable();
-    // clearInterval(this.triggerZoneViewTable);
-    // setInterval(this.triggerZoneViewTable, 30000);
+    clearInterval(this.triggerZoneViewTable);
+    setInterval(this.triggerZoneViewTable, 30000);
   }
   
 
