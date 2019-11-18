@@ -66,12 +66,18 @@ export class DataTableComponent extends React.Component {
     const { isSearchEnabled } = this.state;
     const options = {
       responsive: true,
+      sizePerPage:  15, 
+      sizePerPageList: [ {
+        text: '15', value: 5
+      }, {
+        text: '15', value: 15
+      }], 
       onRowClick : (row, columnIndex) => {
         if(columnIndex === 1 || columnIndex === 2 || columnIndex === 3 || columnIndex === 4 || columnIndex === 5 ){
           this.props.triggerAlertPopupOpen()
         }
       }
-    };
+    }
     return (
       <div id="tableGridPanel">
         <div className="alert-zone">
