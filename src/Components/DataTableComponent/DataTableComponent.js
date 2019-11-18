@@ -13,7 +13,6 @@ export class DataTableComponent extends React.Component {
       isSearchEnabled: true,
       isFilterEnabled: true,
       filterItem: [],
-     
       filteredData: props.filteredData,
       filteredZoneData: props.filteredZoneData
     };
