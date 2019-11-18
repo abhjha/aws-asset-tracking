@@ -46,7 +46,7 @@ class PlantView extends Component {
 
     this.triggerFactoryFloorPlan();
     clearInterval(this.triggerFactoryFloorPlan);
-    setInterval(this.triggerFactoryFloorPlan, 5000);
+    setInterval(this.triggerFactoryFloorPlan, 30000);
   }
 
   render() {

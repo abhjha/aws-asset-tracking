@@ -99,7 +99,7 @@ class AssetMetrics extends Component {
     componentDidMount = () => {
         this.triggerAssetMetricsData();
         clearInterval(this.triggerAssetMetricsData);
-        setInterval(this.triggerAssetMetricsData, 5000);
+        setInterval(this.triggerAssetMetricsData, 30000);
     }
     render() {
         return (

@@ -6,26 +6,27 @@ class AlertPopup extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            alertData:{},
+           
+            alertPopupData: [],
             alertList: [
                 {
                     key: 'ASSET',
-                    value: 2753
+                    
                 }, {
                      key: 'ZONE',
-                    value: 'Zone 1-XX-XX'
+                    
                  }, {
                     key: 'STATUS',
-                     value: 'WAITING'
+                     
                  }, {
                      key: 'TIME IN',
-                     value: '12:00:00'
+                    
                  }, {
-                     key: 'TIME OUT',
-                     value: '12:45:00'
+                     key: 'DESCRIPTION',
+                     
                  }, {
                      key: 'Shift',
-                     value: 2
+                     
                  }, {
                     key: 'Supervisor',
                      value: 'John Doe'
@@ -36,43 +37,30 @@ class AlertPopup extends React.Component {
             ]            
         }
     }
-    triggerAlertPopup = () => {
-        this.setState({loading:true})
-        fetch(`https://iy78q5dt50.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialHistory?zoneId=${this.props.zoneId}`)
-          .then(resp => resp.json())
-          .then(response => {
-            this.setState({
-             
-              alertData: response,
-              zoneName: response.SelectedZone[0].zoneName
-            })
-          })
-        }
-        
-  componentDidMount = () => {
-    this.triggerAlertPopup();
-    clearInterval(this.triggerZoneViewTable);
-    setInterval(this.triggerZoneViewTable, 30000);
-  }
+   
     render() {
         const  alertList  = this.state.alertList;
-
+       
         return (
             <div id="alertDetail" >
                 <h1>ALERT DETAILS</h1>
                 <div className="sections">                      
                     <div className="leftSection">
-                                    <ul>
-                                        <li><p className="title">{alertList[0].key}:</p><p className="content">{alertList[0].value}</p></li>
-                                        <li><p className="title">{alertList[1].key}:</p><p className="content">{alertList[1].value}</p></li>
-                                        <li><p className="title">{alertList[2].key}:</p><p className="content">{alertList[2].value}</p></li>
+                       
+                        
+                                <ul>
+                                <li><p className="title">{alertList[0].key}:</p><p className="content">{this.props.alertPopUpName}</p></li>
+                                <li><p className="title">{alertList[1].key}:</p><p className="content">{this.props.zoneName}</p></li>
+                                <li><p className="title">{alertList[2].key}:</p><p className="content">{this.props.status}</p></li>
 
-                                    </ul>
+                            </ul>
+
+                          
                     </div>
                     <div className="rightSection">
                         <ul>
-                            <li><p className="title">{alertList[3].key}:</p><p className="content">{alertList[3].value}</p></li>
-                            <li><p className="title">{alertList[4].key}:</p><p className="content">{this.state.alertData.visitTimein}</p></li>
+                            <li><p className="title">{alertList[3].key}:</p><p className="content">{this.props.timeStamp}</p></li>
+                            <li><p className="title">{alertList[4].key}:</p><p className="content">{this.props.description}</p></li>
                         </ul>
                     </div>
                     <div className="lower-section">

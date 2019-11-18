@@ -14,12 +14,48 @@ class Dashboard extends Component {
     super(props);
     this.state = {
       isModalOpen: false,
+      alertPopUpName: "",
+      zoneName: "",
+      status: ""
      
     }
   }
 
   openModal = () => {
-    this.setState({ isModalOpen: !this.state.isModalOpen})
+     // eslint-disable-next-line no-restricted-globals
+     const alertPopUpName = event.path[1].cells[1].innerText;
+      // eslint-disable-next-line no-restricted-globals
+     const zoneName=event.path[1].cells[2].innerText;
+      // eslint-disable-next-line no-restricted-globals
+      const status=event.path[1].cells[3].innerText;
+       // eslint-disable-next-line no-restricted-globals
+       const timeStamp=event.path[1].cells[4].innerText;
+       // eslint-disable-next-line no-restricted-globals
+       const description=event.path[1].cells[5].innerText;
+      
+   
+    
+  
+    this.setState({ 
+      alertPopUpName:alertPopUpName,
+      zoneName:zoneName,
+      status:status,
+      timeStamp:timeStamp,
+      description:description,
+      isModalOpen: !this.state.isModalOpen,
+      
+    })
+  }
+  closeModal=()=> {
+    
+      
+   
+     this.setState({ 
+       
+       isModalOpen: !this.state.isModalOpen,
+       
+     })
+   
   }
 
   setMenuActiveState =() => {
@@ -50,33 +86,6 @@ class Dashboard extends Component {
   }
 
   render() {
-   
-    const filteredData = [
-      {
-        "id": "1",
-        "status": "warning",
-        "statusBox": "",
-        "dateTime": "1234",
-        "activeTime": "431",
-        "description": "987",
-        "parameter": "987",
-        "location": "qwer"
-      },
-
-      {
-        "id": "2",
-        "status": "critical",
-        "statusBox": "",
-        "dateTime": "126",
-        "activeTime": "432",
-        "description": "987",
-        "parameter": "987",
-        "location": "qwer"
-      },
-      { "id": "3", "status": "warning", "statusBox": "", "dateTime": "125", "activeTime": "434", "description": "987", "parameter": "987", "location": "qwer" },
-      { "id": "4", "status": "non-critical", "statusBox": "", "dateTime": "124", "activeTime": "435", "description": "987", "parameter": "987", "location": "qwer" }
-    ]
-   
     return (
       < div className="data-container dashboard ">
         <div className="db-data">
@@ -90,10 +99,16 @@ class Dashboard extends Component {
             </div>
           </div>
           <div className="db-alerts card-tile ">
-            <DataTableComponent filteredData={filteredData} triggerPopupOpen={this.openModal} />
+            <DataTableComponent  triggerAlertPopupOpen={this.openModal} />
           </div>
           {this.state.isModalOpen ?  <AlertPopup
-           closeWindow={this.openModal.bind(this)} /> : null}
+           closeWindow={this.closeModal.bind(this)}
+
+           alertPopUpName= {this.state.alertPopUpName}
+           zoneName={this.state.zoneName}
+           status={this.state.status}
+           timeStamp={this.state.timeStamp}
+           description={this.state.description} /> : null}
         </div>
       </div>
     );
