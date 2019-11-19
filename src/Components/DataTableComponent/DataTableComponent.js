@@ -20,12 +20,10 @@ export class DataTableComponent extends React.Component {
 
   setStatusStyle(cell, row) {
     let styleClassName = '';
-    if (row.STATUS.toLowerCase() === 'in progress') {
-      styleClassName = 'in-progress-status';
-    } else if (row.STATUS.toLowerCase() === 'completed') {
-      styleClassName = 'completed-status';
-    } else if (row.STATUS.toLowerCase() === 'waiting') {
-      styleClassName = 'waiting-status';
+    if (row.STATUS.toLowerCase() === 'warning') {
+      styleClassName = 'warning-status';
+    } else if (row.STATUS.toLowerCase() === 'critical') {
+      styleClassName = 'critical-status';
     }
     return `<i class='fas fa-circle statusMarker ${styleClassName}'></i> ${cell}`;
   }
@@ -102,18 +100,16 @@ export class DataTableComponent extends React.Component {
           </div>
 
        
-          <div className="legends-wrapper">
+        <div className="legends-wrapper">
       <div className="zone-data-table-legends">
           <ul className="zone-legends">
             <li className="zone-bullet-and-count-legends">
-              <div className="zone-waiting"></div>
-              <div className="zone-data-table-legends-labels">Waiting</div></li>
+              <div className="warning-status"></div>
+              <div className="data-table-legends-labels">Warning</div></li>
             <li className="zone-bullet-and-count-legends">
-              <div className="zone-in-progress"></div>
-              <div className="zone-data-table-legends-labels">In Progress</div></li>
-            <li className="zone-bullet-and-count-legends">
-              <div className="zone-completed"></div>
-              <div className="zone-data-table-legends-labels">Completed</div></li>
+              <div className="critical-status"></div>
+              <div className="data-table-legends-labels">Critical</div></li>
+           
           </ul>
            </div>
       </div>
