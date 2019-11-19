@@ -136,7 +136,7 @@
    
 }
 
-.bttn{
+.bttn,.acknowledge-button{
     width: 182px;
     height: 46px;
     border-radius: 4px;
@@ -148,6 +148,9 @@
     background-color: #dedede;
     margin: 10px; 
     float: right;
+}
+.acknowledge-button {
+    background-color: $selection-blue;
 }
 
 .bttn-yes{

@@ -37,6 +37,16 @@ class AlertPopup extends React.Component {
             ]            
         }
     }
+    triggerAcknowledgeClick = () => {
+        fetch('https://b7h0jkep5i.execute-api.us-west-2.amazonaws.com/Stage/UpdateAlert?guid=-qWF_J9d3&timestamp=1574082873536&materialId=ELS41143 ')
+          .then(resp => resp.json())
+          .then(response => {
+            console.log(response)
+            this.setState({
+           
+            })
+          });
+      }
    
     render() {
         const  alertList  = this.state.alertList;
@@ -76,7 +86,7 @@ class AlertPopup extends React.Component {
                             <div className="dot">
                                 <div className="alert-links"></div>
                             </div>
-                            <div className="alert-popup-zone-heading">Zone 5</div>
+                            <div className="alert-popup-zone-heading">Metal Shop</div>
                         </div>
                            
                         
@@ -86,7 +96,7 @@ class AlertPopup extends React.Component {
                             <div className="dot">
                                 <div className="alert-links"></div>
                             </div>
-                            <div className="alert-popup-zone-heading">Zone 5</div>
+                            <div className="alert-popup-zone-heading">Vaccum Forming Shop</div>
                            
                         </div>
                         
@@ -95,7 +105,7 @@ class AlertPopup extends React.Component {
                             <div className="dot">
                                 <div className="alert-links"></div>
                             </div>
-                            <div className="alert-popup-zone-heading">Zone 5</div>
+                            <div className="alert-popup-zone-heading">Piping and Cooling Shop</div>
                          
                         </div>
                            
@@ -104,7 +114,7 @@ class AlertPopup extends React.Component {
                             <div className="dot">
                                 <div className="alert-links"></div>
                             </div>
-                            <div className="alert-popup-zone-heading">Zone 4</div>
+                            <div className="alert-popup-zone-heading">Paint Shop</div>
                            
                         </div>
                           
@@ -113,12 +123,12 @@ class AlertPopup extends React.Component {
                             <div className="dot">
                                 <div className="alert-links"></div>
                            </div>
-                           <div className="alert-popup-zone-heading">Zone 5</div>
+                           <div className="alert-popup-zone-heading">Quality Assurance</div>
                           
                         </div>
                     </div>
                     <div className="button" >
-                        <input type="button" className="bttn" value="Acknowledge" onClick={this.props.closeWindow} ></input>
+                        <input type="button" className="acknowledge-button" value="Acknowledge" onClick={this.props.closeWindow} ></input>
                         <input type="button" className="bttn bttn-yes" value="Cancel" onClick={this.props.closeWindow}></input>
                     </div>
                 </div>
