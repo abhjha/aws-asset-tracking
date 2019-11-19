@@ -30,27 +30,26 @@ class Dashboard extends Component {
       const timeStamp=event.path[1].cells[3].innerText;
        // eslint-disable-next-line no-restricted-globals
        const description=event.path[1].cells[4].innerText;
-      
-   
-    
-  
+
+     
     this.setState({ 
       alertPopUpName:alertPopUpName,
       zoneName:zoneName,
-      
       timeStamp:timeStamp,
       description:description,
       isModalOpen: !this.state.isModalOpen,
       
     })
   }
+  closePopupModal=()=> {
+    this.setState({
+      isModalOpen:!this.state.isModalOpen
+    })
+  }
+
   closeModal=()=> {
-    
-      
-   
      this.setState({ 
-       
-       isModalOpen: !this.state.isModalOpen,
+      isModalOpen: !this.state.isModalOpen,
        
      })
    
@@ -77,10 +76,21 @@ class Dashboard extends Component {
         })
       });
   }
+  // triggerAcknowledgeClick = () => {
+  //   fetch('https://iy78q5dt50.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialMetrics ')
+  //     .then(resp => resp.json())
+  //     .then(response => {
+  //       this.setState({
+       
+  //       })
+  //     });
+  // }
+  
 
   componentDidMount() {
     this.triggerAssetMetricsGraphData();
     this.setMenuActiveState();
+    // this.triggerAcknowledgeClick();
   }
 
   render() {
@@ -101,6 +111,7 @@ class Dashboard extends Component {
           </div>
           {this.state.isModalOpen ?  <AlertPopup
            closeWindow={this.closeModal.bind(this)}
+           closeWindowRemoveRow={this.closePopupModal.bind(this)}
 
            alertPopUpName= {this.state.alertPopUpName}
            zoneName={this.state.zoneName}
