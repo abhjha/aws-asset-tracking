@@ -63,8 +63,9 @@ ul {
     }    
 
     .zone-data-table-legends-labels {
-        font-size: 13px;
-        margin-top: 4px;
+        font-size: $font-normal-fontsize-table;
+        margin-top: 2px;
+        margin-left:3px;
     }
 }
 

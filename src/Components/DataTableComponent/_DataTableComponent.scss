@@ -104,19 +104,19 @@ a.alertId{
 }
 
 
-.text-danger{
+.critical-status{
     @include ring-icon($error-red);
 }
 
-.text-warning{
+.warning-status{
     @include ring-icon($warning-yellow);
 }
 
-.text-primary{
-    @include ring-icon($success-green);
+
+.data-table-legends-labels {
+    font-size: $font-normal-fontsize-table;
+    margin-left:3px;
 }
-
-
 
 
 
