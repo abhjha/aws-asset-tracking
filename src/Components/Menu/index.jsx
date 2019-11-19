@@ -10,7 +10,7 @@ class Menu extends React.Component {
         super(props);
         this.state = {
             selectedMenuId: 0,
-            menuItem:['Dashboard','Zone Details'],
+            menuItem:['Dashboard','Zone Details','Search Materials'],
         }
     }
 
@@ -18,10 +18,11 @@ class Menu extends React.Component {
         if (e.target.parentElement.classList.contains('menu-heading-container')) {
             const selectedMenuId = e.target.parentElement.id;
             this.setState({ selectedMenuId });
-            this.props.history.push({ pathname: '/' });
+            //this.props.history.push({ pathname: '/' });
             switch (selectedMenuId) {
                 case "0": this.props.history.push({ pathname: '/' }); break;
                 case "1": this.props.history.push({ pathname: '/zoneView',state: {zoneId:'zone001', zoneViewName : "Metal Shop"} }); break;
+                case "2": this.props.history.push({ pathname: '/SearchPanel',state: {searchId:'123'}}); break;
                 default: this.props.history.push({ pathname: '/' });
             }
         }

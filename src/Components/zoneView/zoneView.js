@@ -54,6 +54,9 @@ class zoneView extends React.Component {
             document.getElementsByClassName('menu-heading-container')[0].classList.remove('active');
             document.getElementsByClassName('menu-heading-container')[1].classList.add('active');
         }
+        
+      
+
     }
 
     triggerTabSelection = (e) => {

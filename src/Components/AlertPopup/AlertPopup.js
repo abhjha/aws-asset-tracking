@@ -128,7 +128,7 @@ class AlertPopup extends React.Component {
                         </div>
                     </div>
                     <div className="button" >
-                        <input type="button" className="acknowledge-button" value="Acknowledge" onClick={this.props.closeWindow} ></input>
+                        <input type="button" className="acknowledge-button" value="Acknowledge" onClick={this.props.closeWindowRemoveRow} ></input>
                         <input type="button" className="bttn bttn-yes" value="Cancel" onClick={this.props.closeWindow}></input>
                     </div>
                 </div>

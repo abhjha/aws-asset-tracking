@@ -16,7 +16,8 @@ class Dashboard extends Component {
       isModalOpen: false,
       alertPopUpName: "",
       zoneName: "",
-      status: ""
+      status: "",
+      acknowledgeClickData: []
      
     }
   }
@@ -42,18 +43,18 @@ class Dashboard extends Component {
     })
   }
   closePopupModal=()=> {
+    this.triggerAcknowledgeClick()
     this.setState({
-      isModalOpen:!this.state.isModalOpen
+      isModalOpen:!this.state.isModalOpen,
+     
     })
   }
 
   closeModal=()=> {
      this.setState({ 
       isModalOpen: !this.state.isModalOpen,
-       
-     })
-   
-  }
+       })
+      }
 
   setMenuActiveState =() => {
     var pageId = document.getElementsByClassName("dashboard");
@@ -76,21 +77,23 @@ class Dashboard extends Component {
         })
       });
   }
-  // triggerAcknowledgeClick = () => {
-  //   fetch('https://iy78q5dt50.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialMetrics ')
-  //     .then(resp => resp.json())
-  //     .then(response => {
-  //       this.setState({
+  triggerAcknowledgeClick = () => {
+    fetch('https://b7h0jkep5i.execute-api.us-west-2.amazonaws.com/Stage/UpdateAlert?guid=-qWF_J9d3&timestamp=1574082873536&materialId=ELS41143')
+      .then(resp => resp.json())
+      .then(response => {
+        this.setState({
+          acknowledgeClickData: response,
+          guid:response
        
-  //       })
-  //     });
-  // }
+        })
+      });
+  }
   
 
   componentDidMount() {
     this.triggerAssetMetricsGraphData();
     this.setMenuActiveState();
-    // this.triggerAcknowledgeClick();
+   
   }
 
   render() {
@@ -112,7 +115,6 @@ class Dashboard extends Component {
           {this.state.isModalOpen ?  <AlertPopup
            closeWindow={this.closeModal.bind(this)}
            closeWindowRemoveRow={this.closePopupModal.bind(this)}
-
            alertPopUpName= {this.state.alertPopUpName}
            zoneName={this.state.zoneName}
            status={this.state.status}
