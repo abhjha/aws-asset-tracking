@@ -26,6 +26,9 @@ card-heading{
     width: 100%;
     display: none;
 }
+.btn btn-default btn-secondary dropdown-toggle {
+    display: none;
+}
 a.alertId{
     cursor: pointer;
     color: #0f8b8d;
@@ -84,10 +87,7 @@ a.alertId{
     position: absolute;
     bottom: 20%;
 }
-#tableGridPanel .page-item.active .page-link{
-    background-color: #cc0000;
-    border-color: #cc0000;
-}
+
 #tableGridPanel .react-bs-table-container .react-bs-table-search-form > input.form-control:focus{
     text-decoration: none;
     box-shadow: none;
@@ -97,6 +97,12 @@ a.alertId{
     max-height: 80%;
     overflow-x: hidden;
 }
+#tableGridPanel .page-item.active .page-link{
+    background-color: $base-color!important;
+    border-color: $base-color;
+    color: #000;
+}
+
 
 .text-danger{
     @include ring-icon($error-red);

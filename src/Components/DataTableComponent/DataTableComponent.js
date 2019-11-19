@@ -67,11 +67,7 @@ export class DataTableComponent extends React.Component {
     const options = {
       responsive: true,
       sizePerPage:  15, 
-      sizePerPageList: [ {
-        text: '15', value: 5
-      }, {
-        text: '15', value: 15
-      }], 
+      hideSizePerPage: true,
       onRowClick : (row, columnIndex) => {
         if(columnIndex === 1 || columnIndex === 2 || columnIndex === 3 || columnIndex === 4 || columnIndex === 5 ){
           this.props.triggerAlertPopupOpen()
@@ -106,19 +102,21 @@ export class DataTableComponent extends React.Component {
           </div>
 
        
-        {/* <div className="legends">
-          <ul>
-            <li className="bullet-and-count-legends">
-              <div className="waiting"></div>
-              <div className="legends-labels">Waiting</div></li>
-            <li className="bullet-and-count-legends">
-              <div className="in-progress"></div>
-              <div className="legends-labels">In Progress</div></li>
-            <li className="bullet-and-count-legends">
-              <div className="completed"></div>
-              <div className="legends-labels">Completed</div></li>
+          <div className="legends-wrapper">
+      <div className="zone-data-table-legends">
+          <ul className="zone-legends">
+            <li className="zone-bullet-and-count-legends">
+              <div className="zone-waiting"></div>
+              <div className="zone-data-table-legends-labels">Waiting</div></li>
+            <li className="zone-bullet-and-count-legends">
+              <div className="zone-in-progress"></div>
+              <div className="zone-data-table-legends-labels">In Progress</div></li>
+            <li className="zone-bullet-and-count-legends">
+              <div className="zone-completed"></div>
+              <div className="zone-data-table-legends-labels">Completed</div></li>
           </ul>
-        </div> */}
+           </div>
+      </div>
       </div>
     );
   }
