@@ -52,7 +52,7 @@ class AlertPopup extends React.Component {
                             <ul>
                                 <li><p className="title">{alertList[0].key}:</p><p className="content">{this.props.alertPopUpName}</p></li>
                                 <li><p className="title">{alertList[1].key}:</p><p className="content">{this.props.zoneName}</p></li>
-                                <li><p className="title">{alertList[2].key}:</p><p className="content">{this.props.status}</p></li>
+                               
 
                             </ul>
 

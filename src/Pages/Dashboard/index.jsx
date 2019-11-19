@@ -27,11 +27,9 @@ class Dashboard extends Component {
       // eslint-disable-next-line no-restricted-globals
      const zoneName=event.path[1].cells[2].innerText;
       // eslint-disable-next-line no-restricted-globals
-      const status=event.path[1].cells[3].innerText;
+      const timeStamp=event.path[1].cells[3].innerText;
        // eslint-disable-next-line no-restricted-globals
-       const timeStamp=event.path[1].cells[4].innerText;
-       // eslint-disable-next-line no-restricted-globals
-       const description=event.path[1].cells[5].innerText;
+       const description=event.path[1].cells[4].innerText;
       
    
     
@@ -39,7 +37,7 @@ class Dashboard extends Component {
     this.setState({ 
       alertPopUpName:alertPopUpName,
       zoneName:zoneName,
-      status:status,
+      
       timeStamp:timeStamp,
       description:description,
       isModalOpen: !this.state.isModalOpen,
