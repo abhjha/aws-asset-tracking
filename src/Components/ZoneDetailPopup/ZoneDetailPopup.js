@@ -118,7 +118,8 @@ export class ZoneDetailPopup extends React.Component {
         const  alertList  = this.state.alertList;
 
         return (
-            <div id="alertDetail" >
+            <div className="zone-popup-wrapper">
+                <div id="alertDetail" >
                 <div className="sections-donut-chart">
                     <div className="heading-and-sections">
                         <h1>{this.props.popUpName}</h1>
@@ -178,6 +179,8 @@ export class ZoneDetailPopup extends React.Component {
                           </div>
                      </div>
                      </div>
+            </div>
+            
                     );}}
     
 export default ZoneDetailPopup;

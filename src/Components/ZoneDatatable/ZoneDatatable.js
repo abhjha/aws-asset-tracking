@@ -67,7 +67,9 @@ export class ZoneDatatable extends React.Component {
   render() {
     const { isSearchEnabled} = this.state;
     const options = {
-      responsive: true,
+      responsive:true,
+      sizePerPage:  10, 
+      hideSizePerPage: true,
       onRowClick : (row, columnIndex) => {
         if(columnIndex === 1){
           this.props.triggerPopupOpen()
@@ -93,7 +95,7 @@ export class ZoneDatatable extends React.Component {
           <input type="hidden" value={this.state.activeTabKey} />
           <div > 
           <BootstrapTable
-            ref='alertsTable' containerClass="alertsTable" data={this.state.filteredZoneData.SelectedZone} striped hover bordered={false} search={isSearchEnabled} multiColumnSearch options={options} >
+            ref='alertsTable' containerClass="alertsTable" data={this.state.filteredZoneData.SelectedZone} striped hover bordered={false} search={isSearchEnabled} multiColumnSearch options={options} pagination >
             <TableHeaderColumn width='80' dataField='statusBox' dataFormat={this.setStatusStyle} border='0'></TableHeaderColumn>
             <TableHeaderColumn width='90' headerAlign='left' dataAlign='center' isKey dataField='materialName' columnClassName='alerts-link'>Material</TableHeaderColumn>
             <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='zoneName'  >Material location</TableHeaderColumn>
