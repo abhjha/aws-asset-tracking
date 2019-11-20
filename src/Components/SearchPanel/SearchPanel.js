@@ -10,6 +10,8 @@ class SearchPanel extends React.Component {
             filteredMaterialData:[],
             materialName:"",
             isModalOpen: false,
+            uniqueValues: [],
+            searchResults: []
         }
 
         
@@ -37,10 +39,20 @@ class SearchPanel extends React.Component {
         fetch(`https://iy78q5dt50.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialHistory?zoneId=zone001`)
           .then(resp => resp.json())
           .then(response => {
+              var arr = [];
+              var newArr = [];
+              for(var i=0;i<response.SelectedZone.length;i++)
+              {
+                arr.push(response.SelectedZone[i].materialName);
+              }
+              newArr = arr.filter((v, i, a) => a.indexOf(v) === i); 
+
             this.setState({
               loading: false,
               filteredMaterialData: response.SelectedZone,
-              materialName: response.SelectedZone[0].materialName
+              materialName: response.SelectedZone[0].materialName,
+              uniqueValues: newArr,
+              searchResults: newArr
             })
           })
       }
@@ -53,17 +65,15 @@ class SearchPanel extends React.Component {
       FilterSearchResults=(e)=>{
 
         var  k=0, check;
-        var searchResults=[];
-        let value= Event.target.value.toLowerCase();
+        var searchResults2=[];
+        let value= e.target.value.toLowerCase();
         console.log(value);
-        var noOfObjects=this.state.filteredMaterialData.length;
+        var noOfObjects=this.state.uniqueValues.length;
         var lengthOfString=value.length;
         for(var i =0; i<noOfObjects;i++)
         {
-            var elem = this.state.filteredMaterialData[i];
+            var elem = this.state.uniqueValues[i];
           
-            if(typeof(elem)!=="string")
-                elem=elem.toString();
             elem = elem.toLowerCase();
             
             check = 0;
@@ -77,10 +87,14 @@ class SearchPanel extends React.Component {
             }
             if(check===0)
             {
-                searchResults[k]=this.state.filteredMaterialData[i];
+                searchResults2[k]=this.state.uniqueValues[i];
                 k++;
             }
         }
+        this.setState({
+            searchResults: searchResults2
+        })
+        
 
       }
 
@@ -89,7 +103,7 @@ render() {
 
         <div className="searchPanel">
             <div className="SearchContainer">
-                <input type="text" placeholder="Search by materials.." id="searchBox" onkeyup={this.FilterSearchResults}>
+                <input type="text" placeholder="Search by materials.." id="searchBox" onKeyUp={this.FilterSearchResults}>
                     
                 </input>
                 <div className="search-icon">
@@ -101,13 +115,10 @@ render() {
         <div>
           
             <div className="material-list">
-                {this.state.filteredMaterialData.length>0 && this.state.filteredMaterialData.map((item)=>{
+                {this.state.filteredMaterialData.length>0 && this.state.searchResults.map((item)=>{
                      return(
-                    
-                    
-                    <div className="materials" onClick={this.closeModal}>{item.materialName}</div> 
-                   
-                    )})}
+                    <div className="materials" onClick={this.closeModal}>{item}</div> 
+                      )})}
                      {this.state.isModalOpen ? <ZoneDetailPopup popUpName={this.state.popUpName}
                     closeWindow={this.closeModal.bind(this)} /> : null}
  
