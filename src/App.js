@@ -23,7 +23,7 @@ class App extends React.Component {
           {/* <Route path="/deviceRegistry" exact component={DeviceRegistry} /> */}
           {/* <Route path="/editAsset" exact component={EditAsset} /> */}
           {/* <Route path="/detachThing" exact component={DetachThing} /> */}
-          <Route path="/zoneView" exact component={zoneView} />
+          <Route path="/zoneView" exact component={zoneView}/>
           <Route path="/SearchPanel" exact component={SearchPanel} />
           
         </div>
