@@ -32,20 +32,13 @@ export class DataTableComponent extends React.Component {
     return `<i class='fas fa-circle statusMarker ${styleClassName}'></i> ${cell}`;
   }
   triggerAlertDatatable = () => {
-  let guid; 
+
     fetch(`https://b7h0jkep5i.execute-api.us-west-2.amazonaws.com/Stage/GetAlertDetails`)
       .then(resp => resp.json())
       .then(response => {
-        for(var i = 0;i<response.length;i++)
-        {
-          if(response[i].ASSET_NAME===this.state.materialId && response[i].TIMESTAMP===this.state.timestamp)
-          {
-            guid = response[i].GUID
-          } 
-        }
         this.setState({
           alertDatatableData: response,
-          guid: guid
+         
         })
 
       })
@@ -107,12 +100,14 @@ export class DataTableComponent extends React.Component {
             <BootstrapTable
               ref='alertsTable' containerClass="alertsTable" data={this.state.alertDatatableData} striped hover bordered={false}  search={isSearchEnabled} multiColumnSearch options={options} pagination>
               <TableHeaderColumn width='30' dataField='statusBox' dataFormat={this.setStatusStyle} border='0'></TableHeaderColumn>
+              
               <TableHeaderColumn width='90' headerAlign='center' dataAlign='center' isKey dataField='ASSET_NAME' dataFormat={this.alertDetails}>Material</TableHeaderColumn>
               <TableHeaderColumn headerAlign='center' dataAlign='center' dataSort dataField='LINE' >Zone</TableHeaderColumn>
               {/* <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='STATUS' >Status</TableHeaderColumn> */}
               <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='TIMESTAMP' dataFormat={ this.secondsToMilliseconds }>Time Stamp</TableHeaderColumn>
               <TableHeaderColumn dataField='GUID' hidden>GUID</TableHeaderColumn>
               <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='ALARM_NAME'>Description</TableHeaderColumn>
+              <TableHeaderColumn dataField='TIMESTAMP' hidden border='0'></TableHeaderColumn>
             </BootstrapTable>
           </div>
          

@@ -16,8 +16,11 @@ class Dashboard extends Component {
       isModalOpen: false,
       alertPopUpName: "",
       zoneName: "",
-      status: ""
-     
+      status: "",
+      guId:"",
+      timestamp:"",
+      materialId:"",
+      timeEpoch:""
     }
   }
 
@@ -28,23 +31,34 @@ class Dashboard extends Component {
      const zoneName=event.path[1].cells[2].innerText;
       // eslint-disable-next-line no-restricted-globals
       const timeStamp=event.path[1].cells[3].innerText;
+  
+       // eslint-disable-next-line no-restricted-globals
+       const guId=event.path[1].cells[4].innerText;
        // eslint-disable-next-line no-restricted-globals
        const description=event.path[1].cells[5].innerText;
-
-     
+       // eslint-disable-next-line no-restricted-globals
+       const timeEpoch=event.path[1].cells[6].innerText;
+    
     this.setState({ 
       alertPopUpName:alertPopUpName,
       zoneName:zoneName,
       timeStamp:timeStamp,
+      timeEpoch:timeEpoch,
       description:description,
       isModalOpen: !this.state.isModalOpen,
-      
+      guId: guId,
+
+      materialId: alertPopUpName
     })
   }
   closePopupModal=()=> {
     this.setState({
       isModalOpen:!this.state.isModalOpen
     })
+    // var timeEpoch = this.state.timeStamp;
+    // var timeArr = timeEpoch.split(":");
+    // var timeArr2 = 
+    fetch(`https://b7h0jkep5i.execute-api.us-west-2.amazonaws.com/Stage/UpdateAlert?guid=${this.state.guId}&timestamp=${this.state.timeEpoch}&materialId=${this.state.materialId}`)
   }
 
   closeModal=()=> {
@@ -76,21 +90,28 @@ class Dashboard extends Component {
         })
       });
   }
-  triggerAcknowledgeClick = () => {
-    fetch('https://iy78q5dt50.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialMetrics ')
-      .then(resp => resp.json())
-      .then(response => {
-        this.setState({
+  // triggerAcknowledgeClick = () => {
+  //   fetch('https://iy78q5dt50.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialMetrics ')
+  //     .then(resp => resp.json())
+  //     .then(response => {
+  //       this.setState({
        
-        })
-      });
-  }
+  //       })
+  //     });
+  // }
   
+//   triggerAcknowledgeClick = () => {
+    
+//     fetch(`https://b7h0jkep5i.execute-api.us-west-2.amazonaws.com/Stage/UpdateAlert?guid=${this.state.guid}&timestamp=${this.state.timestamp}&materialId=${this.state.materialId}`)
+//     this.setState({
+//       isModalOpen:!this.state.isModalOpen
+//     })
+// }
 
   componentDidMount() {
     this.triggerAssetMetricsGraphData();
     this.setMenuActiveState();
-    this.triggerAcknowledgeClick();
+   
   }
 
   render() {
@@ -107,7 +128,9 @@ class Dashboard extends Component {
             </div>
           </div>
           <div className="db-alerts card-tile ">
-            <DataTableComponent  triggerAlertPopupOpen={this.openModal} />
+            <DataTableComponent  triggerAlertPopupOpen={this.openModal}
+           
+             />
           </div>
           {this.state.isModalOpen ?  <AlertPopup
            closeWindow={this.closeModal.bind(this)}
@@ -116,6 +139,7 @@ class Dashboard extends Component {
            zoneName={this.state.zoneName}
            status={this.state.status}
            timeStamp={this.state.timeStamp}
+           guId={this.state.guId}
            description={this.state.description} /> : null}
         </div>
       </div>
