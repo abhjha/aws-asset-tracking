@@ -16,8 +16,7 @@ class Dashboard extends Component {
       isModalOpen: false,
       alertPopUpName: "",
       zoneName: "",
-      status: "",
-      acknowledgeClickData: []
+      status: ""
      
     }
   }
@@ -30,7 +29,7 @@ class Dashboard extends Component {
       // eslint-disable-next-line no-restricted-globals
       const timeStamp=event.path[1].cells[3].innerText;
        // eslint-disable-next-line no-restricted-globals
-       const description=event.path[1].cells[4].innerText;
+       const description=event.path[1].cells[5].innerText;
 
      
     this.setState({ 
@@ -43,18 +42,18 @@ class Dashboard extends Component {
     })
   }
   closePopupModal=()=> {
-    this.triggerAcknowledgeClick()
     this.setState({
-      isModalOpen:!this.state.isModalOpen,
-     
+      isModalOpen:!this.state.isModalOpen
     })
   }
 
   closeModal=()=> {
      this.setState({ 
       isModalOpen: !this.state.isModalOpen,
-       })
-      }
+       
+     })
+   
+  }
 
   setMenuActiveState =() => {
     var pageId = document.getElementsByClassName("dashboard");
@@ -78,12 +77,10 @@ class Dashboard extends Component {
       });
   }
   triggerAcknowledgeClick = () => {
-    fetch('https://b7h0jkep5i.execute-api.us-west-2.amazonaws.com/Stage/UpdateAlert?guid=-qWF_J9d3&timestamp=1574082873536&materialId=ELS41143')
+    fetch('https://iy78q5dt50.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialMetrics ')
       .then(resp => resp.json())
       .then(response => {
         this.setState({
-          acknowledgeClickData: response,
-          guid:response
        
         })
       });
@@ -93,7 +90,7 @@ class Dashboard extends Component {
   componentDidMount() {
     this.triggerAssetMetricsGraphData();
     this.setMenuActiveState();
-   
+    this.triggerAcknowledgeClick();
   }
 
   render() {

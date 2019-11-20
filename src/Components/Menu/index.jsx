@@ -22,7 +22,7 @@ class Menu extends React.Component {
             switch (selectedMenuId) {
                 case "0": this.props.history.push({ pathname: '/' }); break;
                 case "1": this.props.history.push({ pathname: '/zoneView',state: {zoneId:'zone001', zoneViewName : "Metal Shop"} }); break;
-                case "2": this.props.history.push({ pathname: '/SearchPanel',state: {searchId:'123'}}); break;
+                case "2": this.props.history.push({ pathname: '/SearchPanel',state: {zoneId:'zone001'}}); break;
                 default: this.props.history.push({ pathname: '/' });
             }
         }

@@ -6,7 +6,8 @@ class AlertPopup extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-           
+            isModalOpen:false,
+            guId:props.guId,
             alertPopupData: [],
             alertList: [
                 {
@@ -37,17 +38,30 @@ class AlertPopup extends React.Component {
             ]            
         }
     }
+    closeWindow=()=> {
+        this.triggerAcknowledgeClick()
+         this.setState({ 
+          isModalOpen: !this.state.isModalOpen,
+           })
+    
+          }
     triggerAcknowledgeClick = () => {
-        fetch('https://b7h0jkep5i.execute-api.us-west-2.amazonaws.com/Stage/UpdateAlert?guid=-qWF_J9d3&timestamp=1574082873536&materialId=ELS41143 ')
-          .then(resp => resp.json())
-          .then(response => {
-            console.log(response)
-            this.setState({
-           
-            })
-          });
-      }
-   
+        var form = new FormData()
+        const data = {
+          guid: this.state.guId,
+          timestamp: this.props.timeStamp,
+          materialId: this.props.alertPopUpName
+        }
+        form = form.append("myJsonKey",JSON.stringify(data))
+        fetch('https://b7h0jkep5i.execute-api.us-west-2.amazonaws.com/Stage/UpdateAlert?guid=-qWF_J9d3&timestamp=1574082873536&materialId=ELS41143',{
+          method:'POST',
+          body:form
+      })
+    }
+    componentDidMount=()=> {
+        this.triggerAcknowledgeClick()
+
+    }
     render() {
         const  alertList  = this.state.alertList;
        
@@ -128,7 +142,7 @@ class AlertPopup extends React.Component {
                         </div>
                     </div>
                     <div className="button" >
-                        <input type="button" className="acknowledge-button" value="Acknowledge" onClick={this.props.closeWindowRemoveRow} ></input>
+                        <input type="button" className="acknowledge-button" value="Acknowledge" onClick={this.closeWindow} ></input>
                         <input type="button" className="bttn bttn-yes" value="Cancel" onClick={this.props.closeWindow}></input>
                     </div>
                 </div>
