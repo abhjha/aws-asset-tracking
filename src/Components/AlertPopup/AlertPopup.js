@@ -35,13 +35,21 @@ class AlertPopup extends React.Component {
                     key: 'Resolution',
                     value: 'Pending'
                 }
-            ]            
+            ], 
+            positionArray:['5px', '152px', '298px', '445px', '592px'],
+            zoneIndex:0,           
         }
+    }
+
+    componentDidMount(){
+        const zoneArray = ['Metal Shop', 'Vaccum Forming Shop', 'Piping and Cooling Shop', 'Paint Shop', 'Quality Assurance'];
+        const zoneIndex = zoneArray.indexOf(this.props.zoneName);
+        this.setState({zoneIndex})
     }
    
    
     render() {
-        const  alertList  = this.state.alertList;
+        const  {alertList, positionArray, zoneIndex}  = this.state;
        
         return (
             <div className="alert-popup-wrapper">
@@ -49,16 +57,10 @@ class AlertPopup extends React.Component {
                     <h1>ALERT DETAILS</h1>
                     <div className="sections">
                         <div className="leftSection">
-
-
                             <ul>
                                 <li><p className="title">{alertList[0].key}:</p><p className="content">{this.props.alertPopUpName}</p></li>
                                 <li><p className="title">{alertList[1].key}:</p><p className="content">{this.props.zoneName}</p></li>
-                               
-
                             </ul>
-
-
                         </div>
                         <div className="rightSection">
                             <ul>
@@ -66,8 +68,7 @@ class AlertPopup extends React.Component {
                                 <li><p className="title">{alertList[4].key}:</p><p className="content">{this.props.description}</p></li>
                             </ul>
                         </div>
-                        <div className="lower-section">
-                            <p>{alertList[5].key} : {alertList[5].value}</p>
+                        <div className="lower-section" style={{'marginLeft': positionArray[zoneIndex]}}>
                             <p>{alertList[6].key} : {alertList[6].value}</p>
                             <p>{alertList[7].key} : {alertList[7].value}</p>
                         </div>
@@ -80,8 +81,6 @@ class AlertPopup extends React.Component {
                             </div>
                             <div className="alert-popup-zone-heading">Metal Shop</div>
                         </div>
-                           
-                        
                           
                         <div className="alert-popup-zone">
                        
