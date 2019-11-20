@@ -99,14 +99,14 @@ class AssetMetrics extends Component {
     componentDidMount = () => {
         this.triggerAssetMetricsData();
         clearInterval(this.triggerAssetMetricsData);
-        setInterval(this.triggerAssetMetricsData, 3000);
+        setInterval(this.triggerAssetMetricsData, 30000);
     }
     render() {
         return (
             <div className="asset-metrics-wrapper">
                 <div className="asset-tracked-graph">
                     <div className="card-heading">
-                        <div className="heading"><h1>Material Metrics</h1></div>
+                        <div className="heading"><h1>Material Live Metrics</h1></div>
                     </div>
                     <div className="db-data-metrics-contents">
                         <div className="graph-view">

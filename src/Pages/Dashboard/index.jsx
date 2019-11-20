@@ -55,9 +55,6 @@ class Dashboard extends Component {
     this.setState({
       isModalOpen:!this.state.isModalOpen
     })
-    // var timeEpoch = this.state.timeStamp;
-    // var timeArr = timeEpoch.split(":");
-    // var timeArr2 = 
     fetch(`https://b7h0jkep5i.execute-api.us-west-2.amazonaws.com/Stage/UpdateAlert?guid=${this.state.guId}&timestamp=${this.state.timeEpoch}&materialId=${this.state.materialId}`)
   }
 
@@ -80,36 +77,7 @@ class Dashboard extends Component {
     }
   }
 
-  triggerAssetMetricsGraphData = () => {
-    fetch('https://iy78q5dt50.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialMetrics ')
-      .then(resp => resp.json())
-      .then(response => {
-        this.setState({
-        metricsAndStatus:response,
-         zoneName: Object.keys(response)
-        })
-      });
-  }
-  // triggerAcknowledgeClick = () => {
-  //   fetch('https://iy78q5dt50.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialMetrics ')
-  //     .then(resp => resp.json())
-  //     .then(response => {
-  //       this.setState({
-       
-  //       })
-  //     });
-  // }
-  
-//   triggerAcknowledgeClick = () => {
-    
-//     fetch(`https://b7h0jkep5i.execute-api.us-west-2.amazonaws.com/Stage/UpdateAlert?guid=${this.state.guid}&timestamp=${this.state.timestamp}&materialId=${this.state.materialId}`)
-//     this.setState({
-//       isModalOpen:!this.state.isModalOpen
-//     })
-// }
-
   componentDidMount() {
-    this.triggerAssetMetricsGraphData();
     this.setMenuActiveState();
    
   }

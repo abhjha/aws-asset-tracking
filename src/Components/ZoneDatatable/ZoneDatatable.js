@@ -59,7 +59,7 @@ export class ZoneDatatable extends React.Component {
   componentDidMount = () => {
     this.triggerZoneViewTable();
     clearInterval(this.triggerZoneViewTable);
-    setInterval(this.triggerZoneViewTable, 3000);
+    setInterval(this.triggerZoneViewTable, 30000);
   }
   
 
