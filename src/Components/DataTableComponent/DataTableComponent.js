@@ -102,9 +102,9 @@ export class DataTableComponent extends React.Component {
               <TableHeaderColumn width='30' dataField='statusBox' dataFormat={this.setStatusStyle} border='0'></TableHeaderColumn>
               
               <TableHeaderColumn width='90' headerAlign='center' dataAlign='center' isKey dataField='ASSET_NAME' dataFormat={this.alertDetails}>Material</TableHeaderColumn>
-              <TableHeaderColumn headerAlign='center' dataAlign='center' dataSort dataField='LINE' >Zone</TableHeaderColumn>
+              <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='LINE' >Zone</TableHeaderColumn>
               {/* <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='STATUS' >Status</TableHeaderColumn> */}
-              <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='TIMESTAMP' dataFormat={ this.secondsToMilliseconds }>Time Stamp</TableHeaderColumn>
+              <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='TIMESTAMP' dataSort dataFormat={ this.secondsToMilliseconds }>Time Stamp</TableHeaderColumn>
               <TableHeaderColumn dataField='GUID' hidden>GUID</TableHeaderColumn>
               <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='ALARM_NAME'>Description</TableHeaderColumn>
               <TableHeaderColumn dataField='TIMESTAMP' hidden border='0'></TableHeaderColumn>
