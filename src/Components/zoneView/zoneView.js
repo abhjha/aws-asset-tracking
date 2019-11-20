@@ -73,7 +73,7 @@ class zoneView extends React.Component {
         this.triggerZoneViewCardData();
         this.setMenuActiveState();
         clearInterval(this.triggerZoneViewCardData);
-        setInterval(this.triggerZoneViewCardData, 3000);
+        setInterval(this.triggerZoneViewCardData, 30000);
     }
 
 

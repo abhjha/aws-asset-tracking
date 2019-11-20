@@ -112,7 +112,7 @@ export class ZoneDetailPopup extends React.Component {
     this.triggerZoneDetailPopup();
     this.getAlertCount();
     clearInterval(this.triggerZoneViewTable);
-    setInterval(this.triggerZoneViewTable, 3000);
+    setInterval(this.triggerZoneViewTable, 30000);
   }
     render() {
         const  alertList  = this.state.alertList;
