@@ -29,7 +29,7 @@ class Dashboard extends Component {
       // eslint-disable-next-line no-restricted-globals
       const timeStamp=event.path[1].cells[3].innerText;
        // eslint-disable-next-line no-restricted-globals
-       const description=event.path[1].cells[4].innerText;
+       const description=event.path[1].cells[5].innerText;
 
      
     this.setState({ 
@@ -76,21 +76,21 @@ class Dashboard extends Component {
         })
       });
   }
-  // triggerAcknowledgeClick = () => {
-  //   fetch('https://iy78q5dt50.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialMetrics ')
-  //     .then(resp => resp.json())
-  //     .then(response => {
-  //       this.setState({
+  triggerAcknowledgeClick = () => {
+    fetch('https://iy78q5dt50.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialMetrics ')
+      .then(resp => resp.json())
+      .then(response => {
+        this.setState({
        
-  //       })
-  //     });
-  // }
+        })
+      });
+  }
   
 
   componentDidMount() {
     this.triggerAssetMetricsGraphData();
     this.setMenuActiveState();
-    // this.triggerAcknowledgeClick();
+    this.triggerAcknowledgeClick();
   }
 
   render() {
@@ -112,7 +112,6 @@ class Dashboard extends Component {
           {this.state.isModalOpen ?  <AlertPopup
            closeWindow={this.closeModal.bind(this)}
            closeWindowRemoveRow={this.closePopupModal.bind(this)}
-
            alertPopUpName= {this.state.alertPopUpName}
            zoneName={this.state.zoneName}
            status={this.state.status}

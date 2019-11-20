@@ -7,6 +7,8 @@ import Menu from './Components/Menu/index';
 // import EditAsset from './Pages/EditAsset';
 // import DetachThing from './Pages/DetachThing';
 import zoneView from './Components/zoneView/zoneView.js';
+import SearchPanel from './Components/SearchPanel/SearchPanel.js';
+
 import './SCSS/main.scss';
 
 class App extends React.Component {
@@ -21,7 +23,8 @@ class App extends React.Component {
           {/* <Route path="/deviceRegistry" exact component={DeviceRegistry} /> */}
           {/* <Route path="/editAsset" exact component={EditAsset} /> */}
           {/* <Route path="/detachThing" exact component={DetachThing} /> */}
-          <Route path="/:zoneView" exact component={zoneView} />
+          <Route path="/zoneView" exact component={zoneView} />
+          <Route path="/SearchPanel" exact component={SearchPanel} />
           
         </div>
       </Router>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import './dataTableComponent-dep.css';
+import Dashboard from '../../Pages/Dashboard';
 
 export class DataTableComponent extends React.Component {
 
@@ -14,7 +15,10 @@ export class DataTableComponent extends React.Component {
       isFilterEnabled: true,
       filterItem: [],
       filteredData: props.filteredData,
-      filteredZoneData: props.filteredZoneData
+      filteredZoneData: props.filteredZoneData,
+      guId:"",
+      timestamp:props.timestamp,
+      materialId:props.materialId
     };
   }
 
@@ -28,18 +32,29 @@ export class DataTableComponent extends React.Component {
     return `<i class='fas fa-circle statusMarker ${styleClassName}'></i> ${cell}`;
   }
   triggerAlertDatatable = () => {
+  let guid; 
     fetch(`https://b7h0jkep5i.execute-api.us-west-2.amazonaws.com/Stage/GetAlertDetails`)
       .then(resp => resp.json())
       .then(response => {
+        for(var i = 0;i<response.length;i++)
+        {
+          if(response[i].ASSET_NAME===this.state.materialId && response[i].TIMESTAMP===this.state.timestamp)
+          {
+            guid = response[i].GUID
+          } 
+        }
         this.setState({
-          alertDatatableData: response
+          alertDatatableData: response,
+          guid: guid
         })
+
       })
+      
   }
   componentDidMount = () => {
     this.triggerAlertDatatable();
     clearInterval(this.triggerAlertDatatable);
-    setInterval(this.triggerAlertDatatable, 30000);
+    setInterval(this.triggerAlertDatatable, 3000);
 
   }
 
@@ -69,6 +84,7 @@ export class DataTableComponent extends React.Component {
       onRowClick : (row, columnIndex) => {
         if(columnIndex === 1 || columnIndex === 2 || columnIndex === 3 || columnIndex === 4 || columnIndex === 5 ){
           this.props.triggerAlertPopupOpen()
+          
         }
       }
     }
@@ -87,17 +103,19 @@ export class DataTableComponent extends React.Component {
               onClick={(e) => this.options.showSearchTool(e)}></i>
           </div>
           <input type="hidden" value={this.state.activeTabKey} />
-         
+          
             <BootstrapTable
-              ref='alertsTable' containerClass="alertsTable" data={this.state.alertDatatableData} striped hover bordered={false} search={isSearchEnabled} multiColumnSearch options={options} pagination>
+              ref='alertsTable' containerClass="alertsTable" data={this.state.alertDatatableData} striped hover bordered={false}  search={isSearchEnabled} multiColumnSearch options={options} pagination>
               <TableHeaderColumn width='30' dataField='statusBox' dataFormat={this.setStatusStyle} border='0'></TableHeaderColumn>
               <TableHeaderColumn width='90' headerAlign='center' dataAlign='center' isKey dataField='ASSET_NAME' dataFormat={this.alertDetails}>Material</TableHeaderColumn>
               <TableHeaderColumn headerAlign='center' dataAlign='center' dataSort dataField='LINE' >Zone</TableHeaderColumn>
               {/* <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='STATUS' >Status</TableHeaderColumn> */}
-              <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='TIMESTAMP' dataFormat={ this.secondsToMilliseconds } >Time Stamp</TableHeaderColumn>
+              <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='TIMESTAMP' dataFormat={ this.secondsToMilliseconds }>Time Stamp</TableHeaderColumn>
+              <TableHeaderColumn dataField='GUID' hidden>GUID</TableHeaderColumn>
               <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='ALARM_NAME'>Description</TableHeaderColumn>
             </BootstrapTable>
           </div>
+         
 
        
         <div className="legends-wrapper">

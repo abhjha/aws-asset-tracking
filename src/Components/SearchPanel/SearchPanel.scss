@@ -1,0 +1,50 @@
+.searchPanel {
+    width: 35%;
+    background-color: white;
+    height: 100%;
+}
+.SearchContainer {
+    display: flex;
+}
+.SearchContainer input[type="text"] {
+    width: 97%;
+    height: 60px;
+    background-color: #dedede;
+    margin-top: 44px;
+    margin-left: 6px;
+    font-size: 20px;
+    border-style: none;
+    outline:none;
+    padding-left: 27px;
+    border-top-left-radius: 36px;
+    border-bottom-left-radius: 36px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+.SearchContainer input[type="text"],
+.search-icon {
+  float: left;
+}
+.material-list {
+    margin: 20px;
+    
+}
+.materials {
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.search-icon {
+
+  background-color: #dedede;
+  height: 60px;
+  margin-top: 44px;
+  margin-right:3px;
+  width: 64px;
+  border-top-right-radius: 36px;
+  border-bottom-right-radius: 36px;
+}
+
+.search-icon img {
+  margin-top: 20px;
+}
