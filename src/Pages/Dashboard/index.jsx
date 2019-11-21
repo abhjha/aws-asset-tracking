@@ -96,7 +96,7 @@ class Dashboard extends Component {
             </div>
           </div>
           <div className="db-alerts card-tile ">
-            <DataTableComponent  triggerAlertPopupOpen={this.openModal}
+            <DataTableComponent triggerAlertPopupOpen={this.openModal}
            
              />
           </div>

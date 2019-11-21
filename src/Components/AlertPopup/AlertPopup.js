@@ -8,6 +8,7 @@ class AlertPopup extends React.Component {
         this.state = {
             isModalOpen:false,
             guId:props.guId,
+            nameArray:[],
             alertPopupData: [],
             alertList: [
                 {
@@ -35,16 +36,27 @@ class AlertPopup extends React.Component {
                     key: 'Resolution',
                     value: 'Pending'
                 }
-            ], 
+                
+            ],
+            
+           
             positionArray:['5px', '152px', '298px', '445px', '592px'],
+            dotColor:'red', 
             zoneIndex:0,           
         }
     }
 
     componentDidMount(){
-        const zoneArray = ['Metal Shop', 'Vaccum Forming Shop', 'Piping and Cooling Shop', 'Paint Shop', 'Quality Assurance'];
+       
+        const zoneArray = ['Metal Shop', 'Vaccum Forming Shop', 'Piping And Cooling Shop', 'Paint Shop', 'Quality Assurance'];
         const zoneIndex = zoneArray.indexOf(this.props.zoneName);
-        this.setState({zoneIndex})
+        this.setState({zoneIndex});
+        this.highlightRing(zoneIndex);
+    }
+    highlightRing=(zoneIndex)=> {
+        var ringObject=document.getElementsByClassName("dot");
+        ringObject[zoneIndex].classList.add('active-state');
+
     }
    
    
@@ -76,7 +88,7 @@ class AlertPopup extends React.Component {
                    <div className="zones">
                        <div className="alert-popup-zone">
                        
-                            <div className="dot">
+                            <div className="dot" >
                                 <div className="alert-links"></div>
                             </div>
                             <div className="alert-popup-zone-heading">Metal Shop</div>
@@ -93,7 +105,7 @@ class AlertPopup extends React.Component {
                         
                         <div className="alert-popup-zone">
                        
-                            <div className="dot">
+                            <div className="dot" >
                                 <div className="alert-links"></div>
                             </div>
                             <div className="alert-popup-zone-heading">Piping and Cooling Shop</div>
@@ -102,7 +114,7 @@ class AlertPopup extends React.Component {
                            
                         <div className="alert-popup-zone">
                       
-                            <div className="dot">
+                            <div className="dot" >
                                 <div className="alert-links"></div>
                             </div>
                             <div className="alert-popup-zone-heading">Paint Shop</div>
@@ -111,7 +123,7 @@ class AlertPopup extends React.Component {
                           
                         <div className="alert-popup-zone">
                        
-                            <div className="dot">
+                            <div className="dot" >
                                 <div className="alert-links"></div>
                            </div>
                            <div className="alert-popup-zone-heading">Quality Assurance</div>
