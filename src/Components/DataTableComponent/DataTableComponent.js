@@ -56,15 +56,24 @@ export class DataTableComponent extends React.Component {
   }
   secondsToMilliseconds = (cell,row) =>{
     var currDate = new Date(cell);
+    
     var dateString = (new Date(cell)).toLocaleDateString("en-US", {
       month: 'short',
       day: '2-digit'
                 });
+
     var dateArray = dateString.split(" ");
     dateString = ""+dateArray[1]+" "+dateArray[0];
     var dateHours = currDate.getHours();
+    var hoursStr= ""+dateHours;
+    if(!(dateHours/10>=1)) {
+      hoursStr="0" +dateHours
+    }
     var dateMins = currDate.getMinutes();
-    dateString = dateString+" : "+dateHours+":"+dateMins;
+    if(!(dateMins/10>=1)){
+     dateMins="0"+dateMins
+    }
+    dateString = dateString+" : "+hoursStr+":"+ dateMins;
     return dateString;
   }
   render() {
