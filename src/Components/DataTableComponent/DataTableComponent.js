@@ -47,7 +47,7 @@ export class DataTableComponent extends React.Component {
   componentDidMount = () => {
     this.triggerAlertDatatable();
     clearInterval(this.triggerAlertDatatable);
-    setInterval(this.triggerAlertDatatable, 30000);
+    setInterval(this.triggerAlertDatatable, 3000);
 
   }
 
