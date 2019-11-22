@@ -76,7 +76,7 @@ export class ZoneDetailPopup extends React.Component {
     triggerZoneDetailPopup = () => {
         let completedCount=0
         this.setState({loading:true})
-        fetch(`https://iy78q5dt50.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialInfo?materialId=${this.props.popUpName}`)
+        fetch(`https://nratrxpc82.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialInfo?materialId=${this.props.popUpName}`)
           .then(resp => resp.json())
           .then(response => {
             var responseKeys = Object.keys(response);

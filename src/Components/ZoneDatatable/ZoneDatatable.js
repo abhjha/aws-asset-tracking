@@ -32,7 +32,7 @@ export class ZoneDatatable extends React.Component {
 
   triggerZoneViewTable = () => {
     this.setState({loading:true})
-    fetch(`https://iy78q5dt50.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialHistory?zoneId=${this.props.zoneId}`)
+    fetch(`https://nratrxpc82.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialHistory?zoneId=${this.props.zoneId}`)
       .then(resp => resp.json())
       .then(response => {
         this.setState({
