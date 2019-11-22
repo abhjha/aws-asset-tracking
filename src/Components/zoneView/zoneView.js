@@ -36,28 +36,13 @@ class zoneView extends React.Component {
     }
 
     triggerZoneViewCardData = () => {
-        fetch('https://iy78q5dt50.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialCountPerZone')
+        fetch('https://nratrxpc82.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialCountPerZone')
             .then(resp => resp.json())
             .then(response => {
                 this.setState({
                     zoneList: response,
                 })
             });
-    }
-
-    setMenuActiveState = () => {
-        var pageId = document.getElementsByClassName("dashboard");
-        console.log(pageId)
-        if (pageId.length > 0) {
-            document.getElementsByClassName('menu-heading-container')[0].classList.add('active');
-            document.getElementsByClassName('menu-heading-container')[1].classList.remove('active');
-            document.getElementsByClassName('menu-heading-container')[2].classList.remove('active');
-            
-        } else {
-            document.getElementsByClassName('menu-heading-container')[0].classList.remove('active');
-            document.getElementsByClassName('menu-heading-container')[2].classList.remove('active');
-            document.getElementsByClassName('menu-heading-container')[1].classList.add('active');
-        }
     }
 
     triggerTabSelection = (e) => {
@@ -71,7 +56,6 @@ class zoneView extends React.Component {
 
     componentDidMount() {
         this.triggerZoneViewCardData();
-        this.setMenuActiveState();
         clearInterval(this.triggerZoneViewCardData);
         setInterval(this.triggerZoneViewCardData, 3000);
     }

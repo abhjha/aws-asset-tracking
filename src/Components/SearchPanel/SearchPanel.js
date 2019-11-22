@@ -32,7 +32,7 @@ class SearchPanel extends React.Component {
     }
     triggerZoneViewTable = () => {
         this.setState({loading:true})
-        fetch(`https://iy78q5dt50.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialHistory?zoneId=zone001`)
+        fetch(`https://nratrxpc82.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialHistory?zoneId=zone001`)
           .then(resp => resp.json())
           .then(response => {
               var arr = [];

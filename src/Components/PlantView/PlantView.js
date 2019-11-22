@@ -31,7 +31,7 @@ class PlantView extends Component {
   }
 
   triggerFactoryFloorPlan = () => {
-    fetch('https://iy78q5dt50.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialMetrics ')
+    fetch('https://nratrxpc82.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialMetrics ')
       .then(resp => resp.json())
       .then(response => {
         this.setState({
