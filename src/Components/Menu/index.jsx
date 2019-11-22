@@ -1,28 +1,34 @@
 import React from 'react';
 import { withRouter } from "react-router-dom";
 
-
-
-
 class Menu extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
             selectedMenuId: 0,
-            menuItem:['Dashboard','Zone Details'],
+            menuItem:['Dashboard','Zone Details','Search Materials'],
         }
     }
 
     setActiveState = (e) => {
-        if (e.target.parentElement.classList.contains('menu-heading-container')) {
+        if (e && e.target.parentElement.classList.contains('menu-heading-container')) {
             const selectedMenuId = e.target.parentElement.id;
             this.setState({ selectedMenuId });
-            this.props.history.push({ pathname: '/' });
+            //this.props.history.push({ pathname: '/' });
             switch (selectedMenuId) {
                 case "0": this.props.history.push({ pathname: '/' }); break;
                 case "1": this.props.history.push({ pathname: '/zoneView',state: {zoneId:'zone001', zoneViewName : "Metal Shop"} }); break;
+                case "2": this.props.history.push({ pathname: '/SearchPanel',state: {zoneId:'zone001'}}); break;
                 default: this.props.history.push({ pathname: '/' });
+            }
+        } else {
+            if(window.location.pathname.includes('SearchPanel')){
+                this.setState({ selectedMenuId: 2 });
+            } else if(window.location.pathname.includes('zoneView')){
+                this.setState({ selectedMenuId: 1 });
+            } else {
+                this.setState({ selectedMenuId: 0 });
             }
         }
     }
@@ -39,6 +45,10 @@ class Menu extends React.Component {
         fontSize: '16px',
         marginTop: '5px'
     };
+
+    componentDidMount(){
+        this.setActiveState();
+    }
 
     render() {
         

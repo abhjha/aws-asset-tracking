@@ -47,9 +47,8 @@ ul {
 }
 
 .zone-data-table-legends{
-    position: absolute;
-    bottom: 50px;
-    right: 50px;
+    right: 74px;
+    float: right;
     
 
     .zone-legends {
@@ -64,8 +63,9 @@ ul {
     }    
 
     .zone-data-table-legends-labels {
-        font-size: 13px;
-        margin-top: 4px;
+        font-size: $font-normal-fontsize-table;
+        margin-top: 2px;
+        margin-left:3px;
     }
 }
 

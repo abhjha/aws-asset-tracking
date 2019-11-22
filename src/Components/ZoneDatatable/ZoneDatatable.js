@@ -35,7 +35,6 @@ export class ZoneDatatable extends React.Component {
     fetch(`https://iy78q5dt50.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialHistory?zoneId=${this.props.zoneId}`)
       .then(resp => resp.json())
       .then(response => {
-        
         this.setState({
           loading: false,
           filteredZoneData: response,
@@ -60,14 +59,16 @@ export class ZoneDatatable extends React.Component {
   componentDidMount = () => {
     this.triggerZoneViewTable();
     clearInterval(this.triggerZoneViewTable);
-    setInterval(this.triggerZoneViewTable, 30000);
+    setInterval(this.triggerZoneViewTable, 3000);
   }
   
 
   render() {
     const { isSearchEnabled} = this.state;
     const options = {
-      responsive: true,
+      responsive:true,
+      sizePerPage:  10, 
+      hideSizePerPage: true,
       onRowClick : (row, columnIndex) => {
         if(columnIndex === 1){
           this.props.triggerPopupOpen()
@@ -93,17 +94,17 @@ export class ZoneDatatable extends React.Component {
           <input type="hidden" value={this.state.activeTabKey} />
           <div > 
           <BootstrapTable
-            ref='alertsTable' containerClass="alertsTable" data={this.state.filteredZoneData.SelectedZone} striped hover bordered={false} search={isSearchEnabled} multiColumnSearch options={options} >
+            ref='alertsTable' containerClass="alertsTable" data={this.state.filteredZoneData.SelectedZone} striped hover bordered={false} search={isSearchEnabled} multiColumnSearch options={options} pagination >
             <TableHeaderColumn width='80' dataField='statusBox' dataFormat={this.setStatusStyle} border='0'></TableHeaderColumn>
             <TableHeaderColumn width='90' headerAlign='left' dataAlign='center' isKey dataField='materialName' columnClassName='alerts-link'>Material</TableHeaderColumn>
             <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='zoneName'  >Material location</TableHeaderColumn>
-            <TableHeaderColumn headerAlign='center' dataAlign='center' dataSort dataField='status' >Status</TableHeaderColumn>
-            <TableHeaderColumn headerAlign='center' dataAlign='center'  dataField='visitTimein' >Zone In time</TableHeaderColumn>
+            <TableHeaderColumn headerAlign='center' dataAlign='center'  dataField='status' >Status</TableHeaderColumn>
+            <TableHeaderColumn headerAlign='center' dataAlign='center'  dataSort dataField='visitTimein' >Zone In time</TableHeaderColumn>
             <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='visitTimeout' >Zone Out time</TableHeaderColumn>
             {/* <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='description' >Description</TableHeaderColumn> */}
             <TableHeaderColumn headerAlign='center' dataAlign='center' dataField='superviserName' >Supervisor</TableHeaderColumn>
           </BootstrapTable>
-        
+
           </div>
           
         </div>

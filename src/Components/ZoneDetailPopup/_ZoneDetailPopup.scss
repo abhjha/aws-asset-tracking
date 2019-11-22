@@ -1,4 +1,15 @@
 $alertMargin: 12px;
+.zone-popup-wrapper{
+    position: fixed;
+    height: 100vh;
+    width: 100%; 
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10000;
+    background-color: rgba(256,256,256,0.7);
+    }
 .sections-donut-chart {
     display: flex;
     .heading-and-sections {
@@ -19,30 +30,30 @@ $alertMargin: 12px;
             font-size: 17px;
             padding-left: 3px;
             height: 83px;
-            border-left : 6px solid rgb(246,246,246);
+            border-left : 6px solid $pipe-color;
         }
         .zone-main-list {
             padding-left: 0px;
             .alert-links {
-                border-top: 6px solid rgb(237,237,237);
+                border-top: 6px solid $link-color;
                 width:100%;
                 display: flex;
                 .alert-zone-completed {
                     @include ring-icon($success-green);
                     &.gray-state{
-                        border: 5px solid rgb(214, 214, 214);   
+                        border: 5px solid $gray-state;   
                     }
                 }
                 .alert-zone-in-progress {
                     @include ring-icon($highlight-blue);
                     &.gray-state{
-                        border: 5px solid rgb(214,214,214);   
+                        border: 5px solid $gray-state;   
                     }
                 }
                 .alert-zone-waiting {
                     @include ring-icon($warning-yellow);
                     &.gray-state{
-                        border: 5px solid rgb(214,214,214);   
+                        border: 5px solid $gray-state;   
                     }
                 }
                 .alert-zone-waiting,.alert-zone-in-progress, .alert-zone-completed {
@@ -81,9 +92,10 @@ $alertMargin: 12px;
     }
 }
 
-    .zone-heading:last-child
+    .zone-popup-container:last-child
     {
-    border-right : 6px solid rgb(246,246,246);
+    border-right : 6px solid $pipe-color;
+    height:89px
     }
 .close-button {
     height: 31px;

@@ -16,8 +16,11 @@ class Dashboard extends Component {
       isModalOpen: false,
       alertPopUpName: "",
       zoneName: "",
-      status: ""
-     
+      status: "",
+      guId:"",
+      timestamp:"",
+      materialId:"",
+      timeEpoch:""
     }
   }
 
@@ -27,32 +30,37 @@ class Dashboard extends Component {
       // eslint-disable-next-line no-restricted-globals
      const zoneName=event.path[1].cells[2].innerText;
       // eslint-disable-next-line no-restricted-globals
-      const status=event.path[1].cells[3].innerText;
+      const timeStamp=event.path[1].cells[3].innerText;
+  
        // eslint-disable-next-line no-restricted-globals
-       const timeStamp=event.path[1].cells[4].innerText;
+       const guId=event.path[1].cells[4].innerText;
        // eslint-disable-next-line no-restricted-globals
        const description=event.path[1].cells[5].innerText;
-      
-   
+       // eslint-disable-next-line no-restricted-globals
+       const timeEpoch=event.path[1].cells[6].innerText;
     
-  
     this.setState({ 
       alertPopUpName:alertPopUpName,
       zoneName:zoneName,
-      status:status,
       timeStamp:timeStamp,
+      timeEpoch:timeEpoch,
       description:description,
       isModalOpen: !this.state.isModalOpen,
-      
+      guId: guId,
+
+      materialId: alertPopUpName
     })
   }
+  closePopupModal=()=> {
+    this.setState({
+      isModalOpen:!this.state.isModalOpen
+    })
+    fetch(`https://b7h0jkep5i.execute-api.us-west-2.amazonaws.com/Stage/UpdateAlert?guid=${this.state.guId}&timestamp=${this.state.timeEpoch}&materialId=${this.state.materialId}`)
+  }
+
   closeModal=()=> {
-    
-      
-   
      this.setState({ 
-       
-       isModalOpen: !this.state.isModalOpen,
+      isModalOpen: !this.state.isModalOpen,
        
      })
    
@@ -69,20 +77,9 @@ class Dashboard extends Component {
     }
   }
 
-  triggerAssetMetricsGraphData = () => {
-    fetch('https://iy78q5dt50.execute-api.us-west-2.amazonaws.com/Stage/GetMaterialMetrics ')
-      .then(resp => resp.json())
-      .then(response => {
-        this.setState({
-        metricsAndStatus:response,
-         zoneName: Object.keys(response)
-        })
-      });
-  }
-
   componentDidMount() {
-    this.triggerAssetMetricsGraphData();
     this.setMenuActiveState();
+   
   }
 
   render() {
@@ -99,15 +96,18 @@ class Dashboard extends Component {
             </div>
           </div>
           <div className="db-alerts card-tile ">
-            <DataTableComponent  triggerAlertPopupOpen={this.openModal} />
+            <DataTableComponent triggerAlertPopupOpen={this.openModal}
+           
+             />
           </div>
           {this.state.isModalOpen ?  <AlertPopup
            closeWindow={this.closeModal.bind(this)}
-
+           closeWindowRemoveRow={this.closePopupModal.bind(this)}
            alertPopUpName= {this.state.alertPopUpName}
            zoneName={this.state.zoneName}
            status={this.state.status}
            timeStamp={this.state.timeStamp}
+           guId={this.state.guId}
            description={this.state.description} /> : null}
         </div>
       </div>
