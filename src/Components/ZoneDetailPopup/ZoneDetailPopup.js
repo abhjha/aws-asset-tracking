@@ -61,10 +61,10 @@ export class ZoneDetailPopup extends React.Component {
         document.getElementById("graph-skills").innerHTML = `<canvas id="graph-matrix"></canvas>`;
         var c1 = document.getElementById("graph-matrix");
         var context1 =c1.getContext("2d");
-        var text = ((graphValue / 15) * 100).toFixed(2) + "%";
+        var text = ((graphValue / 5) * 100).toFixed(0) + "%";
         context1.font = "bold 24px Roboto, sans-serif ";
         context1.beginPath();
-        context1.arc(150, 75, 62, 0, (((graphValue / 15) * 100)* Math.PI));
+        context1.arc(150, 75, 62, 0, (((graphValue / 5) * 2 * Math.PI)));
         context1.lineWidth = 17;
         context1.strokeStyle = "rgb(151,221,198)";
         context1.fillStyle = "#000";
