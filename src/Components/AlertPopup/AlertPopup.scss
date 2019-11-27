@@ -94,10 +94,7 @@
     padding: 5px 0 0 5px;
     border: 2px solid $pipe-color;
 }
-
-
 .dot {
-    
     margin-left:57px;
     margin-top:41%;
     width: 20px;
@@ -114,24 +111,16 @@
             border-radius: 50%;
             border: 5px solid $highlight-blue;
             background-color:white;
-        
-        
-        
     }
-  
 }
-
-
-.name{
+.name {
     width: 48px;
     margin-left: -10px;
 }
-
-.button{
+.button {
     margin-top:11%;
 }
 .zones {
-    
     display: flex;
     margin-top: 15%;
 }
@@ -151,8 +140,6 @@
     padding-left:40px
    
 }
-
-
 .bttn,.acknowledge-button{
     width: 182px;
     height: 46px;
@@ -169,7 +156,6 @@
 .acknowledge-button {
     background-color: $selection-blue;
 }
-
 .bttn-yes{
     background-color: #dedede;   
     width: 130px;

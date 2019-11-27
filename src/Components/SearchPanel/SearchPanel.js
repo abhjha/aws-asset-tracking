@@ -17,6 +17,16 @@ class SearchPanel extends React.Component {
 
         
     }
+    setMenuActiveState = () => {
+        var pageId = document.getElementsByClassName("dashboard");
+        if (pageId.length > 0) {
+            document.getElementsByClassName('menu-heading-container')[1].classList.add('active');
+            document.getElementsByClassName('menu-heading-container')[2].classList.remove('active');
+        } else {
+            document.getElementsByClassName('menu-heading-container')[1].classList.remove('active');
+            document.getElementsByClassName('menu-heading-container')[2].classList.add('active');
+        }
+    }
     openModal = () => {
         
         this.setState({
@@ -54,6 +64,7 @@ class SearchPanel extends React.Component {
       }
     
       componentDidMount = () => {
+        this.setMenuActiveState();
         this.triggerZoneViewTable();
         clearInterval(this.triggerZoneViewTable);
         setInterval(this.triggerZoneViewTable, 30000);

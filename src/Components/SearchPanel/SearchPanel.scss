@@ -1,7 +1,8 @@
 .searchPanel {
     width: 35%;
-    background-color: white;
+    background-color: $card-bg-color;
     height: 100%;
+    cursor: pointer;
 }
 .SearchContainer {
     display: flex;
@@ -9,7 +10,7 @@
 .SearchContainer input[type="text"] {
     width: 97%;
     height: 60px;
-    background-color: #dedede;
+    background-color: $gray-state;
     margin-top: 44px;
     margin-left: 6px;
     font-size: 20px;
@@ -30,7 +31,7 @@
     
 }
 .materials {
-    font-size: 15px;
+    font-size: $font-normal-fontsize-table;
     margin-bottom: 5px;
 }
 

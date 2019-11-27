@@ -32,7 +32,6 @@ export class AlertDetail extends React.Component {
     let colorArray = ['rgba(80, 227, 194, 0.6)','rgba(15, 139, 141, 0.6)','rgba(65, 117, 5, 0.6)'];
     let graphData = {"datasets":[],"labels":[],"yAxis":[]};
     var data = this.state.data;
-    console.log(data);
 
     $("#alertDetail .buttonBar .button-highpriority").on("click", function(e){
         console.log("hover");
