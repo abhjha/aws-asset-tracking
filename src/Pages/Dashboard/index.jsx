@@ -23,7 +23,6 @@ class Dashboard extends Component {
       timeEpoch:""
     }
   }
-
   openModal = () => {
      // eslint-disable-next-line no-restricted-globals
      const alertPopUpName = event.path[1].cells[1].innerText;

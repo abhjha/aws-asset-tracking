@@ -15,7 +15,7 @@ class PlantView extends Component {
       
     };
   }
-
+  
   triggerNavigation = (e) => {
     const zoneId = e.currentTarget.getAttribute('data-id');
     const zoneViewName = e.currentTarget.childNodes[0].innerText;
@@ -43,7 +43,6 @@ class PlantView extends Component {
   }
   
   componentDidMount() {
-
     this.triggerFactoryFloorPlan();
     clearInterval(this.triggerFactoryFloorPlan);
     setInterval(this.triggerFactoryFloorPlan, 3000);
